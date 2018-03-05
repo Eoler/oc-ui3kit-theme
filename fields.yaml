@@ -1,0 +1,15 @@
+fields:
+    brand_color:
+        span: full
+        label: Site brand color
+        type: colorpicker
+        default: '#39f'
+        assetVar: 'global-emphasis-color'
+    site_name:
+        span: left
+        label: Site name
+        default: UI3kit
+    version:
+        span: right
+        label: Version (build)
+        default: 100
