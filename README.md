@@ -2,7 +2,7 @@
 Starter development template for building [UIkit v3](https://getuikit.com/) themed [OctoberCMS](https://octobercms.com/) sites.
 
 Includes:
-- latest UIkit v3 [source from official repository](https://github.com/uikit/uikit)
+- latest UIkit v3 (beta) [source from official repository](https://github.com/uikit/uikit)
 - GulpJS-based build system for development and production
 
 

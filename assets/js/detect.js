@@ -1406,3 +1406,10 @@ window.Modernizr = (function( window, document, undefined ) {
 })(this, this.document);
 
 //= DISABLE ../vendor/lazysizes/lazysizes.js
+// add simple support for background images:
+// document.addEventListener('lazybeforeunveil', function(e){
+//     var bg = e.target.getAttribute('data-bg');
+//     if(bg){
+//         e.target.style.backgroundImage = 'url(' + bg + ')';
+//     }
+// });

@@ -1,7 +1,7 @@
 name: UI3kit
 description: 'Starter development template for building UIkit v3 themed sites.'
 author: Eoler
-homepage: 'https://github.com/Eoler/oc-ui3kit-theme'
+homepage: 'https://octobercms.com/theme/castus-ui3kit'
 code: UI3kit
 
 form: fields.yaml

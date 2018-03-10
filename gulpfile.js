@@ -6,9 +6,10 @@
  * > npm install
  *
  * Usage (GulpJS):
- * > gulp styles  [--production][--src=<filepath/filename.scss> [--dest=<path/dirname>]]
- * > gulp scripts [--production][--src=<filepath/filename.js> [--dest=<path/dirname>]]
+ * > gulp styles  [--production][--src={filepath/filename.scss} [--dest={path/dirname}]]
+ * > gulp scripts [--production][--src={filepath/filename.js} [--dest={path/dirname}]]
  * > gulp upbuild [--production]
+ * > gulp images  [--src={filepath/filename.filetypes} [--dest={path/dirname}]]
  * > gulp watch
  */
 'use strict';
@@ -18,6 +19,11 @@ var // defaults
     defstyles_srcdir = defassets_srcdir+"scss/",
     defstyles_srcglb = defstyles_srcdir+"*.scss",
     defscripts_srcglb = defassets_srcdir+"es6/*.js",
+    defimages_types = "*.+(jpg|jpeg|png|gif|svg)",
+    defimages_srcdir = defassets_srcdir+"images/",
+    defimages_srcglb = defimages_srcdir+defimages_types,
+    defmedia_srcdir = "storage/media/",
+    defmedia_srcglb = defmedia_srcdir+"**/"+defimages_types,
     defassets_destdir = defassets_srcdir,
     defstyles_destdir = defassets_destdir+"css/",
     defscripts_destdir = defassets_destdir+"js/",
@@ -51,7 +57,7 @@ var sourcemaps = require('gulp-sourcemaps'),
     autoprefixer( {
         cascade: false,
         //map: true,
-        browsers: ["last 2 versions", "iOS >= 9"] } ),
+        browsers: ["last 2 versions", "not dead", "iOS >= 9"] } ),
     sourcemaps.write( "./", {
         includeContent: false,
         sourceRoot: "../scss" } ),
@@ -86,6 +92,21 @@ var fs = require('fs'),
     obyaml.fields.version.default++;
     fs.writeFileSync( srcfile, yaml.dump( obyaml, { indent: 4 } ) );
   }
+});
+
+gulp.task('images', function(cb){
+var imagemin = require('gulp-imagemin'),
+    srcfiles = args.src || defimages_srcglb,
+    destdir = args.dest || defimages_srcdir;
+  pump([ gulp.src( srcfiles ),
+    imagemin([
+        imagemin.jpegtran( { progressive: true } ),
+        imagemin.optipng( { optimizationLevel: 6 } ),
+        imagemin.gifsicle( { interlaced: true } ),
+        imagemin.svgo( { plugins: [	{ removeViewBox: false }, { cleanupIDs: false }	] } ),
+    ]),
+    gulp.dest( destdir )
+  ], cb);
 });
 
 gulp.task('watch', function(){
