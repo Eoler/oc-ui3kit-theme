@@ -2,3 +2,5 @@
     - Initial UI3kit theme (framework version 3.0.0-Beta.40) with Gulp build
 1.0.1:
     - Upgraded Gulp build with image optimization task
+1.1.0:
+    - Refactored Gulp build to use NPM package configuration (with "not dead" browserslist)

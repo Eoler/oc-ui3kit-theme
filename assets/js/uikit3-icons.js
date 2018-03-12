@@ -260,3 +260,4 @@ if (typeof window !== 'undefined' && window.UIkit) {
 return plugin;
 
 })));
+

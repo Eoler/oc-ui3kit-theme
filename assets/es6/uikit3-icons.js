@@ -1,2 +1,1 @@
-
-//=require ../vendor/uikit/dist/js/uikit-icons.js
+//=require uikit/dist/js/uikit-icons.js

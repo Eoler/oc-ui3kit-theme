@@ -3,7 +3,8 @@ Starter development template for building [UIkit v3](https://getuikit.com/) them
 
 Includes:
 - latest UIkit v3 (beta) [source from official repository](https://github.com/uikit/uikit)
-- GulpJS-based build system for development and production
+- [GulpJS-based build system](https://nystudio107.com/blog/a-gulp-workflow-for-frontend-development-automation) for development and production
+- [NPM-based config system](https://nystudio107.com/blog/a-better-package-json-for-the-frontend) for development and production
 
 
 ## Installation
