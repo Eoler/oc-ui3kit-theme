@@ -21,12 +21,18 @@ Install [NodeJS and Node Package Manager](https://nodejs.org/en/) globally (LTS 
 Run the following command-line instructions inside *theme root*:
 ```
 npm install --global gulp-cli
-npm install
+npm i
 ```
 Alternative NPM-compatible package manager [Yarn](https://yarnpkg.com/en/) could be used:
 ```
 yarn
 ```
+Integrating build process into OctoberCMS project is easy - copy (or merge into existing) files into *project root*:
+```
+gulpfile.js
+package.json
+```
+Adjust `paths.root` configuration variable to **themes/castus-ui3kit/** and start using command-line tasks from *project root*. 
 
 ## Using and Editing
 Check [intro page](https://github.com/Eoler/oc-ui3kit-theme/blob/master/pages/ui3kit.htm)

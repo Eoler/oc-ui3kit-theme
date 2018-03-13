@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "oc-ui3kit-theme",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Starter development template for building UIkit v3 themed OctoberCMS sites.",
   "author": "Danilo Cuculić <eoler@castus.me>",
   "license": "MIT",

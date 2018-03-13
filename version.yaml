@@ -4,3 +4,5 @@
     - Upgraded Gulp build with image optimization task
 1.1.0:
     - Refactored Gulp build to use NPM package configuration (with "not dead" browserslist)
+1.1.1:
+    - Added style guide
