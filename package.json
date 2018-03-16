@@ -1,10 +1,10 @@
 {
-  "private": true,
   "name": "oc-ui3kit-theme",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Starter development template for building UIkit v3 themed OctoberCMS sites.",
   "author": "Danilo Cuculić <eoler@castus.me>",
   "license": "MIT",
+  "private": true,
   "engines": {
     "node": ">=6.0 <9.0"
   },
@@ -65,5 +65,9 @@
     "js-yaml": "^3.11.0",
     "pump": "^3.0.0",
     "yargs": "^11.0.0"
+  },
+  "scripts": {
+    "start": "gulp watch",
+    "build": "gulp upbuild --production"
   }
 }

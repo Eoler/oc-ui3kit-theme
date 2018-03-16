@@ -74,7 +74,7 @@ const
     ], cb);
 });
 
-gulp.task('upbuild', ['styles', 'scripts'], function(cb){
+gulp.task('upbuild', ['images', 'styles', 'scripts'], function(cb){
 const
     fs = require('fs'),
     srcFile = args.src || pkg.paths.root + "fields.yaml";

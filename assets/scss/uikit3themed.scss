@@ -1,16 +1,16 @@
 // custom variables and variable overwrites
 $global-primary-background: #39f;
 $global-secondary-background: #333;
-$inverse-global-color-mode: none; // size optimization
 
 // default variables and available mixins
 @import
-  "variables",
-  "mixins";
+  "variables-theme",
+  "mixins-theme";
 
 // custom mixin overwrites
 
 
 // UIkit
 @import
+  "theme-import",
   "components-import";

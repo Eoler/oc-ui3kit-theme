@@ -1,7 +1,7 @@
 description = "UIkit 3 style guide"
 ==
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" class="no-js" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,10 +11,10 @@ description = "UIkit 3 style guide"
 
     <!-- Theming / branding -->
     <meta name="theme-color" content="{{ this.theme.brand_color }}">
-    <link rel="shortcut icon" href="{{ 'assets/images/ui3kit-icon.png'|theme }}">
+    <link rel="shortcut icon" href="{{ 'assets/images/uikit/icon.png'|theme }}">
 
     <script src="{{ 'assets/js/detect.js'|theme }}"></script>
-    <link rel="stylesheet" href="{{ 'assets/css/uikit3.css'|theme }}?v={{ this.theme.version }}">
+    <link rel="stylesheet" href="{{ 'assets/css/uikit3themed.css'|theme }}?v={{ this.theme.version }}">
     {% styles %}
 </head>
 

@@ -47,11 +47,13 @@ gulp upbuild --production
 ```
 
 ## Customizing UIkit
-Global framework/theme styling parameters are editable in the following SCSS partials:
-- [assets/scss/_ukvariables SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/_ukvariables.scss)
-- [assets/scss/_ukmixins SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/_ukmixins.scss)
+Global framework/theme styling parameters are overridable in the following SCSS files:
+- [assets/scss/uikit3 SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/uikit3.scss)
+- [assets/scss/uikit3themed SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/uikit3.scss)
+- [assets/scss/_ukmixins SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/uikit3themed.scss)
+Just copy definitions from base variables/mixins (don't forget to remove !default from variables).  
 
-Comment out unwanted component styling for leaner and faster UIkit custom build:
+Comment out unwanted components/theming for leaner and faster UIkit custom build:
 - [assets/scss/_components-import SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/_components-import.scss)
 - [assets/es6/_theme-import SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/_theme-import.scss)
 
