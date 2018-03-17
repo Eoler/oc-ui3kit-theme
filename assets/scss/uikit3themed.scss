@@ -1,16 +1,20 @@
-// custom variables and variable overwrites
-$global-primary-background: #39f;
-$global-secondary-background: #333;
-
-// default variables and available mixins
 @import
+  "ukvariables", // custom variables and variable overrides
   "variables-theme",
   "mixins-theme";
 
-// custom mixin overwrites
+// custom mixin overrides
 
+@mixin hook-card-primary(){
+  box-shadow: $card-primary-box-shadow;
+  a { color: $inverse-link-muted-color; }
+  a:hover { color: $inverse-link-muted-hover-color; }
+}
+@mixin hook-section-primary(){
+  a { color: $inverse-link-muted-color; }
+  a:hover { color: $inverse-link-muted-hover-color; }
+}
 
-// UIkit
-@import
+@import // UIkit themed components
   "theme-import",
   "components-import";

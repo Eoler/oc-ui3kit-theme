@@ -8,3 +8,5 @@
     - Added style guide
 1.2.0:
     - Split themed framework build from base, added NPM scripts
+1.2.1:
+    - Reintroduced custom SCSS variables partial, added mixin override example

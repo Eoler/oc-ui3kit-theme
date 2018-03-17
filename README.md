@@ -49,8 +49,7 @@ gulp upbuild --production
 ## Customizing UIkit
 Global framework/theme styling parameters are overridable in the following SCSS files:
 - [assets/scss/uikit3 SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/uikit3.scss)
-- [assets/scss/uikit3themed SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/uikit3.scss)
-- [assets/scss/_ukmixins SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/uikit3themed.scss)
+- [assets/scss/uikit3themed SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/uikit3themed.scss)
 Just copy definitions from base variables/mixins (don't forget to remove !default from variables).  
 
 Comment out unwanted components/theming for leaner and faster UIkit custom build:

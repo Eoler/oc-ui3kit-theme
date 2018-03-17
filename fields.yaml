@@ -4,10 +4,10 @@ fields:
         label: Site brand color
         type: colorpicker
         default: '#39f'
-        assetVar: 'global-primary-background'
+        assetVar: 'global-emphasis-color'
     second_color:
         span: full
-        label: Complementary color
+        label: Background color
         type: colorpicker
         default: '#333'
         assetVar: 'global-secondary-background'
@@ -18,4 +18,4 @@ fields:
     version:
         span: right
         label: Version (build)
-        default: 120
+        default: 121
