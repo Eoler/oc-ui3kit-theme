@@ -16,7 +16,7 @@
       <option name="outputFromStdout" value="false" />
       <option name="program" value="$USER_HOME$/AppData/Roaming/npm/gulp.cmd" />
       <option name="runOnExternalChanges" value="true" />
-      <option name="scopeName" value="ApplevelSCS" />
+      <option name="scopeName" value="ThemeSCS" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="$ProjectFileDir$" />
       <envs />
@@ -36,7 +36,7 @@
       <option name="outputFromStdout" value="false" />
       <option name="program" value="$USER_HOME$/AppData/Roaming/npm/gulp.cmd" />
       <option name="runOnExternalChanges" value="true" />
-      <option name="scopeName" value="ApplevelES6" />
+      <option name="scopeName" value="ThemeES6" />
       <option name="trackOnlyRoot" value="false" />
       <option name="workingDir" value="$ProjectFileDir$" />
       <envs />

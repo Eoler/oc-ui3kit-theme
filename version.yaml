@@ -10,3 +10,5 @@
     - Split themed framework build from base, added NPM scripts
 1.2.1:
     - Reintroduced custom SCSS variables partial, added mixin override example
+1.2.2:
+    - Upgraded UIkit framework to 3.0.0-Beta.42, rebuilt assets
