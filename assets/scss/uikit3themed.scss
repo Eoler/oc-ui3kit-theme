@@ -1,9 +1,8 @@
 @import
-  "ukvariables", // custom variables and variable overrides
-  "variables-theme",
+  "theme-variables", // variable overrides
   "mixins-theme";
 
-// custom mixin overrides
+// mixin overrides
 
 @mixin hook-card-primary(){
   box-shadow: $card-primary-box-shadow;

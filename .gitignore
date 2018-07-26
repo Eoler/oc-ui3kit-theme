@@ -1,10 +1,10 @@
 # develop/debug
-*.css.map
 !.idea/misc.xml
 !.idea/watcherTasks.xml
 !.idea/webResources.xml
 !.idea/scopes/
 .idea
+*.css.map
 
 # build
 yarn.lock

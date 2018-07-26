@@ -7,8 +7,10 @@
 1.1.1:
     - Added style guide
 1.2.0:
-    - Split themed framework build from base, added NPM scripts
+    - Split themed framework build from core, added NPM scripts
 1.2.1:
     - Reintroduced custom SCSS variables partial, added mixin override example
 1.2.2:
     - Upgraded UIkit framework to 3.0.0-Beta.42, rebuilt assets
+1.3.0:
+    - Upgraded SCSS imports and UIkit framework to 3.0.0-RC.10, rebuilt assets
