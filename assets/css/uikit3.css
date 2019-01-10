@@ -374,10 +374,6 @@ pre code {
 
 /* Selection pseudo-element
  ========================================================================== */
-::-moz-selection {
-  background: #39f;
-  color: #fff;
-  text-shadow: none; }
 ::selection {
   background: #39f;
   color: #fff;
@@ -424,10 +420,10 @@ template {
   content: "1600px"; }
 
 :root {
-  --uk-breakpoint-s: $breakpoint-small;
-  --uk-breakpoint-m: $breakpoint-medium;
-  --uk-breakpoint-l: $breakpoint-large;
-  --uk-breakpoint-xl: $breakpoint-xlarge; }
+  --uk-breakpoint-s: 640px;
+  --uk-breakpoint-m: 960px;
+  --uk-breakpoint-l: 1200px;
+  --uk-breakpoint-xl: 1600px; }
 
 /* ========================================================================
    Component: Link
@@ -626,10 +622,11 @@ a.uk-link-reset:hover,
 /* Small
  ========================================================================== */
 /*
- * Reset child height, caused by `inline-block`
+ * Fix height of `hr` element not being expanded by child border width.
+ * `height` also needed to reset the child `line-height` caused by `inline-block`
  */
 .uk-divider-small {
-  line-height: 0; }
+  height: 1px; }
 
 .uk-divider-small::after {
   content: "";
@@ -1382,9 +1379,6 @@ button.uk-icon:not(:disabled) {
 .uk-input::-webkit-input-placeholder {
   color: #999; }
 
-.uk-input:-ms-input-placeholder {
-  color: #999; }
-
 .uk-input::placeholder {
   color: #999; }
 
@@ -1392,9 +1386,6 @@ button.uk-icon:not(:disabled) {
   color: #999 !important; }
 
 .uk-textarea::-webkit-input-placeholder {
-  color: #999; }
-
-.uk-textarea:-ms-input-placeholder {
   color: #999; }
 
 .uk-textarea::placeholder {
@@ -2079,8 +2070,8 @@ select.uk-form-width-xsmall {
  *    unaffected by the padding on different breakpoints. It's important for the size modifiers.
  */
 .uk-container {
-  box-sizing: content-box;
   /* 1 */
+  box-sizing: content-box;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -2136,6 +2127,77 @@ select.uk-form-width-xsmall {
 
 .uk-container-expand {
   max-width: none; }
+
+/* Expand modifier
+ ========================================================================== */
+/*
+ * Expand one side only
+ */
+.uk-container-expand-left {
+  margin-left: 0; }
+
+.uk-container-expand-right {
+  margin-right: 0; }
+
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .uk-container-expand-left.uk-container-xsmall,
+  .uk-container-expand-right.uk-container-xsmall {
+    max-width: calc(50% + (750px / 2) - 30px); }
+  .uk-container-expand-left.uk-container-small,
+  .uk-container-expand-right.uk-container-small {
+    max-width: calc(50% + (900px / 2) - 30px); } }
+
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .uk-container-expand-left,
+  .uk-container-expand-right {
+    max-width: calc(50% + (1200px / 2) - 40px); }
+  .uk-container-expand-left.uk-container-xsmall,
+  .uk-container-expand-right.uk-container-xsmall {
+    max-width: calc(50% + (750px / 2) - 40px); }
+  .uk-container-expand-left.uk-container-small,
+  .uk-container-expand-right.uk-container-small {
+    max-width: calc(50% + (900px / 2) - 40px); }
+  .uk-container-expand-left.uk-container-large,
+  .uk-container-expand-right.uk-container-large {
+    max-width: calc(50% + (1600px / 2) - 40px); } }
+
+/* Item
+ ========================================================================== */
+/*
+ * Utility classes to reset container padding on the left or right side
+ * Note: It has to be negative margin on the item, because it's specific to the item.
+ */
+.uk-container-item-padding-remove-left,
+.uk-container-item-padding-remove-right {
+  width: calc(100% + 15px); }
+
+.uk-container-item-padding-remove-left {
+  margin-left: -15px; }
+
+.uk-container-item-padding-remove-right {
+  margin-right: -15px; }
+
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .uk-container-item-padding-remove-left,
+  .uk-container-item-padding-remove-right {
+    width: calc(100% + 30px); }
+  .uk-container-item-padding-remove-left {
+    margin-left: -30px; }
+  .uk-container-item-padding-remove-right {
+    margin-right: -30px; } }
+
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .uk-container-item-padding-remove-left,
+  .uk-container-item-padding-remove-right {
+    width: calc(100% + 40px); }
+  .uk-container-item-padding-remove-left {
+    margin-left: -40px; }
+  .uk-container-item-padding-remove-right {
+    margin-right: -40px; } }
 
 /* ========================================================================
    Component: Grid
@@ -5226,7 +5288,7 @@ ul.uk-nav-sub {
   content: "."; }
 
 :root {
-  --uk-leader-fill-content: $leader-fill-content; }
+  --uk-leader-fill-content: .; }
 
 /* ========================================================================
    Component: Iconnav
@@ -5345,13 +5407,15 @@ ul.uk-nav-sub {
 ========================================================================== */
 .uk-notification-message {
   position: relative;
-  margin-bottom: 10px;
   padding: 15px;
   background: #f8f8f8;
   color: #666;
   font-size: 1.25rem;
   line-height: 1.4;
   cursor: pointer; }
+
+* + .uk-notification-message {
+  margin-top: 10px; }
 
 /* Close
  * Adopts `uk-close`
@@ -8130,8 +8194,7 @@ iframe.uk-cover {
 
 /*
  * Center
- * 1. Fix text wrapping if content is larger than 50% of the container (Not working in Firefox)
- * 2. Fix text wrapping for Firefox
+ * 1. Fix text wrapping if content is larger than 50% of the container.
  */
 .uk-position-center {
   top: 50%;
@@ -8139,9 +8202,9 @@ iframe.uk-cover {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   /* 1 */
-  display: table;
-  /* 2 */
   width: -moz-max-content;
+  width: -webkit-max-content;
+  width: max-content;
   max-width: 100%;
   box-sizing: border-box; }
 
@@ -8160,14 +8223,14 @@ iframe.uk-cover {
 
 .uk-position-center-left-out {
   right: 100%;
-  width: -webkit-max-content;
   width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content; }
 
 .uk-position-center-right-out {
   left: 100%;
-  width: -webkit-max-content;
   width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content; }
 
 /* Horizontal */
@@ -8177,9 +8240,9 @@ iframe.uk-cover {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   /* 1 */
-  display: table;
-  /* 2 */
   width: -moz-max-content;
+  width: -webkit-max-content;
+  width: max-content;
   max-width: 100%;
   box-sizing: border-box; }
 
@@ -8218,6 +8281,7 @@ iframe.uk-cover {
  * Small
  */
 .uk-position-small {
+  max-width: calc(100% - (15px * 2));
   margin: 15px; }
 
 .uk-position-small.uk-position-center {
@@ -8238,6 +8302,7 @@ iframe.uk-cover {
  * Medium
  */
 .uk-position-medium {
+  max-width: calc(100% - (30px * 2));
   margin: 30px; }
 
 .uk-position-medium.uk-position-center {
@@ -8258,6 +8323,7 @@ iframe.uk-cover {
  * Large
  */
 .uk-position-large {
+  max-width: calc(100% - (30px * 2));
   margin: 30px; }
 
 .uk-position-large.uk-position-center {
@@ -8277,6 +8343,7 @@ iframe.uk-cover {
 /* Desktop and bigger */
 @media (min-width: 1200px) {
   .uk-position-large {
+    max-width: calc(100% - (50px * 2));
     margin: 50px; }
   .uk-position-large.uk-position-center {
     -webkit-transform: translate(-50%, -50%) translate(-50px, -50px);
@@ -8848,15 +8915,11 @@ iframe.uk-cover {
     color: rgba(255, 255, 255, 0.5) !important; }
   .uk-light .uk-input::-webkit-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-card-primary.uk-card-body .uk-input::-webkit-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input::-webkit-input-placeholder, .uk-card-secondary.uk-card-body .uk-input::-webkit-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input::-webkit-input-placeholder, .uk-overlay-primary .uk-input::-webkit-input-placeholder, .uk-offcanvas-bar .uk-input::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.5); }
-  .uk-light .uk-input:-ms-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-card-primary.uk-card-body .uk-input:-ms-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input:-ms-input-placeholder, .uk-card-secondary.uk-card-body .uk-input:-ms-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input:-ms-input-placeholder, .uk-overlay-primary .uk-input:-ms-input-placeholder, .uk-offcanvas-bar .uk-input:-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-input::placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input::placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input::placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input::placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input::placeholder, .uk-card-primary.uk-card-body .uk-input::placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input::placeholder, .uk-card-secondary.uk-card-body .uk-input::placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input::placeholder, .uk-overlay-primary .uk-input::placeholder, .uk-offcanvas-bar .uk-input::placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-textarea::-ms-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-card-primary.uk-card-body .uk-textarea::-ms-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-ms-input-placeholder, .uk-card-secondary.uk-card-body .uk-textarea::-ms-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-ms-input-placeholder, .uk-overlay-primary .uk-textarea::-ms-input-placeholder, .uk-offcanvas-bar .uk-textarea::-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.5) !important; }
   .uk-light .uk-textarea::-webkit-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-card-primary.uk-card-body .uk-textarea::-webkit-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-webkit-input-placeholder, .uk-card-secondary.uk-card-body .uk-textarea::-webkit-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-webkit-input-placeholder, .uk-overlay-primary .uk-textarea::-webkit-input-placeholder, .uk-offcanvas-bar .uk-textarea::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.5); }
-  .uk-light .uk-textarea:-ms-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-card-primary.uk-card-body .uk-textarea:-ms-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea:-ms-input-placeholder, .uk-card-secondary.uk-card-body .uk-textarea:-ms-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea:-ms-input-placeholder, .uk-overlay-primary .uk-textarea:-ms-input-placeholder, .uk-offcanvas-bar .uk-textarea:-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-textarea::placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea::placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea::placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea::placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::placeholder, .uk-card-primary.uk-card-body .uk-textarea::placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::placeholder, .uk-card-secondary.uk-card-body .uk-textarea::placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::placeholder, .uk-overlay-primary .uk-textarea::placeholder, .uk-offcanvas-bar .uk-textarea::placeholder {
     color: rgba(255, 255, 255, 0.5); }

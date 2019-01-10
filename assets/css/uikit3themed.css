@@ -385,10 +385,6 @@ pre code {
 
 /* Selection pseudo-element
  ========================================================================== */
-::-moz-selection {
-  background: #39f;
-  color: #fff;
-  text-shadow: none; }
 ::selection {
   background: #39f;
   color: #fff;
@@ -435,10 +431,10 @@ template {
   content: "1600px"; }
 
 :root {
-  --uk-breakpoint-s: $breakpoint-small;
-  --uk-breakpoint-m: $breakpoint-medium;
-  --uk-breakpoint-l: $breakpoint-large;
-  --uk-breakpoint-xl: $breakpoint-xlarge; }
+  --uk-breakpoint-s: 640px;
+  --uk-breakpoint-m: 960px;
+  --uk-breakpoint-l: 1200px;
+  --uk-breakpoint-xl: 1600px; }
 
 /* ========================================================================
    Component: Link
@@ -637,10 +633,11 @@ a.uk-link-reset:hover,
 /* Small
  ========================================================================== */
 /*
- * Reset child height, caused by `inline-block`
+ * Fix height of `hr` element not being expanded by child border width.
+ * `height` also needed to reset the child `line-height` caused by `inline-block`
  */
 .uk-divider-small {
-  line-height: 0; }
+  height: 1px; }
 
 .uk-divider-small::after {
   content: "";
@@ -828,9 +825,9 @@ a.uk-link-reset:hover,
   text-align: left;
   vertical-align: bottom;
   /* 1 */
-  font-size: 16px;
-  font-weight: bold;
-  color: #666;
+  font-size: 0.875rem;
+  font-weight: normal;
+  color: #999;
   text-transform: uppercase; }
 
 /* Cell
@@ -1171,7 +1168,7 @@ button.uk-icon:not(:disabled) {
   height: 15px;
   width: 15px;
   border-radius: 500px;
-  background: #fff;
+  background: #666;
   border: 1px solid #cccccc; }
 
 /* Firefox */
@@ -1182,7 +1179,7 @@ button.uk-icon:not(:disabled) {
   height: 15px;
   width: 15px;
   border-radius: 500px;
-  background: #fff;
+  background: #666;
   border: 1px solid #cccccc; }
 
 /* Edge */
@@ -1198,7 +1195,7 @@ button.uk-icon:not(:disabled) {
   height: 15px;
   width: 15px;
   border-radius: 500px;
-  background: #fff;
+  background: #666;
   border: 1px solid #cccccc; }
 
 /* Edge + IE11 */
@@ -1361,7 +1358,7 @@ button.uk-icon:not(:disabled) {
   border: 0 none;
   /* 4 */
   padding: 0 10px;
-  background: #f8f8f8;
+  background: #fff;
   color: #666;
   border: 1px solid #e5e5e5;
   transition: 0.2s ease-in-out;
@@ -1383,7 +1380,7 @@ button.uk-icon:not(:disabled) {
 /* 2 */
 .uk-input:not(input),
 .uk-select:not(select) {
-  line-height: 40px; }
+  line-height: 38px; }
 
 /*
  * Multi-line
@@ -1400,7 +1397,7 @@ button.uk-icon:not(:disabled) {
 .uk-select:focus,
 .uk-textarea:focus {
   outline: none;
-  background-color: #f8f8f8;
+  background-color: #fff;
   color: #666;
   border-color: #1e87f0; }
 
@@ -1421,9 +1418,6 @@ button.uk-icon:not(:disabled) {
 .uk-input::-webkit-input-placeholder {
   color: #999; }
 
-.uk-input:-ms-input-placeholder {
-  color: #999; }
-
 .uk-input::placeholder {
   color: #999; }
 
@@ -1431,9 +1425,6 @@ button.uk-icon:not(:disabled) {
   color: #999 !important; }
 
 .uk-textarea::-webkit-input-placeholder {
-  color: #999; }
-
-.uk-textarea:-ms-input-placeholder {
   color: #999; }
 
 .uk-textarea::placeholder {
@@ -1453,7 +1444,7 @@ button.uk-icon:not(:disabled) {
   padding-right: 8px; }
 
 .uk-form-small:not(select):not(input):not(textarea) {
-  line-height: 30px; }
+  line-height: 28px; }
 
 /*
  * Large
@@ -1467,7 +1458,7 @@ button.uk-icon:not(:disabled) {
   padding-right: 12px; }
 
 .uk-form-large:not(select):not(input):not(textarea) {
-  line-height: 55px; }
+  line-height: 53px; }
 
 /* Style modifier (`uk-input`, `uk-select` and `uk-textarea`)
  ========================================================================== */
@@ -1577,7 +1568,7 @@ select.uk-form-width-xsmall {
   -webkit-appearance: none;
   -moz-appearance: none;
   /* 5 */
-  background-color: #ebebeb;
+  background-color: transparent;
   /* 6 */
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -1719,7 +1710,7 @@ select.uk-form-width-xsmall {
  */
 .uk-form-stacked .uk-form-label {
   display: block;
-  margin-bottom: 10px; }
+  margin-bottom: 5px; }
 
 /*
  * Horizontal
@@ -1729,7 +1720,7 @@ select.uk-form-width-xsmall {
   /* Behave like `uk-form-stacked` */
   .uk-form-horizontal .uk-form-label {
     display: block;
-    margin-bottom: 10px; } }
+    margin-bottom: 5px; } }
 
 /* Tablet landscape and bigger */
 @media (min-width: 960px) {
@@ -1826,9 +1817,9 @@ select.uk-form-width-xsmall {
   box-sizing: border-box;
   padding: 0 30px;
   vertical-align: middle;
-  font-size: 16px;
+  font-size: 0.875rem;
   /* 7 */
-  line-height: 40px;
+  line-height: 38px;
   /* 8 */
   text-align: center;
   /* 9 */
@@ -1863,21 +1854,21 @@ select.uk-form-width-xsmall {
  * Default
  */
 .uk-button-default {
-  background-color: #f8f8f8;
+  background-color: transparent;
   color: #39f;
   border: 1px solid #e5e5e5; }
 
 /* Hover + Focus */
 .uk-button-default:hover,
 .uk-button-default:focus {
-  background-color: #ebebeb;
+  background-color: transparent;
   color: #39f;
   border-color: #b2b2b2; }
 
 /* OnClick + Active */
 .uk-button-default:active,
 .uk-button-default.uk-active {
-  background-color: #dfdfdf;
+  background-color: transparent;
   color: #39f;
   border-color: #999999; }
 
@@ -1949,7 +1940,7 @@ select.uk-form-width-xsmall {
 .uk-button-primary:disabled,
 .uk-button-secondary:disabled,
 .uk-button-danger:disabled {
-  background-color: #f8f8f8;
+  background-color: transparent;
   color: #999;
   border-color: #e5e5e5; }
 
@@ -1957,13 +1948,13 @@ select.uk-form-width-xsmall {
  ========================================================================== */
 .uk-button-small {
   padding: 0 15px;
-  line-height: 30px;
+  line-height: 28px;
   font-size: 0.875rem; }
 
 .uk-button-large {
   padding: 0 40px;
-  line-height: 55px;
-  font-size: 1.25rem; }
+  line-height: 53px;
+  font-size: 0.875rem; }
 
 /* Text modifiers
  ========================================================================== */
@@ -1978,7 +1969,7 @@ select.uk-form-width-xsmall {
   line-height: 1.5;
   background: none;
   /* 2 */
-  color: #999;
+  color: #39f;
   position: relative; }
   .uk-button-text::before {
     content: "";
@@ -1986,13 +1977,13 @@ select.uk-form-width-xsmall {
     bottom: 0;
     left: 0;
     right: 100%;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid #39f;
     transition: right 0.3s ease-out; }
 
 /* Hover + Focus */
 .uk-button-text:hover,
 .uk-button-text:focus {
-  color: #666; }
+  color: #39f; }
   .uk-button-text:hover::before,
   .uk-button-text:focus::before {
     right: 0; }
@@ -2185,8 +2176,8 @@ select.uk-form-width-xsmall {
  *    unaffected by the padding on different breakpoints. It's important for the size modifiers.
  */
 .uk-container {
-  box-sizing: content-box;
   /* 1 */
+  box-sizing: content-box;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -2242,6 +2233,77 @@ select.uk-form-width-xsmall {
 
 .uk-container-expand {
   max-width: none; }
+
+/* Expand modifier
+ ========================================================================== */
+/*
+ * Expand one side only
+ */
+.uk-container-expand-left {
+  margin-left: 0; }
+
+.uk-container-expand-right {
+  margin-right: 0; }
+
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .uk-container-expand-left.uk-container-xsmall,
+  .uk-container-expand-right.uk-container-xsmall {
+    max-width: calc(50% + (750px / 2) - 30px); }
+  .uk-container-expand-left.uk-container-small,
+  .uk-container-expand-right.uk-container-small {
+    max-width: calc(50% + (900px / 2) - 30px); } }
+
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .uk-container-expand-left,
+  .uk-container-expand-right {
+    max-width: calc(50% + (1200px / 2) - 40px); }
+  .uk-container-expand-left.uk-container-xsmall,
+  .uk-container-expand-right.uk-container-xsmall {
+    max-width: calc(50% + (750px / 2) - 40px); }
+  .uk-container-expand-left.uk-container-small,
+  .uk-container-expand-right.uk-container-small {
+    max-width: calc(50% + (900px / 2) - 40px); }
+  .uk-container-expand-left.uk-container-large,
+  .uk-container-expand-right.uk-container-large {
+    max-width: calc(50% + (1600px / 2) - 40px); } }
+
+/* Item
+ ========================================================================== */
+/*
+ * Utility classes to reset container padding on the left or right side
+ * Note: It has to be negative margin on the item, because it's specific to the item.
+ */
+.uk-container-item-padding-remove-left,
+.uk-container-item-padding-remove-right {
+  width: calc(100% + 15px); }
+
+.uk-container-item-padding-remove-left {
+  margin-left: -15px; }
+
+.uk-container-item-padding-remove-right {
+  margin-right: -15px; }
+
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .uk-container-item-padding-remove-left,
+  .uk-container-item-padding-remove-right {
+    width: calc(100% + 30px); }
+  .uk-container-item-padding-remove-left {
+    margin-left: -30px; }
+  .uk-container-item-padding-remove-right {
+    margin-right: -30px; } }
+
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .uk-container-item-padding-remove-left,
+  .uk-container-item-padding-remove-right {
+    width: calc(100% + 40px); }
+  .uk-container-item-padding-remove-left {
+    margin-left: -40px; }
+  .uk-container-item-padding-remove-right {
+    margin-right: -40px; } }
 
 /* ========================================================================
    Component: Grid
@@ -2730,7 +2792,7 @@ select.uk-form-width-xsmall {
 /* Hover modifier
  ========================================================================== */
 .uk-card-hover:not(.uk-card-default):not(.uk-card-primary):not(.uk-card-secondary):hover {
-  background: #f8f8f8;
+  background: #fff;
   box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16); }
 
 /* Style modifiers
@@ -2740,7 +2802,7 @@ select.uk-form-width-xsmall {
  * Note: Header and Footer are only implemented for the default style
  */
 .uk-card-default {
-  background: #f8f8f8;
+  background: #fff;
   color: #666;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }
 
@@ -2748,7 +2810,7 @@ select.uk-form-width-xsmall {
   color: #39f; }
 
 .uk-card-default.uk-card-hover:hover {
-  background-color: #ebebeb;
+  background-color: #fff;
   box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16); }
 
 .uk-card-default .uk-card-header {
@@ -2773,7 +2835,7 @@ select.uk-form-width-xsmall {
   color: #fff; }
 
 .uk-card-primary.uk-card-hover:hover {
-  background-color: #0f7ae5;
+  background-color: #1e87f0;
   box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16); }
 
 /*
@@ -2788,7 +2850,7 @@ select.uk-form-width-xsmall {
   color: #fff; }
 
 .uk-card-secondary.uk-card-hover:hover {
-  background-color: #262626;
+  background-color: #333;
   box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16); }
 
 /* Size modifier
@@ -3474,12 +3536,12 @@ select.uk-form-width-xsmall {
   height: 40px;
   padding-left: 6px;
   padding-right: 6px;
-  background: #f8f8f8;
+  background: transparent;
   border: 1px solid #e5e5e5; }
 
 /* Focus */
 .uk-search-default .uk-search-input:focus {
-  background-color: #f8f8f8; }
+  background-color: transparent; }
 
 /*
  * Icon
@@ -3859,7 +3921,7 @@ ul.uk-nav-sub {
   min-height: 80px;
   padding: 0 15px;
   /* 3 */
-  font-size: 16px;
+  font-size: 0.875rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   /* 4 */
   text-decoration: none; }
@@ -3939,8 +4001,8 @@ ul.uk-nav-sub {
   box-sizing: border-box;
   width: 200px;
   /* 4 */
-  padding: 15px;
-  background: #f8f8f8;
+  padding: 25px;
+  background: #fff;
   color: #666;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15); }
 
@@ -3953,16 +4015,16 @@ ul.uk-nav-sub {
  */
 /* Direction */
 [class*='uk-navbar-dropdown-top'] {
-  margin-top: 0; }
+  margin-top: -15px; }
 
 [class*='uk-navbar-dropdown-bottom'] {
-  margin-top: 0; }
+  margin-top: 15px; }
 
 [class*='uk-navbar-dropdown-left'] {
-  margin-left: 0; }
+  margin-left: -15px; }
 
 [class*='uk-navbar-dropdown-right'] {
-  margin-left: 0; }
+  margin-left: 15px; }
 
 /*
  * Grid
@@ -3970,14 +4032,14 @@ ul.uk-nav-sub {
  */
 /* Gutter Horizontal */
 .uk-navbar-dropdown-grid {
-  margin-left: -30px; }
+  margin-left: -50px; }
 
 .uk-navbar-dropdown-grid > * {
-  padding-left: 30px; }
+  padding-left: 50px; }
 
 /* Gutter Vertical */
 .uk-navbar-dropdown-grid > .uk-grid-margin {
-  margin-top: 30px; }
+  margin-top: 50px; }
 
 /* Stack */
 .uk-navbar-dropdown-stack .uk-navbar-dropdown-grid > * {
@@ -4052,7 +4114,7 @@ ul.uk-nav-sub {
 /* Dropbar
  ========================================================================== */
 .uk-navbar-dropbar {
-  background: #f8f8f8; }
+  background: #fff; }
 
 /*
  * Slide modifier
@@ -4085,15 +4147,15 @@ ul.uk-nav-sub {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 15px;
+  left: 25px;
   border-left: 1px solid #e5e5e5; }
 
 /* Vertical */
 .uk-navbar-dropdown-grid.uk-grid-stack > .uk-grid-margin::before {
   content: "";
   position: absolute;
-  top: -15px;
-  left: 30px;
+  top: -25px;
+  left: 50px;
   right: 0;
   border-top: 1px solid #e5e5e5; }
 
@@ -4524,7 +4586,7 @@ ul.uk-nav-sub {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: transparent;
+  background: rgba(102, 102, 102, 0.2);
   /* 1 */
   text-indent: 100%;
   overflow: hidden;
@@ -4765,8 +4827,8 @@ ul.uk-nav-sub {
   box-sizing: border-box;
   min-width: 200px;
   /* 4 */
-  padding: 25px;
-  background: #fff;
+  padding: 15px;
+  background: #f8f8f8;
   color: #666;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15); }
 
@@ -4964,12 +5026,12 @@ ul.uk-nav-sub {
 
 .uk-modal-header {
   padding: 15px 30px;
-  background: #f8f8f8;
+  background: #fff;
   border-bottom: 1px solid #e5e5e5; }
 
 .uk-modal-footer {
   padding: 15px 30px;
-  background: #f8f8f8;
+  background: #fff;
   border-top: 1px solid #e5e5e5; }
 
 /*
@@ -5604,7 +5666,7 @@ ul.uk-nav-sub {
   content: "."; }
 
 :root {
-  --uk-leader-fill-content: $leader-fill-content; }
+  --uk-leader-fill-content: .; }
 
 /* ========================================================================
    Component: Iconnav
@@ -5723,13 +5785,15 @@ ul.uk-nav-sub {
 ========================================================================== */
 .uk-notification-message {
   position: relative;
-  margin-bottom: 10px;
   padding: 15px;
   background: #f8f8f8;
   color: #666;
   font-size: 1.25rem;
   line-height: 1.4;
   cursor: pointer; }
+
+* + .uk-notification-message {
+  margin-top: 10px; }
 
 /* Close
  * Adopts `uk-close`
@@ -5819,7 +5883,7 @@ ul.uk-nav-sub {
 .uk-placeholder {
   margin-bottom: 20px;
   padding: 30px 30px;
-  background: transparent;
+  background: #f8f8f8;
   border: 1px dashed #e5e5e5; }
 
 /* Add margin if adjacent element */
@@ -8519,8 +8583,7 @@ iframe.uk-cover {
 
 /*
  * Center
- * 1. Fix text wrapping if content is larger than 50% of the container (Not working in Firefox)
- * 2. Fix text wrapping for Firefox
+ * 1. Fix text wrapping if content is larger than 50% of the container.
  */
 .uk-position-center {
   top: 50%;
@@ -8528,9 +8591,9 @@ iframe.uk-cover {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   /* 1 */
-  display: table;
-  /* 2 */
   width: -moz-max-content;
+  width: -webkit-max-content;
+  width: max-content;
   max-width: 100%;
   box-sizing: border-box; }
 
@@ -8549,14 +8612,14 @@ iframe.uk-cover {
 
 .uk-position-center-left-out {
   right: 100%;
-  width: -webkit-max-content;
   width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content; }
 
 .uk-position-center-right-out {
   left: 100%;
-  width: -webkit-max-content;
   width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content; }
 
 /* Horizontal */
@@ -8566,9 +8629,9 @@ iframe.uk-cover {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   /* 1 */
-  display: table;
-  /* 2 */
   width: -moz-max-content;
+  width: -webkit-max-content;
+  width: max-content;
   max-width: 100%;
   box-sizing: border-box; }
 
@@ -8607,6 +8670,7 @@ iframe.uk-cover {
  * Small
  */
 .uk-position-small {
+  max-width: calc(100% - (15px * 2));
   margin: 15px; }
 
 .uk-position-small.uk-position-center {
@@ -8627,6 +8691,7 @@ iframe.uk-cover {
  * Medium
  */
 .uk-position-medium {
+  max-width: calc(100% - (30px * 2));
   margin: 30px; }
 
 .uk-position-medium.uk-position-center {
@@ -8647,6 +8712,7 @@ iframe.uk-cover {
  * Large
  */
 .uk-position-large {
+  max-width: calc(100% - (30px * 2));
   margin: 30px; }
 
 .uk-position-large.uk-position-center {
@@ -8666,6 +8732,7 @@ iframe.uk-cover {
 /* Desktop and bigger */
 @media (min-width: 1200px) {
   .uk-position-large {
+    max-width: calc(100% - (50px * 2));
     margin: 50px; }
   .uk-position-large.uk-position-center {
     -webkit-transform: translate(-50%, -50%) translate(-50px, -50px);
@@ -9247,15 +9314,11 @@ iframe.uk-cover {
     color: rgba(255, 255, 255, 0.5) !important; }
   .uk-light .uk-input::-webkit-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-card-primary.uk-card-body .uk-input::-webkit-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input::-webkit-input-placeholder, .uk-card-secondary.uk-card-body .uk-input::-webkit-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input::-webkit-input-placeholder, .uk-overlay-primary .uk-input::-webkit-input-placeholder, .uk-offcanvas-bar .uk-input::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.5); }
-  .uk-light .uk-input:-ms-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-card-primary.uk-card-body .uk-input:-ms-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input:-ms-input-placeholder, .uk-card-secondary.uk-card-body .uk-input:-ms-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input:-ms-input-placeholder, .uk-overlay-primary .uk-input:-ms-input-placeholder, .uk-offcanvas-bar .uk-input:-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-input::placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input::placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input::placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input::placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input::placeholder, .uk-card-primary.uk-card-body .uk-input::placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input::placeholder, .uk-card-secondary.uk-card-body .uk-input::placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input::placeholder, .uk-overlay-primary .uk-input::placeholder, .uk-offcanvas-bar .uk-input::placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-textarea::-ms-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-card-primary.uk-card-body .uk-textarea::-ms-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-ms-input-placeholder, .uk-card-secondary.uk-card-body .uk-textarea::-ms-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-ms-input-placeholder, .uk-overlay-primary .uk-textarea::-ms-input-placeholder, .uk-offcanvas-bar .uk-textarea::-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.5) !important; }
   .uk-light .uk-textarea::-webkit-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-card-primary.uk-card-body .uk-textarea::-webkit-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-webkit-input-placeholder, .uk-card-secondary.uk-card-body .uk-textarea::-webkit-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-webkit-input-placeholder, .uk-overlay-primary .uk-textarea::-webkit-input-placeholder, .uk-offcanvas-bar .uk-textarea::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.5); }
-  .uk-light .uk-textarea:-ms-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-card-primary.uk-card-body .uk-textarea:-ms-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea:-ms-input-placeholder, .uk-card-secondary.uk-card-body .uk-textarea:-ms-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea:-ms-input-placeholder, .uk-overlay-primary .uk-textarea:-ms-input-placeholder, .uk-offcanvas-bar .uk-textarea:-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-textarea::placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea::placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea::placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea::placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::placeholder, .uk-card-primary.uk-card-body .uk-textarea::placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::placeholder, .uk-card-secondary.uk-card-body .uk-textarea::placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::placeholder, .uk-overlay-primary .uk-textarea::placeholder, .uk-offcanvas-bar .uk-textarea::placeholder {
     color: rgba(255, 255, 255, 0.5); }
@@ -9372,8 +9435,8 @@ iframe.uk-cover {
   .uk-light .uk-form-icon:hover, .uk-section-primary:not(.uk-preserve-color) .uk-form-icon:hover, .uk-section-secondary:not(.uk-preserve-color) .uk-form-icon:hover, .uk-tile-primary:not(.uk-preserve-color) .uk-form-icon:hover, .uk-tile-secondary:not(.uk-preserve-color) .uk-form-icon:hover, .uk-card-primary.uk-card-body .uk-form-icon:hover, .uk-card-primary > :not([class*='uk-card-media']) .uk-form-icon:hover, .uk-card-secondary.uk-card-body .uk-form-icon:hover, .uk-card-secondary > :not([class*='uk-card-media']) .uk-form-icon:hover, .uk-overlay-primary .uk-form-icon:hover, .uk-offcanvas-bar .uk-form-icon:hover {
     color: rgba(255, 255, 255, 0.7); }
   .uk-light .uk-button-default, .uk-section-primary:not(.uk-preserve-color) .uk-button-default, .uk-section-secondary:not(.uk-preserve-color) .uk-button-default, .uk-tile-primary:not(.uk-preserve-color) .uk-button-default, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-default, .uk-card-primary.uk-card-body .uk-button-default, .uk-card-primary > :not([class*='uk-card-media']) .uk-button-default, .uk-card-secondary.uk-card-body .uk-button-default, .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-default, .uk-overlay-primary .uk-button-default, .uk-offcanvas-bar .uk-button-default {
-    background-color: #fff;
-    color: #666;
+    background-color: transparent;
+    color: #fff;
     border-color: rgba(255, 255, 255, 0.7); }
   .uk-light .uk-button-default:hover, .uk-section-primary:not(.uk-preserve-color) .uk-button-default:hover, .uk-section-secondary:not(.uk-preserve-color) .uk-button-default:hover, .uk-tile-primary:not(.uk-preserve-color) .uk-button-default:hover, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-default:hover, .uk-card-primary.uk-card-body .uk-button-default:hover, .uk-card-primary > :not([class*='uk-card-media']) .uk-button-default:hover, .uk-card-secondary.uk-card-body .uk-button-default:hover, .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-default:hover, .uk-overlay-primary .uk-button-default:hover, .uk-offcanvas-bar .uk-button-default:hover,
   .uk-light .uk-button-default:focus,
@@ -9387,8 +9450,8 @@ iframe.uk-cover {
   .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-default:focus,
   .uk-overlay-primary .uk-button-default:focus,
   .uk-offcanvas-bar .uk-button-default:focus {
-    background-color: #f2f2f2;
-    color: #666;
+    background-color: transparent;
+    color: #fff;
     border-color: #fff; }
   .uk-light .uk-button-default:active, .uk-section-primary:not(.uk-preserve-color) .uk-button-default:active, .uk-section-secondary:not(.uk-preserve-color) .uk-button-default:active, .uk-tile-primary:not(.uk-preserve-color) .uk-button-default:active, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-default:active, .uk-card-primary.uk-card-body .uk-button-default:active, .uk-card-primary > :not([class*='uk-card-media']) .uk-button-default:active, .uk-card-secondary.uk-card-body .uk-button-default:active, .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-default:active, .uk-overlay-primary .uk-button-default:active, .uk-offcanvas-bar .uk-button-default:active,
   .uk-light .uk-button-default.uk-active,
@@ -9402,8 +9465,8 @@ iframe.uk-cover {
   .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-default.uk-active,
   .uk-overlay-primary .uk-button-default.uk-active,
   .uk-offcanvas-bar .uk-button-default.uk-active {
-    background-color: #e6e6e6;
-    color: #666;
+    background-color: transparent;
+    color: #fff;
     border-color: #fff; }
   .uk-light .uk-button-primary, .uk-section-primary:not(.uk-preserve-color) .uk-button-primary, .uk-section-secondary:not(.uk-preserve-color) .uk-button-primary, .uk-tile-primary:not(.uk-preserve-color) .uk-button-primary, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-primary, .uk-card-primary.uk-card-body .uk-button-primary, .uk-card-primary > :not([class*='uk-card-media']) .uk-button-primary, .uk-card-secondary.uk-card-body .uk-button-primary, .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-primary, .uk-overlay-primary .uk-button-primary, .uk-offcanvas-bar .uk-button-primary {
     background-color: #fff;
@@ -9468,7 +9531,7 @@ iframe.uk-cover {
     background-color: #e6e6e6;
     color: #666; }
   .uk-light .uk-button-text, .uk-section-primary:not(.uk-preserve-color) .uk-button-text, .uk-section-secondary:not(.uk-preserve-color) .uk-button-text, .uk-tile-primary:not(.uk-preserve-color) .uk-button-text, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-text, .uk-card-primary.uk-card-body .uk-button-text, .uk-card-primary > :not([class*='uk-card-media']) .uk-button-text, .uk-card-secondary.uk-card-body .uk-button-text, .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-text, .uk-overlay-primary .uk-button-text, .uk-offcanvas-bar .uk-button-text {
-    color: rgba(255, 255, 255, 0.5); }
+    color: #fff; }
     .uk-light .uk-button-text::before, .uk-section-primary:not(.uk-preserve-color) .uk-button-text::before, .uk-section-secondary:not(.uk-preserve-color) .uk-button-text::before, .uk-tile-primary:not(.uk-preserve-color) .uk-button-text::before, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-text::before, .uk-card-primary.uk-card-body .uk-button-text::before, .uk-card-primary > :not([class*='uk-card-media']) .uk-button-text::before, .uk-card-secondary.uk-card-body .uk-button-text::before, .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-text::before, .uk-overlay-primary .uk-button-text::before, .uk-offcanvas-bar .uk-button-text::before {
       border-bottom-color: #fff; }
   .uk-light .uk-button-text:hover, .uk-section-primary:not(.uk-preserve-color) .uk-button-text:hover, .uk-section-secondary:not(.uk-preserve-color) .uk-button-text:hover, .uk-tile-primary:not(.uk-preserve-color) .uk-button-text:hover, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-text:hover, .uk-card-primary.uk-card-body .uk-button-text:hover, .uk-card-primary > :not([class*='uk-card-media']) .uk-button-text:hover, .uk-card-secondary.uk-card-body .uk-button-text:hover, .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-text:hover, .uk-overlay-primary .uk-button-text:hover, .uk-offcanvas-bar .uk-button-text:hover,
@@ -9483,7 +9546,7 @@ iframe.uk-cover {
   .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-text:focus,
   .uk-overlay-primary .uk-button-text:focus,
   .uk-offcanvas-bar .uk-button-text:focus {
-    color: rgba(255, 255, 255, 0.7); }
+    color: #fff; }
   .uk-light .uk-button-text:disabled, .uk-section-primary:not(.uk-preserve-color) .uk-button-text:disabled, .uk-section-secondary:not(.uk-preserve-color) .uk-button-text:disabled, .uk-tile-primary:not(.uk-preserve-color) .uk-button-text:disabled, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-text:disabled, .uk-card-primary.uk-card-body .uk-button-text:disabled, .uk-card-primary > :not([class*='uk-card-media']) .uk-button-text:disabled, .uk-card-secondary.uk-card-body .uk-button-text:disabled, .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-text:disabled, .uk-overlay-primary .uk-button-text:disabled, .uk-offcanvas-bar .uk-button-text:disabled {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-button-link, .uk-section-primary:not(.uk-preserve-color) .uk-button-link, .uk-section-secondary:not(.uk-preserve-color) .uk-button-link, .uk-tile-primary:not(.uk-preserve-color) .uk-button-link, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-link, .uk-card-primary.uk-card-body .uk-button-link, .uk-card-primary > :not([class*='uk-card-media']) .uk-button-link, .uk-card-secondary.uk-card-body .uk-button-link, .uk-card-secondary > :not([class*='uk-card-media']) .uk-button-link, .uk-overlay-primary .uk-button-link, .uk-offcanvas-bar .uk-button-link {
@@ -9573,10 +9636,10 @@ iframe.uk-cover {
   .uk-light .uk-search .uk-search-icon:hover, .uk-section-primary:not(.uk-preserve-color) .uk-search .uk-search-icon:hover, .uk-section-secondary:not(.uk-preserve-color) .uk-search .uk-search-icon:hover, .uk-tile-primary:not(.uk-preserve-color) .uk-search .uk-search-icon:hover, .uk-tile-secondary:not(.uk-preserve-color) .uk-search .uk-search-icon:hover, .uk-card-primary.uk-card-body .uk-search .uk-search-icon:hover, .uk-card-primary > :not([class*='uk-card-media']) .uk-search .uk-search-icon:hover, .uk-card-secondary.uk-card-body .uk-search .uk-search-icon:hover, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search .uk-search-icon:hover, .uk-overlay-primary .uk-search .uk-search-icon:hover, .uk-offcanvas-bar .uk-search .uk-search-icon:hover {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-search-default .uk-search-input, .uk-section-primary:not(.uk-preserve-color) .uk-search-default .uk-search-input, .uk-section-secondary:not(.uk-preserve-color) .uk-search-default .uk-search-input, .uk-tile-primary:not(.uk-preserve-color) .uk-search-default .uk-search-input, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-default .uk-search-input, .uk-card-primary.uk-card-body .uk-search-default .uk-search-input, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-default .uk-search-input, .uk-card-secondary.uk-card-body .uk-search-default .uk-search-input, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-default .uk-search-input, .uk-overlay-primary .uk-search-default .uk-search-input, .uk-offcanvas-bar .uk-search-default .uk-search-input {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent;
     border-color: rgba(255, 255, 255, 0.2); }
   .uk-light .uk-search-default .uk-search-input:focus, .uk-section-primary:not(.uk-preserve-color) .uk-search-default .uk-search-input:focus, .uk-section-secondary:not(.uk-preserve-color) .uk-search-default .uk-search-input:focus, .uk-tile-primary:not(.uk-preserve-color) .uk-search-default .uk-search-input:focus, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-default .uk-search-input:focus, .uk-card-primary.uk-card-body .uk-search-default .uk-search-input:focus, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-default .uk-search-input:focus, .uk-card-secondary.uk-card-body .uk-search-default .uk-search-input:focus, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-default .uk-search-input:focus, .uk-overlay-primary .uk-search-default .uk-search-input:focus, .uk-offcanvas-bar .uk-search-default .uk-search-input:focus {
-    background-color: rgba(255, 255, 255, 0.1); }
+    background-color: transparent; }
   .uk-light .uk-search-navbar .uk-search-input, .uk-section-primary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input, .uk-section-secondary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input, .uk-tile-primary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input, .uk-card-primary.uk-card-body .uk-search-navbar .uk-search-input, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-navbar .uk-search-input, .uk-card-secondary.uk-card-body .uk-search-navbar .uk-search-input, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-navbar .uk-search-input, .uk-overlay-primary .uk-search-navbar .uk-search-input, .uk-offcanvas-bar .uk-search-navbar .uk-search-input {
     background-color: transparent; }
   .uk-light .uk-search-large .uk-search-input, .uk-section-primary:not(.uk-preserve-color) .uk-search-large .uk-search-input, .uk-section-secondary:not(.uk-preserve-color) .uk-search-large .uk-search-input, .uk-tile-primary:not(.uk-preserve-color) .uk-search-large .uk-search-input, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-large .uk-search-input, .uk-card-primary.uk-card-body .uk-search-large .uk-search-input, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-large .uk-search-input, .uk-card-secondary.uk-card-body .uk-search-large .uk-search-input, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-large .uk-search-input, .uk-overlay-primary .uk-search-large .uk-search-input, .uk-offcanvas-bar .uk-search-large .uk-search-input {
@@ -9852,7 +9915,7 @@ iframe.uk-cover {
   .uk-light .uk-slidenav:active, .uk-section-primary:not(.uk-preserve-color) .uk-slidenav:active, .uk-section-secondary:not(.uk-preserve-color) .uk-slidenav:active, .uk-tile-primary:not(.uk-preserve-color) .uk-slidenav:active, .uk-tile-secondary:not(.uk-preserve-color) .uk-slidenav:active, .uk-card-primary.uk-card-body .uk-slidenav:active, .uk-card-primary > :not([class*='uk-card-media']) .uk-slidenav:active, .uk-card-secondary.uk-card-body .uk-slidenav:active, .uk-card-secondary > :not([class*='uk-card-media']) .uk-slidenav:active, .uk-overlay-primary .uk-slidenav:active, .uk-offcanvas-bar .uk-slidenav:active {
     color: rgba(255, 255, 255, 0.7); }
   .uk-light .uk-dotnav > * > *, .uk-section-primary:not(.uk-preserve-color) .uk-dotnav > * > *, .uk-section-secondary:not(.uk-preserve-color) .uk-dotnav > * > *, .uk-tile-primary:not(.uk-preserve-color) .uk-dotnav > * > *, .uk-tile-secondary:not(.uk-preserve-color) .uk-dotnav > * > *, .uk-card-primary.uk-card-body .uk-dotnav > * > *, .uk-card-primary > :not([class*='uk-card-media']) .uk-dotnav > * > *, .uk-card-secondary.uk-card-body .uk-dotnav > * > *, .uk-card-secondary > :not([class*='uk-card-media']) .uk-dotnav > * > *, .uk-overlay-primary .uk-dotnav > * > *, .uk-offcanvas-bar .uk-dotnav > * > * {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.5);
     border-color: rgba(255, 255, 255, 0.9); }
   .uk-light .uk-dotnav > * > :hover, .uk-section-primary:not(.uk-preserve-color) .uk-dotnav > * > :hover, .uk-section-secondary:not(.uk-preserve-color) .uk-dotnav > * > :hover, .uk-tile-primary:not(.uk-preserve-color) .uk-dotnav > * > :hover, .uk-tile-secondary:not(.uk-preserve-color) .uk-dotnav > * > :hover, .uk-card-primary.uk-card-body .uk-dotnav > * > :hover, .uk-card-primary > :not([class*='uk-card-media']) .uk-dotnav > * > :hover, .uk-card-secondary.uk-card-body .uk-dotnav > * > :hover, .uk-card-secondary > :not([class*='uk-card-media']) .uk-dotnav > * > :hover, .uk-overlay-primary .uk-dotnav > * > :hover, .uk-offcanvas-bar .uk-dotnav > * > :hover,
   .uk-light .uk-dotnav > * > :focus,

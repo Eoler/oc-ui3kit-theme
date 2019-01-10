@@ -16,3 +16,5 @@
     - Upgraded SCSS imports and UIkit framework to 3.0.0-RC.10, rebuilt assets
 1.4.0:
     - Upgraded SCSS imports and UIkit framework to 3.0.0-RC.25, replaced gulp-imagemin with gulp-responsive
+1.4.1:
+    - Upgraded SCSS imports and UIkit framework to 3.0.0-RC.26
