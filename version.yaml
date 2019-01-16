@@ -18,3 +18,5 @@
     - Upgraded SCSS imports and UIkit framework to 3.0.0-RC.25, replaced gulp-imagemin with gulp-responsive
 1.4.1:
     - Upgraded SCSS imports and UIkit framework to 3.0.0-RC.26
+1.5.0:
+    - Upgraded SCSS imports and UIkit framework to 3.0.2, removed Yarn
