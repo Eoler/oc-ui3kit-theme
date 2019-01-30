@@ -16,12 +16,12 @@ description = "UIkit 3 style guide"
     <script src="{{ 'assets/js/detect.js'|theme }}"></script>
     <link rel="stylesheet" href="{{ 'assets/css/uikit3themed.css'|theme }}?v={{ this.theme.version }}">
     {% styles %}
+    <script src="{{ 'assets/js/uikit3.js'|theme }}?v={{ this.theme.version }}"></script>
+    <script src="{{ 'assets/js/uikit3-icons.js'|theme }}?v={{ this.theme.version }}"></script>
 </head>
 <body>
     {% page %}
 
-    <script src="{{ 'assets/js/uikit3.js'|theme }}?v={{ this.theme.version }}"></script>
-    <script src="{{ 'assets/js/uikit3-icons.js'|theme }}?v={{ this.theme.version }}"></script>
     {% scripts %}
 </body>
 </html>

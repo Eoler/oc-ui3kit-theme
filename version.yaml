@@ -20,3 +20,5 @@
     - Upgraded SCSS imports and UIkit framework to 3.0.0-RC.26
 1.5.0:
     - Upgraded SCSS imports and UIkit framework to 3.0.2, removed Yarn
+1.5.1:
+    - Upgraded UIkit framework to 3.0.3, optimized asset loading

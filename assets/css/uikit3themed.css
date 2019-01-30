@@ -8814,11 +8814,12 @@ iframe.uk-cover {
  */
 .uk-transition-fade,
 [class*='uk-transition-scale'],
-[class*='uk-transition-slide'] {
+[class*='uk-transition-slide'],
+.uk-transition-stroke {
   transition: 0.3s ease-out;
-  transition-property: opacity, -webkit-transform, -webkit-filter;
-  transition-property: opacity, transform, filter;
-  transition-property: opacity, transform, filter, -webkit-transform, -webkit-filter;
+  transition-property: opacity, stroke-dashoffset, -webkit-transform, -webkit-filter;
+  transition-property: opacity, transform, filter, stroke-dashoffset;
+  transition-property: opacity, transform, filter, stroke-dashoffset, -webkit-transform, -webkit-filter;
   opacity: 0; }
 
 /*
@@ -8914,6 +8915,19 @@ iframe.uk-cover {
   opacity: 1;
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0); }
+
+/*
+ * Stroke
+ */
+.uk-transition-stroke {
+  transition-duration: 3s; }
+
+/* Show */
+.uk-transition-stroke:hover,
+.uk-transition-stroke:focus,
+.uk-transition-stroke.uk-transition-active {
+  opacity: 1;
+  stroke-dashoffset: 0 !important; }
 
 /* Opacity modifier
  ========================================================================== */
