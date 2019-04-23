@@ -4,6 +4,9 @@
 
 // mixin overrides
 
+@mixin hook-heading-medium(){
+  color: $global-primary-background;
+}
 
 @import // UIkit components
   "components-import";

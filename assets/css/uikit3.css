@@ -228,11 +228,16 @@ h2, .uk-h2,
 h3, .uk-h3,
 h4, .uk-h4,
 h5, .uk-h5,
-h6, .uk-h6 {
+h6, .uk-h6,
+.uk-heading-small,
+.uk-heading-medium,
+.uk-heading-large,
+.uk-heading-xlarge,
+.uk-heading-2xlarge {
   margin: 0 0 20px 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: normal;
-  color: #39f;
+  color: #333;
   text-transform: none; }
 
 /* Add margin if adjacent element */
@@ -241,7 +246,12 @@ h6, .uk-h6 {
 * + h3, * + .uk-h3,
 * + h4, * + .uk-h4,
 * + h5, * + .uk-h5,
-* + h6, * + .uk-h6 {
+* + h6, * + .uk-h6,
+* + .uk-heading-small,
+* + .uk-heading-medium,
+* + .uk-heading-large,
+* + .uk-heading-xlarge,
+* + .uk-heading-2xlarge {
   margin-top: 40px; }
 
 /*
@@ -374,6 +384,10 @@ pre code {
 
 /* Selection pseudo-element
  ========================================================================== */
+::-moz-selection {
+  background: #39f;
+  color: #fff;
+  text-shadow: none; }
 ::selection {
   background: #39f;
   color: #fff;
@@ -474,46 +488,66 @@ a.uk-link-reset:hover,
 /* ========================================================================
    Component: Heading
  ========================================================================== */
-/* Primary
- ========================================================================== */
-.uk-heading-primary {
-  font-size: 3rem;
+.uk-heading-small {
+  font-size: 2.6rem;
   line-height: 1.2; }
 
-/* Tablet landscape and bigger */
-@media (min-width: 960px) {
-  .uk-heading-primary {
-    font-size: 3.375rem; } }
+.uk-heading-medium {
+  font-size: 2.8875rem;
+  line-height: 1.1;
+  color: #1e87f0; }
 
-/* Desktop and bigger */
-@media (min-width: 1200px) {
-  .uk-heading-primary {
-    font-size: 3.75rem;
-    line-height: 1.1; } }
-
-/* Hero
- ========================================================================== */
-.uk-heading-hero {
-  font-size: 4rem;
+.uk-heading-large {
+  font-size: 3.4rem;
   line-height: 1.1; }
 
-/* Tablet landscape and bigger */
+.uk-heading-xlarge {
+  font-size: 4rem;
+  line-height: 1; }
+
+.uk-heading-2xlarge {
+  font-size: 6rem;
+  line-height: 1; }
+
+/* Tablet Landscape and bigger */
 @media (min-width: 960px) {
-  .uk-heading-hero {
-    font-size: 6rem;
-    line-height: 1; } }
+  .uk-heading-small {
+    font-size: 3.25rem; }
+  .uk-heading-medium {
+    font-size: 3.5rem; }
+  .uk-heading-large {
+    font-size: 4rem; }
+  .uk-heading-xlarge {
+    font-size: 6rem; }
+  .uk-heading-2xlarge {
+    font-size: 8rem; } }
 
-/* Desktop and bigger */
+/* Laptop and bigger */
 @media (min-width: 1200px) {
-  .uk-heading-hero {
-    font-size: 8rem;
-    line-height: 1; } }
+  .uk-heading-medium {
+    font-size: 4rem; }
+  .uk-heading-large {
+    font-size: 6rem; }
+  .uk-heading-xlarge {
+    font-size: 8rem; }
+  .uk-heading-2xlarge {
+    font-size: 11rem; } }
 
+/* Primary
+   Deprecated: Use `uk-heading-medium` instead
+ ========================================================================== */
+/* Tablet landscape and bigger */
+/* Desktop and bigger */
+/* Hero
+   Deprecated: Use `uk-heading-xlarge` instead
+ ========================================================================== */
+/* Tablet landscape and bigger */
+/* Desktop and bigger */
 /* Divider
  ========================================================================== */
 .uk-heading-divider {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #e5e5e5; }
+  padding-bottom: calc(10px + 0.1em);
+  border-bottom: calc(0.2px + 0.05em) solid #e5e5e5; }
 
 /* Bullet
  ========================================================================== */
@@ -534,9 +568,9 @@ a.uk-link-reset:hover,
   top: calc(-0.1 * 1em);
   vertical-align: middle;
   /* 3 */
-  height: 0.9em;
-  margin-right: 10px;
-  border-left: 5px solid #e5e5e5; }
+  height: calc(4px + 0.7em);
+  margin-right: calc(5px + 0.2em);
+  border-left: calc(5px + 0.1em) solid #e5e5e5; }
 
 /* Line
  ========================================================================== */
@@ -563,19 +597,19 @@ a.uk-link-reset:hover,
   content: "";
   /* 1 */
   position: absolute;
-  top: calc(50% - (1px / 2));
+  top: calc(50% - (calc(0.2px + 0.05em) / 2));
   /* 2 */
   width: 2000px;
   /* 3 */
-  border-bottom: 1px solid #e5e5e5; }
+  border-bottom: calc(0.2px + 0.05em) solid #e5e5e5; }
 
 .uk-heading-line > ::before {
   right: 100%;
-  margin-right: 0.6em; }
+  margin-right: calc(5px + 0.3em); }
 
 .uk-heading-line > ::after {
   left: 100%;
-  margin-left: 0.6em; }
+  margin-left: calc(5px + 0.3em); }
 
 /* ========================================================================
    Component: Divider
@@ -756,7 +790,7 @@ a.uk-link-reset:hover,
  * Term
  */
 .uk-description-list > dt {
-  color: #39f; }
+  color: #333; }
 
 .uk-description-list > dt:nth-child(n+2) {
   margin-top: 20px; }
@@ -1379,6 +1413,9 @@ button.uk-icon:not(:disabled) {
 .uk-input::-webkit-input-placeholder {
   color: #999; }
 
+.uk-input::-moz-placeholder {
+  color: #999; }
+
 .uk-input:-ms-input-placeholder {
   color: #999; }
 
@@ -1389,6 +1426,9 @@ button.uk-icon:not(:disabled) {
   color: #999 !important; }
 
 .uk-textarea::-webkit-input-placeholder {
+  color: #999; }
+
+.uk-textarea::-moz-placeholder {
   color: #999; }
 
 .uk-textarea:-ms-input-placeholder {
@@ -1802,19 +1842,19 @@ select.uk-form-width-xsmall {
  */
 .uk-button-default {
   background-color: #f8f8f8;
-  color: #39f; }
+  color: #333; }
 
 /* Hover + Focus */
 .uk-button-default:hover,
 .uk-button-default:focus {
   background-color: #ebebeb;
-  color: #39f; }
+  color: #333; }
 
 /* OnClick + Active */
 .uk-button-default:active,
 .uk-button-default.uk-active {
   background-color: #dfdfdf;
-  color: #39f; }
+  color: #333; }
 
 /*
  * Primary
@@ -1839,19 +1879,19 @@ select.uk-form-width-xsmall {
  * Secondary
  */
 .uk-button-secondary {
-  background-color: #333;
+  background-color: #222;
   color: #fff; }
 
 /* Hover + Focus */
 .uk-button-secondary:hover,
 .uk-button-secondary:focus {
-  background-color: #262626;
+  background-color: #151515;
   color: #fff; }
 
 /* OnClick + Active */
 .uk-button-secondary:active,
 .uk-button-secondary.uk-active {
-  background-color: #1a1a1a;
+  background-color: #090909;
   color: #fff; }
 
 /*
@@ -2060,7 +2100,7 @@ select.uk-form-width-xsmall {
  * Secondary
  */
 .uk-section-secondary {
-  background: #333; }
+  background: #222; }
 
 /* Overlap modifier
  ========================================================================== */
@@ -2608,7 +2648,7 @@ select.uk-form-width-xsmall {
  * Secondary
  */
 .uk-tile-secondary {
-  background: #333; }
+  background: #222; }
 
 /* ========================================================================
    Component: Card
@@ -2704,7 +2744,7 @@ select.uk-form-width-xsmall {
   color: #666; }
 
 .uk-card-default .uk-card-title {
-  color: #39f; }
+  color: #333; }
 
 .uk-card-default.uk-card-hover:hover {
   background-color: #ebebeb; }
@@ -2726,14 +2766,14 @@ select.uk-form-width-xsmall {
  * Secondary
  */
 .uk-card-secondary {
-  background: #333;
+  background: #222;
   color: #fff; }
 
 .uk-card-secondary .uk-card-title {
   color: #fff; }
 
 .uk-card-secondary.uk-card-hover:hover {
-  background-color: #262626; }
+  background-color: #151515; }
 
 /* Size modifier
  ========================================================================== */
@@ -2861,7 +2901,7 @@ select.uk-form-width-xsmall {
 
 /* OnClick */
 .uk-totop:active {
-  color: #39f; }
+  color: #333; }
 
 /* ========================================================================
    Component: Marker
@@ -2871,7 +2911,7 @@ select.uk-form-width-xsmall {
  */
 .uk-marker {
   padding: 5px;
-  background: #333;
+  background: #222;
   color: #fff; }
 
 /* Hover + Focus */
@@ -3041,7 +3081,7 @@ select.uk-form-width-xsmall {
  * Primary
  */
 .uk-overlay-primary {
-  background: rgba(51, 51, 51, 0.8); }
+  background: rgba(34, 34, 34, 0.8); }
 
 /* ========================================================================
    Component: Article
@@ -3238,6 +3278,9 @@ select.uk-form-width-xsmall {
   color: #999 !important; }
 
 .uk-search-input::-webkit-input-placeholder {
+  color: #999; }
+
+.uk-search-input::-moz-placeholder {
   color: #999; }
 
 .uk-search-input::-ms-input-placeholder {
@@ -3479,13 +3522,13 @@ ul.uk-nav-sub {
 
 /* Active */
 .uk-nav-default > li.uk-active > a {
-  color: #39f; }
+  color: #333; }
 
 /*
  * Header
  */
 .uk-nav-default .uk-nav-header {
-  color: #39f; }
+  color: #333; }
 
 /*
  * Divider
@@ -3504,7 +3547,7 @@ ul.uk-nav-sub {
   color: #666; }
 
 .uk-nav-default .uk-nav-sub li.uk-active > a {
-  color: #39f; }
+  color: #333; }
 
 /* Primary modifier
  ========================================================================== */
@@ -3523,13 +3566,13 @@ ul.uk-nav-sub {
 
 /* Active */
 .uk-nav-primary > li.uk-active > a {
-  color: #39f; }
+  color: #333; }
 
 /*
  * Header
  */
 .uk-nav-primary .uk-nav-header {
-  color: #39f; }
+  color: #333; }
 
 /*
  * Divider
@@ -3548,7 +3591,7 @@ ul.uk-nav-sub {
   color: #666; }
 
 .uk-nav-primary .uk-nav-sub li.uk-active > a {
-  color: #39f; }
+  color: #333; }
 
 /* Alignment modifier
  ========================================================================== */
@@ -3714,11 +3757,11 @@ ul.uk-nav-sub {
 
 /* OnClick */
 .uk-navbar-nav > li > a:active {
-  color: #39f; }
+  color: #333; }
 
 /* Active */
 .uk-navbar-nav > li.uk-active > a {
-  color: #39f; }
+  color: #333; }
 
 /* Item
  ========================================================================== */
@@ -3849,13 +3892,13 @@ ul.uk-nav-sub {
 
 /* Active */
 .uk-navbar-dropdown-nav > li.uk-active > a {
-  color: #39f; }
+  color: #333; }
 
 /*
  * Header
  */
 .uk-navbar-dropdown-nav .uk-nav-header {
-  color: #39f; }
+  color: #333; }
 
 /*
  * Divider
@@ -3874,7 +3917,7 @@ ul.uk-nav-sub {
   color: #666; }
 
 .uk-navbar-dropdown-nav .uk-nav-sub li.uk-active > a {
-  color: #39f; }
+  color: #333; }
 
 /* Dropbar
  ========================================================================== */
@@ -3944,7 +3987,7 @@ ul.uk-nav-sub {
 
 /* Active */
 .uk-subnav > .uk-active > a {
-  color: #39f; }
+  color: #333; }
 
 /* Divider modifier
  ========================================================================== */
@@ -4156,7 +4199,7 @@ ul.uk-nav-sub {
 
 /* Active */
 .uk-tab > .uk-active > a {
-  color: #39f; }
+  color: #333; }
 
 /* Disabled */
 .uk-tab > .uk-disabled > a {
@@ -4382,7 +4425,7 @@ ul.uk-nav-sub {
   display: block;
   font-size: 1.25rem;
   line-height: 1.4;
-  color: #39f; }
+  color: #333; }
 
 /* Hover + Focus */
 .uk-accordion-title:hover,
@@ -4504,7 +4547,7 @@ ul.uk-nav-sub {
  * Header
  */
 .uk-dropdown-nav .uk-nav-header {
-  color: #39f; }
+  color: #333; }
 
 /*
  * Divider
@@ -4812,6 +4855,7 @@ ul.uk-nav-sub {
  * 5. Responsiveness
  *    Using `vh` for `max-height` to fix image proportions after resize in Safari and Opera
  *    Using `vh` and `vw` to make responsive image work in IE11
+ * 6. Suppress outline on focus
  */
 .uk-lightbox-items > * {
   /* 1 */
@@ -4833,6 +4877,10 @@ ul.uk-nav-sub {
 .uk-lightbox-items > * > * {
   max-width: 100vw;
   max-height: 100vh; }
+
+/* 6 */
+.uk-slideshow-items > :focus {
+  outline: none; }
 
 .uk-lightbox-items > * > :not(iframe) {
   width: auto;
@@ -4932,6 +4980,7 @@ ul.uk-nav-sub {
  * 3. Clip child elements, e.g. for `uk-cover`
  * 4. Optimize animation
  * 5. Disable horizontal panning gestures in IE11 and Edge
+ * 6. Suppress outline on focus
  */
 .uk-slideshow-items > * {
   /* 1 */
@@ -4947,6 +4996,10 @@ ul.uk-nav-sub {
   will-change: transform, opacity;
   /* 5 */
   touch-action: pan-y; }
+
+/* 6 */
+.uk-slideshow-items > :focus {
+  outline: none; }
 
 /*
  * Hide not active items
@@ -5007,6 +5060,7 @@ ul.uk-nav-sub {
  * 1. Let items take content dimensions (0 0 auto)
  * 2. Create position context
  * 3. Disable horizontal panning gestures in IE11 and Edge
+ * 4. Suppress outline on focus
  */
 .uk-slider-items > * {
   /* 1 */
@@ -5015,6 +5069,10 @@ ul.uk-nav-sub {
   position: relative;
   /* 3 */
   touch-action: pan-y; }
+
+/* 4 */
+.uk-slider-items > :focus {
+  outline: none; }
 
 /* ========================================================================
    Component: Sticky
@@ -5082,7 +5140,7 @@ ul.uk-nav-sub {
   box-sizing: border-box;
   width: 270px;
   padding: 20px 20px;
-  background: #333;
+  background: #222;
   /* 3 */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; }
@@ -5704,35 +5762,6 @@ ul.uk-nav-sub {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both; }
 
-/* Direction modifier
- ========================================================================== */
-.uk-animation-reverse {
-  animation-direction: reverse;
-  -webkit-animation-timing-function: ease-in;
-  animation-timing-function: ease-in; }
-
-/* Toggle (Hover + Focus)
-========================================================================== */
-/*
- * The toggle is triggered on touch devices using `:focus` and tabindex
- */
-.uk-animation-toggle:not(:hover):not(:focus) [class*='uk-animation-'] {
-  -webkit-animation-name: none;
-  animation-name: none; }
-
-/*
- * 1. Prevent tab highlighting on iOS.
- */
-.uk-animation-toggle {
-  /* 1 */
-  -webkit-tap-highlight-color: transparent; }
-
-/*
- * Remove outline for `tabindex`
- */
-.uk-animation-toggle:focus {
-  outline: none; }
-
 /* Animations
  ========================================================================== */
 /*
@@ -5830,11 +5859,54 @@ ul.uk-nav-sub {
   -webkit-animation-name: uk-shake;
   animation-name: uk-shake; }
 
+/*
+ * SVG Stroke
+ * The `--uk-animation-stroke` custom property contains the longest path length.
+ * Set it manually or use `uk-svg="stroke-animation: true"` to set it automatically.
+ * All strokes are animated by the same pace and doesn't end simultaneously.
+ * To end simultaneously, `pathLength="1"` could be used, but it's not working in Safari yet.
+ */
+.uk-animation-stroke {
+  -webkit-animation-name: uk-stroke;
+  animation-name: uk-stroke;
+  stroke-dasharray: var(--uk-animation-stroke);
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s; }
+
+/* Direction modifier
+ ========================================================================== */
+.uk-animation-reverse {
+  animation-direction: reverse;
+  -webkit-animation-timing-function: ease-in;
+  animation-timing-function: ease-in; }
+
 /* Duration modifier
  ========================================================================== */
 .uk-animation-fast {
   -webkit-animation-duration: 0.1s;
   animation-duration: 0.1s; }
+
+/* Toggle (Hover + Focus)
+========================================================================== */
+/*
+ * The toggle is triggered on touch devices using `:focus` and tabindex
+ */
+.uk-animation-toggle:not(:hover):not(:focus) [class*='uk-animation-'] {
+  -webkit-animation-name: none;
+  animation-name: none; }
+
+/*
+ * 1. Prevent tab highlighting on iOS.
+ */
+.uk-animation-toggle {
+  /* 1 */
+  -webkit-tap-highlight-color: transparent; }
+
+/*
+ * Remove outline for `tabindex`
+ */
+.uk-animation-toggle:focus {
+  outline: none; }
 
 /* Keyframes used by animation classes
  ========================================================================== */
@@ -6243,6 +6315,20 @@ ul.uk-nav-sub {
   90% {
     -webkit-transform: translateX(-1px);
     transform: translateX(-1px); } }
+
+/*
+ * Stroke
+ */
+@-webkit-keyframes uk-stroke {
+  0% {
+    stroke-dashoffset: var(--uk-animation-stroke); }
+  100% {
+    stroke-dashoffset: 0; } }
+@keyframes uk-stroke {
+  0% {
+    stroke-dashoffset: var(--uk-animation-stroke); }
+  100% {
+    stroke-dashoffset: 0; } }
 
 /* ========================================================================
    Component: Width
@@ -6688,7 +6774,7 @@ ul.uk-nav-sub {
 .uk-text-lead {
   font-size: 1.5rem;
   line-height: 1.5;
-  color: #39f; }
+  color: #333; }
 
 .uk-text-meta {
   font-size: 0.875rem;
@@ -6727,10 +6813,13 @@ ul.uk-nav-sub {
   color: #999 !important; }
 
 .uk-text-emphasis {
-  color: #39f !important; }
+  color: #333 !important; }
 
 .uk-text-primary {
   color: #1e87f0 !important; }
+
+.uk-text-secondary {
+  color: #222 !important; }
 
 .uk-text-success {
   color: #32d296 !important; }
@@ -6876,12 +6965,14 @@ td.uk-text-break {
  ========================================================================== */
 [class*='uk-column-'] {
   -webkit-column-gap: 30px;
+  -moz-column-gap: 30px;
   column-gap: 30px; }
 
 /* Desktop and bigger */
 @media (min-width: 1200px) {
   [class*='uk-column-'] {
     -webkit-column-gap: 40px;
+    -moz-column-gap: 40px;
     column-gap: 40px; } }
 
 /*
@@ -6898,109 +6989,137 @@ td.uk-text-break {
  */
 .uk-column-divider {
   -webkit-column-rule: 1px solid #e5e5e5;
+  -moz-column-rule: 1px solid #e5e5e5;
   column-rule: 1px solid #e5e5e5;
   /* 1 */
   -webkit-column-gap: 60px;
+  -moz-column-gap: 60px;
   column-gap: 60px; }
 
 /* Desktop and bigger */
 @media (min-width: 1200px) {
   .uk-column-divider {
     -webkit-column-gap: 80px;
+    -moz-column-gap: 80px;
     column-gap: 80px; } }
 
 /* Width modifiers
  ========================================================================== */
 .uk-column-1-2 {
   -webkit-column-count: 2;
+  -moz-column-count: 2;
   column-count: 2; }
 
 .uk-column-1-3 {
   -webkit-column-count: 3;
+  -moz-column-count: 3;
   column-count: 3; }
 
 .uk-column-1-4 {
   -webkit-column-count: 4;
+  -moz-column-count: 4;
   column-count: 4; }
 
 .uk-column-1-5 {
   -webkit-column-count: 5;
+  -moz-column-count: 5;
   column-count: 5; }
 
 .uk-column-1-6 {
   -webkit-column-count: 6;
+  -moz-column-count: 6;
   column-count: 6; }
 
 /* Phone landscape and bigger */
 @media (min-width: 640px) {
   .uk-column-1-2\@s {
     -webkit-column-count: 2;
+    -moz-column-count: 2;
     column-count: 2; }
   .uk-column-1-3\@s {
     -webkit-column-count: 3;
+    -moz-column-count: 3;
     column-count: 3; }
   .uk-column-1-4\@s {
     -webkit-column-count: 4;
+    -moz-column-count: 4;
     column-count: 4; }
   .uk-column-1-5\@s {
     -webkit-column-count: 5;
+    -moz-column-count: 5;
     column-count: 5; }
   .uk-column-1-6\@s {
     -webkit-column-count: 6;
+    -moz-column-count: 6;
     column-count: 6; } }
 
 /* Tablet landscape and bigger */
 @media (min-width: 960px) {
   .uk-column-1-2\@m {
     -webkit-column-count: 2;
+    -moz-column-count: 2;
     column-count: 2; }
   .uk-column-1-3\@m {
     -webkit-column-count: 3;
+    -moz-column-count: 3;
     column-count: 3; }
   .uk-column-1-4\@m {
     -webkit-column-count: 4;
+    -moz-column-count: 4;
     column-count: 4; }
   .uk-column-1-5\@m {
     -webkit-column-count: 5;
+    -moz-column-count: 5;
     column-count: 5; }
   .uk-column-1-6\@m {
     -webkit-column-count: 6;
+    -moz-column-count: 6;
     column-count: 6; } }
 
 /* Desktop and bigger */
 @media (min-width: 1200px) {
   .uk-column-1-2\@l {
     -webkit-column-count: 2;
+    -moz-column-count: 2;
     column-count: 2; }
   .uk-column-1-3\@l {
     -webkit-column-count: 3;
+    -moz-column-count: 3;
     column-count: 3; }
   .uk-column-1-4\@l {
     -webkit-column-count: 4;
+    -moz-column-count: 4;
     column-count: 4; }
   .uk-column-1-5\@l {
     -webkit-column-count: 5;
+    -moz-column-count: 5;
     column-count: 5; }
   .uk-column-1-6\@l {
     -webkit-column-count: 6;
+    -moz-column-count: 6;
     column-count: 6; } }
 
 /* Large screen and bigger */
 @media (min-width: 1600px) {
   .uk-column-1-2\@xl {
     -webkit-column-count: 2;
+    -moz-column-count: 2;
     column-count: 2; }
   .uk-column-1-3\@xl {
     -webkit-column-count: 3;
+    -moz-column-count: 3;
     column-count: 3; }
   .uk-column-1-4\@xl {
     -webkit-column-count: 4;
+    -moz-column-count: 4;
     column-count: 4; }
   .uk-column-1-5\@xl {
     -webkit-column-count: 5;
+    -moz-column-count: 5;
     column-count: 5; }
   .uk-column-1-6\@xl {
     -webkit-column-count: 6;
+    -moz-column-count: 6;
     column-count: 6; } }
 
 /* Make element span across all columns
@@ -7008,6 +7127,7 @@ td.uk-text-break {
  ========================================================================== */
 .uk-column-span {
   -webkit-column-span: all;
+  -moz-column-span: all;
   column-span: all; }
 
 /* ========================================================================
@@ -7060,7 +7180,7 @@ iframe.uk-cover {
   background-color: #1e87f0; }
 
 .uk-background-secondary {
-  background-color: #333; }
+  background-color: #222; }
 
 /* Size
  ========================================================================== */
@@ -8100,7 +8220,8 @@ iframe.uk-cover {
   margin-top: 0 !important;
   margin-bottom: 0 !important; }
 
-.uk-margin-remove-adjacent + * {
+.uk-margin-remove-adjacent + *,
+.uk-margin-remove-first-child > :first-child {
   margin-top: 0 !important; }
 
 /* Auto
@@ -8239,8 +8360,8 @@ iframe.uk-cover {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   /* 1 */
-  width: -moz-max-content;
   width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   max-width: 100%;
   box-sizing: border-box; }
@@ -8260,14 +8381,14 @@ iframe.uk-cover {
 
 .uk-position-center-left-out {
   right: 100%;
-  width: -moz-max-content;
   width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content; }
 
 .uk-position-center-right-out {
   left: 100%;
-  width: -moz-max-content;
   width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content; }
 
 /* Horizontal */
@@ -8277,8 +8398,8 @@ iframe.uk-cover {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   /* 1 */
-  width: -moz-max-content;
   width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   max-width: 100%;
   box-sizing: border-box; }
@@ -8425,12 +8546,11 @@ iframe.uk-cover {
  */
 .uk-transition-fade,
 [class*='uk-transition-scale'],
-[class*='uk-transition-slide'],
-.uk-transition-stroke {
+[class*='uk-transition-slide'] {
   transition: 0.3s ease-out;
-  transition-property: opacity, stroke-dashoffset, -webkit-transform, -webkit-filter;
-  transition-property: opacity, transform, filter, stroke-dashoffset;
-  transition-property: opacity, transform, filter, stroke-dashoffset, -webkit-transform, -webkit-filter;
+  transition-property: opacity, -webkit-transform, -webkit-filter;
+  transition-property: opacity, transform, filter;
+  transition-property: opacity, transform, filter, -webkit-transform, -webkit-filter;
   opacity: 0; }
 
 /*
@@ -8443,30 +8563,29 @@ iframe.uk-cover {
 
 /*
  * Scale
- * Note: Using `scale3d` for better image rendering
  */
 .uk-transition-scale-up {
-  -webkit-transform: scale3d(1, 1, 1);
-  transform: scale3d(1, 1, 1); }
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1); }
 
 .uk-transition-scale-down {
-  -webkit-transform: scale3d(1.1, 1.1, 1);
-  transform: scale3d(1.1, 1.1, 1); }
+  -webkit-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1); }
 
 /* Show */
 .uk-transition-toggle:hover .uk-transition-scale-up,
 .uk-transition-toggle:focus .uk-transition-scale-up,
 .uk-transition-active.uk-active .uk-transition-scale-up {
   opacity: 1;
-  -webkit-transform: scale3d(1.1, 1.1, 1);
-  transform: scale3d(1.1, 1.1, 1); }
+  -webkit-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1); }
 
 .uk-transition-toggle:hover .uk-transition-scale-down,
 .uk-transition-toggle:focus .uk-transition-scale-down,
 .uk-transition-active.uk-active .uk-transition-scale-down {
   opacity: 1;
-  -webkit-transform: scale3d(1, 1, 1);
-  transform: scale3d(1, 1, 1); }
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1); }
 
 /*
  * Slide
@@ -8526,19 +8645,6 @@ iframe.uk-cover {
   opacity: 1;
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0); }
-
-/*
- * Stroke
- */
-.uk-transition-stroke {
-  transition-duration: 3s; }
-
-/* Show */
-.uk-transition-stroke:hover,
-.uk-transition-stroke:focus,
-.uk-transition-stroke.uk-transition-active {
-  opacity: 1;
-  stroke-dashoffset: 0 !important; }
 
 /* Opacity modifier
  ========================================================================== */
@@ -8790,7 +8896,62 @@ iframe.uk-cover {
   .uk-card-secondary.uk-card-body h6,
   .uk-card-secondary > :not([class*='uk-card-media']) h6,
   .uk-overlay-primary h6,
-  .uk-offcanvas-bar h6, .uk-light .uk-h6, .uk-section-primary:not(.uk-preserve-color) .uk-h6, .uk-section-secondary:not(.uk-preserve-color) .uk-h6, .uk-tile-primary:not(.uk-preserve-color) .uk-h6, .uk-tile-secondary:not(.uk-preserve-color) .uk-h6, .uk-card-primary.uk-card-body .uk-h6, .uk-card-primary > :not([class*='uk-card-media']) .uk-h6, .uk-card-secondary.uk-card-body .uk-h6, .uk-card-secondary > :not([class*='uk-card-media']) .uk-h6, .uk-overlay-primary .uk-h6, .uk-offcanvas-bar .uk-h6 {
+  .uk-offcanvas-bar h6, .uk-light .uk-h6, .uk-section-primary:not(.uk-preserve-color) .uk-h6, .uk-section-secondary:not(.uk-preserve-color) .uk-h6, .uk-tile-primary:not(.uk-preserve-color) .uk-h6, .uk-tile-secondary:not(.uk-preserve-color) .uk-h6, .uk-card-primary.uk-card-body .uk-h6, .uk-card-primary > :not([class*='uk-card-media']) .uk-h6, .uk-card-secondary.uk-card-body .uk-h6, .uk-card-secondary > :not([class*='uk-card-media']) .uk-h6, .uk-overlay-primary .uk-h6, .uk-offcanvas-bar .uk-h6,
+  .uk-light .uk-heading-small,
+  .uk-section-primary:not(.uk-preserve-color) .uk-heading-small,
+  .uk-section-secondary:not(.uk-preserve-color) .uk-heading-small,
+  .uk-tile-primary:not(.uk-preserve-color) .uk-heading-small,
+  .uk-tile-secondary:not(.uk-preserve-color) .uk-heading-small,
+  .uk-card-primary.uk-card-body .uk-heading-small,
+  .uk-card-primary > :not([class*='uk-card-media']) .uk-heading-small,
+  .uk-card-secondary.uk-card-body .uk-heading-small,
+  .uk-card-secondary > :not([class*='uk-card-media']) .uk-heading-small,
+  .uk-overlay-primary .uk-heading-small,
+  .uk-offcanvas-bar .uk-heading-small,
+  .uk-light .uk-heading-medium,
+  .uk-section-primary:not(.uk-preserve-color) .uk-heading-medium,
+  .uk-section-secondary:not(.uk-preserve-color) .uk-heading-medium,
+  .uk-tile-primary:not(.uk-preserve-color) .uk-heading-medium,
+  .uk-tile-secondary:not(.uk-preserve-color) .uk-heading-medium,
+  .uk-card-primary.uk-card-body .uk-heading-medium,
+  .uk-card-primary > :not([class*='uk-card-media']) .uk-heading-medium,
+  .uk-card-secondary.uk-card-body .uk-heading-medium,
+  .uk-card-secondary > :not([class*='uk-card-media']) .uk-heading-medium,
+  .uk-overlay-primary .uk-heading-medium,
+  .uk-offcanvas-bar .uk-heading-medium,
+  .uk-light .uk-heading-large,
+  .uk-section-primary:not(.uk-preserve-color) .uk-heading-large,
+  .uk-section-secondary:not(.uk-preserve-color) .uk-heading-large,
+  .uk-tile-primary:not(.uk-preserve-color) .uk-heading-large,
+  .uk-tile-secondary:not(.uk-preserve-color) .uk-heading-large,
+  .uk-card-primary.uk-card-body .uk-heading-large,
+  .uk-card-primary > :not([class*='uk-card-media']) .uk-heading-large,
+  .uk-card-secondary.uk-card-body .uk-heading-large,
+  .uk-card-secondary > :not([class*='uk-card-media']) .uk-heading-large,
+  .uk-overlay-primary .uk-heading-large,
+  .uk-offcanvas-bar .uk-heading-large,
+  .uk-light .uk-heading-xlarge,
+  .uk-section-primary:not(.uk-preserve-color) .uk-heading-xlarge,
+  .uk-section-secondary:not(.uk-preserve-color) .uk-heading-xlarge,
+  .uk-tile-primary:not(.uk-preserve-color) .uk-heading-xlarge,
+  .uk-tile-secondary:not(.uk-preserve-color) .uk-heading-xlarge,
+  .uk-card-primary.uk-card-body .uk-heading-xlarge,
+  .uk-card-primary > :not([class*='uk-card-media']) .uk-heading-xlarge,
+  .uk-card-secondary.uk-card-body .uk-heading-xlarge,
+  .uk-card-secondary > :not([class*='uk-card-media']) .uk-heading-xlarge,
+  .uk-overlay-primary .uk-heading-xlarge,
+  .uk-offcanvas-bar .uk-heading-xlarge,
+  .uk-light .uk-heading-2xlarge,
+  .uk-section-primary:not(.uk-preserve-color) .uk-heading-2xlarge,
+  .uk-section-secondary:not(.uk-preserve-color) .uk-heading-2xlarge,
+  .uk-tile-primary:not(.uk-preserve-color) .uk-heading-2xlarge,
+  .uk-tile-secondary:not(.uk-preserve-color) .uk-heading-2xlarge,
+  .uk-card-primary.uk-card-body .uk-heading-2xlarge,
+  .uk-card-primary > :not([class*='uk-card-media']) .uk-heading-2xlarge,
+  .uk-card-secondary.uk-card-body .uk-heading-2xlarge,
+  .uk-card-secondary > :not([class*='uk-card-media']) .uk-heading-2xlarge,
+  .uk-overlay-primary .uk-heading-2xlarge,
+  .uk-offcanvas-bar .uk-heading-2xlarge {
     color: #fff; }
   .uk-light hr, .uk-section-primary:not(.uk-preserve-color) hr, .uk-section-secondary:not(.uk-preserve-color) hr, .uk-tile-primary:not(.uk-preserve-color) hr, .uk-tile-secondary:not(.uk-preserve-color) hr, .uk-card-primary.uk-card-body hr, .uk-card-primary > :not([class*='uk-card-media']) hr, .uk-card-secondary.uk-card-body hr, .uk-card-secondary > :not([class*='uk-card-media']) hr, .uk-overlay-primary hr, .uk-offcanvas-bar hr, .uk-light .uk-hr, .uk-section-primary:not(.uk-preserve-color) .uk-hr, .uk-section-secondary:not(.uk-preserve-color) .uk-hr, .uk-tile-primary:not(.uk-preserve-color) .uk-hr, .uk-tile-secondary:not(.uk-preserve-color) .uk-hr, .uk-card-primary.uk-card-body .uk-hr, .uk-card-primary > :not([class*='uk-card-media']) .uk-hr, .uk-card-secondary.uk-card-body .uk-hr, .uk-card-secondary > :not([class*='uk-card-media']) .uk-hr, .uk-overlay-primary .uk-hr, .uk-offcanvas-bar .uk-hr {
     border-top-color: rgba(255, 255, 255, 0.2); }
@@ -8991,6 +9152,8 @@ iframe.uk-cover {
     color: rgba(255, 255, 255, 0.5) !important; }
   .uk-light .uk-input::-webkit-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-card-primary.uk-card-body .uk-input::-webkit-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input::-webkit-input-placeholder, .uk-card-secondary.uk-card-body .uk-input::-webkit-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input::-webkit-input-placeholder, .uk-overlay-primary .uk-input::-webkit-input-placeholder, .uk-offcanvas-bar .uk-input::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.5); }
+  .uk-light .uk-input::-moz-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input::-moz-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input::-moz-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input::-moz-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input::-moz-placeholder, .uk-card-primary.uk-card-body .uk-input::-moz-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input::-moz-placeholder, .uk-card-secondary.uk-card-body .uk-input::-moz-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input::-moz-placeholder, .uk-overlay-primary .uk-input::-moz-placeholder, .uk-offcanvas-bar .uk-input::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-input:-ms-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder, .uk-card-primary.uk-card-body .uk-input:-ms-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input:-ms-input-placeholder, .uk-card-secondary.uk-card-body .uk-input:-ms-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input:-ms-input-placeholder, .uk-overlay-primary .uk-input:-ms-input-placeholder, .uk-offcanvas-bar .uk-input:-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-input::placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input::placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input::placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input::placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input::placeholder, .uk-card-primary.uk-card-body .uk-input::placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input::placeholder, .uk-card-secondary.uk-card-body .uk-input::placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input::placeholder, .uk-overlay-primary .uk-input::placeholder, .uk-offcanvas-bar .uk-input::placeholder {
@@ -8998,6 +9161,8 @@ iframe.uk-cover {
   .uk-light .uk-textarea::-ms-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder, .uk-card-primary.uk-card-body .uk-textarea::-ms-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-ms-input-placeholder, .uk-card-secondary.uk-card-body .uk-textarea::-ms-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-ms-input-placeholder, .uk-overlay-primary .uk-textarea::-ms-input-placeholder, .uk-offcanvas-bar .uk-textarea::-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.5) !important; }
   .uk-light .uk-textarea::-webkit-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-card-primary.uk-card-body .uk-textarea::-webkit-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-webkit-input-placeholder, .uk-card-secondary.uk-card-body .uk-textarea::-webkit-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-webkit-input-placeholder, .uk-overlay-primary .uk-textarea::-webkit-input-placeholder, .uk-offcanvas-bar .uk-textarea::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5); }
+  .uk-light .uk-textarea::-moz-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea::-moz-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea::-moz-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea::-moz-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::-moz-placeholder, .uk-card-primary.uk-card-body .uk-textarea::-moz-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-moz-placeholder, .uk-card-secondary.uk-card-body .uk-textarea::-moz-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-moz-placeholder, .uk-overlay-primary .uk-textarea::-moz-placeholder, .uk-offcanvas-bar .uk-textarea::-moz-placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-textarea:-ms-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder, .uk-card-primary.uk-card-body .uk-textarea:-ms-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea:-ms-input-placeholder, .uk-card-secondary.uk-card-body .uk-textarea:-ms-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea:-ms-input-placeholder, .uk-overlay-primary .uk-textarea:-ms-input-placeholder, .uk-offcanvas-bar .uk-textarea:-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.5); }
@@ -9285,6 +9450,8 @@ iframe.uk-cover {
   .uk-light .uk-search-input:-ms-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-search-input:-ms-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-search-input:-ms-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-search-input:-ms-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-input:-ms-input-placeholder, .uk-card-primary.uk-card-body .uk-search-input:-ms-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-input:-ms-input-placeholder, .uk-card-secondary.uk-card-body .uk-search-input:-ms-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-input:-ms-input-placeholder, .uk-overlay-primary .uk-search-input:-ms-input-placeholder, .uk-offcanvas-bar .uk-search-input:-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.5) !important; }
   .uk-light .uk-search-input::-webkit-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-search-input::-webkit-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-search-input::-webkit-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-search-input::-webkit-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-input::-webkit-input-placeholder, .uk-card-primary.uk-card-body .uk-search-input::-webkit-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-input::-webkit-input-placeholder, .uk-card-secondary.uk-card-body .uk-search-input::-webkit-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-input::-webkit-input-placeholder, .uk-overlay-primary .uk-search-input::-webkit-input-placeholder, .uk-offcanvas-bar .uk-search-input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5); }
+  .uk-light .uk-search-input::-moz-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-search-input::-moz-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-search-input::-moz-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-search-input::-moz-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-input::-moz-placeholder, .uk-card-primary.uk-card-body .uk-search-input::-moz-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-input::-moz-placeholder, .uk-card-secondary.uk-card-body .uk-search-input::-moz-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-input::-moz-placeholder, .uk-overlay-primary .uk-search-input::-moz-placeholder, .uk-offcanvas-bar .uk-search-input::-moz-placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-search-input::-ms-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-search-input::-ms-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-search-input::-ms-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-search-input::-ms-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-input::-ms-input-placeholder, .uk-card-primary.uk-card-body .uk-search-input::-ms-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-input::-ms-input-placeholder, .uk-card-secondary.uk-card-body .uk-search-input::-ms-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-input::-ms-input-placeholder, .uk-overlay-primary .uk-search-input::-ms-input-placeholder, .uk-offcanvas-bar .uk-search-input::-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.5); }
@@ -9633,9 +9800,12 @@ iframe.uk-cover {
   .uk-light .uk-text-emphasis, .uk-section-primary:not(.uk-preserve-color) .uk-text-emphasis, .uk-section-secondary:not(.uk-preserve-color) .uk-text-emphasis, .uk-tile-primary:not(.uk-preserve-color) .uk-text-emphasis, .uk-tile-secondary:not(.uk-preserve-color) .uk-text-emphasis, .uk-card-primary.uk-card-body .uk-text-emphasis, .uk-card-primary > :not([class*='uk-card-media']) .uk-text-emphasis, .uk-card-secondary.uk-card-body .uk-text-emphasis, .uk-card-secondary > :not([class*='uk-card-media']) .uk-text-emphasis, .uk-overlay-primary .uk-text-emphasis, .uk-offcanvas-bar .uk-text-emphasis {
     color: #fff !important; }
   .uk-light .uk-text-primary, .uk-section-primary:not(.uk-preserve-color) .uk-text-primary, .uk-section-secondary:not(.uk-preserve-color) .uk-text-primary, .uk-tile-primary:not(.uk-preserve-color) .uk-text-primary, .uk-tile-secondary:not(.uk-preserve-color) .uk-text-primary, .uk-card-primary.uk-card-body .uk-text-primary, .uk-card-primary > :not([class*='uk-card-media']) .uk-text-primary, .uk-card-secondary.uk-card-body .uk-text-primary, .uk-card-secondary > :not([class*='uk-card-media']) .uk-text-primary, .uk-overlay-primary .uk-text-primary, .uk-offcanvas-bar .uk-text-primary {
-    color: rgba(255, 255, 255, 0.7) !important; }
+    color: #fff !important; }
+  .uk-light .uk-text-secondary, .uk-section-primary:not(.uk-preserve-color) .uk-text-secondary, .uk-section-secondary:not(.uk-preserve-color) .uk-text-secondary, .uk-tile-primary:not(.uk-preserve-color) .uk-text-secondary, .uk-tile-secondary:not(.uk-preserve-color) .uk-text-secondary, .uk-card-primary.uk-card-body .uk-text-secondary, .uk-card-primary > :not([class*='uk-card-media']) .uk-text-secondary, .uk-card-secondary.uk-card-body .uk-text-secondary, .uk-card-secondary > :not([class*='uk-card-media']) .uk-text-secondary, .uk-overlay-primary .uk-text-secondary, .uk-offcanvas-bar .uk-text-secondary {
+    color: #fff !important; }
   .uk-light .uk-column-divider, .uk-section-primary:not(.uk-preserve-color) .uk-column-divider, .uk-section-secondary:not(.uk-preserve-color) .uk-column-divider, .uk-tile-primary:not(.uk-preserve-color) .uk-column-divider, .uk-tile-secondary:not(.uk-preserve-color) .uk-column-divider, .uk-card-primary.uk-card-body .uk-column-divider, .uk-card-primary > :not([class*='uk-card-media']) .uk-column-divider, .uk-card-secondary.uk-card-body .uk-column-divider, .uk-card-secondary > :not([class*='uk-card-media']) .uk-column-divider, .uk-overlay-primary .uk-column-divider, .uk-offcanvas-bar .uk-column-divider {
     -webkit-column-rule-color: rgba(255, 255, 255, 0.2);
+    -moz-column-rule-color: rgba(255, 255, 255, 0.2);
     column-rule-color: rgba(255, 255, 255, 0.2); }
   .uk-light .uk-logo, .uk-section-primary:not(.uk-preserve-color) .uk-logo, .uk-section-secondary:not(.uk-preserve-color) .uk-logo, .uk-tile-primary:not(.uk-preserve-color) .uk-logo, .uk-tile-secondary:not(.uk-preserve-color) .uk-logo, .uk-card-primary.uk-card-body .uk-logo, .uk-card-primary > :not([class*='uk-card-media']) .uk-logo, .uk-card-secondary.uk-card-body .uk-logo, .uk-card-secondary > :not([class*='uk-card-media']) .uk-logo, .uk-overlay-primary .uk-logo, .uk-offcanvas-bar .uk-logo {
     color: rgba(255, 255, 255, 0.7); }
