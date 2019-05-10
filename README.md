@@ -2,7 +2,7 @@
 Starter development template for building [UIkit v3](https://getuikit.com/) themed [OctoberCMS](https://octobercms.com/) sites.
 
 Includes:
-- latest UIkit v3 (beta) [source from official repository](https://github.com/uikit/uikit)
+- latest UIkit v3.1 [source from official repository](https://github.com/uikit/uikit)
 - [GulpJS-based build system](https://nystudio107.com/blog/a-gulp-workflow-for-frontend-development-automation) for development and production
 - [NPM-based config system](https://nystudio107.com/blog/a-better-package-json-for-the-frontend) for development and production
 
@@ -33,17 +33,17 @@ Adjust `paths.root` configuration variable to **themes/castus-ui3kit/** and star
 ## Using and Editing
 Check [intro page](https://github.com/Eoler/oc-ui3kit-theme/blob/master/pages/ui3kit.htm)
 for example HTML page structure and mandatory includes.
-Development changes can be automated with command-line instruction inside *theme root*:
+Development changes can be automated with command-line instruction from configured Gulpfile (project or theme) *build root*:
 ```
 gulp watch
 ```
-Build versioned, optimized, minified, autoprefixed assets with command-line instruction inside *theme root*:
+Build versioned, optimized, minified, autoprefixed assets with command-line instruction:
 ```
 gulp upbuild --production
 ```
 
-## Customizing UIkit
-Global framework/theme styling parameters are overridable in the following SCSS files, just don't forget to remove *!default* from variables:
+## Customizing UIkit Styles
+Override global framework/theme styling parameters in the following SCSS files, just don't forget to remove *!default* from variables:
 - [assets/scss/uikit3 SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/uikit3.scss)
 - [assets/scss/_components-variables SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/_components-variables.scss)
 - [assets/scss/uikit3themed SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/uikit3themed.scss)
@@ -51,6 +51,10 @@ Global framework/theme styling parameters are overridable in the following SCSS 
 
 Comment out unwanted components/theming for leaner and faster UIkit custom build:
 - [assets/scss/_components-import SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/_components-import.scss)
-- [assets/es6/_theme-import SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/_theme-import.scss)
+- [assets/scss/_theme-import SCSS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/scss/_theme-import.scss)
 
 For in-depth customizations and optimizations follow the [SASS docs](https://getuikit.com/docs/sass).
+
+## Including Custom JavaScript
+Use Gulp-include plugin to require JavaScript source files from anywhere in `paths.include.js` hierarchy, example:
+- [assets/es6/detect.JS](https://github.com/Eoler/oc-ui3kit-theme/blob/master/assets/es6/detect.js)

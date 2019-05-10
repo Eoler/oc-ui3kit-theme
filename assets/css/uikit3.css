@@ -4879,7 +4879,7 @@ ul.uk-nav-sub {
   max-height: 100vh; }
 
 /* 6 */
-.uk-slideshow-items > :focus {
+.uk-lightbox-items > :focus {
   outline: none; }
 
 .uk-lightbox-items > * > :not(iframe) {
