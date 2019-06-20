@@ -1,6 +1,6 @@
 {
   "name": "oc-ui3kit-theme",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "Starter development template for building UIkit v3 themed OctoberCMS sites.",
   "author": "Danilo Cuculić <eoler@castus.me>",
   "license": "MIT",
@@ -50,7 +50,7 @@
     "iOS >= 9"
   ],
   "dependencies": {
-    "uikit": "^3.1.5"
+    "uikit": "^3.1.6"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -59,7 +59,7 @@
     "gulp-if": "^2.0.2",
     "gulp-ignore": "^2.0.2",
     "gulp-include": "^2.4.1",
-    "gulp-load-plugins": "^1.5.0",
+    "gulp-load-plugins": "^1.6.0",
     "gulp-rename": "^1.4.0",
     "gulp-responsive": "^2.14.0",
     "gulp-sass": "^4.0.2",

@@ -28,3 +28,5 @@
     - Upgraded SCSS imports and UIkit framework to 3.1.4, documented gulp-include
 1.6.2:
     - Upgraded SCSS imports and UIkit framework to 3.1.5, updated NPM dependencies
+1.6.3:
+    - Upgraded SCSS imports and UIkit framework to 3.1.6, updated build dependencies
