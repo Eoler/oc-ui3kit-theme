@@ -30,3 +30,5 @@
     - Upgraded SCSS imports and UIkit framework to 3.1.5, updated NPM dependencies
 1.6.3:
     - Upgraded SCSS imports and UIkit framework to 3.1.6, updated build dependencies
+1.6.4:
+    - Upgraded UIkit framework to 3.1.7, updated NPM dependencies
