@@ -34,3 +34,5 @@
     - Upgraded UIkit framework to 3.1.7, updated NPM dependencies
 1.6.5:
     - Upgraded UIkit framework to 3.1.9, updated NPM dependencies
+1.7.0:
+    - Upgraded UIkit framework to 3.2.0, updated SCSS variables
