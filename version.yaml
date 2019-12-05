@@ -40,3 +40,5 @@
     - Upgraded UIkit framework to 3.2.1, rebuilt assets
 1.8.0:
     - Upgraded UIkit framework to 3.2.3, updated NodeJS and NPM dependencies
+1.8.1:
+    - Upgraded UIkit framework to 3.2.4, updated NPM dependencies
