@@ -1,3 +1,3 @@
-//=require vendor/modernizr/modernizr.js
+//=require js/modernizr.js
 
 //=DISABLE lazysizes/lazysizes.js

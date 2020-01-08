@@ -44,3 +44,5 @@
     - Upgraded UIkit framework to 3.2.4, updated NPM dependencies
 1.8.2:
     - Upgraded UIkit framework to 3.2.6, fixed BrowsersList override
+1.9.0:
+    - Replaced vendor Modernizr with NPM configuration and build script
