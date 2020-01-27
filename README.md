@@ -2,7 +2,7 @@
 Starter development template for building [UIkit v3](https://getuikit.com/) themed [OctoberCMS](https://octobercms.com/) sites.
 
 Includes:
-- latest UIkit ^3.2 [source from official repository](https://github.com/uikit/uikit)
+- latest UIkit ^3.3 [source from official repository](https://github.com/uikit/uikit)
 - style guide layout with most UI components
 - [GulpJS-based build system](https://nystudio107.com/blog/a-gulp-workflow-for-frontend-development-automation) for development and production
 - [NPM-based config system](https://nystudio107.com/blog/a-better-package-json-for-the-frontend) for development and production
@@ -22,14 +22,14 @@ Install [NodeJS and Node Package Manager](https://nodejs.org/en/) globally (LTS 
 Run the following command-line instructions inside *theme root*:
 ```
 npm install --global gulp-cli
-npm i
+npm install
 ```
 Integrating build process into OctoberCMS project is easy - copy (or merge into existing) files into *project root*:
 ```
 gulpfile.js
 package.json
 ```
-Adjust `paths.root` configuration variable to **themes/castus-ui3kit/** and start using command-line tasks from *project root*. 
+Adjust `paths.root` configuration variable to **themes/castus-ui3kit/** and start using command-line tasks from *project root*.
 
 ## Using and Editing
 Check [intro page](https://github.com/Eoler/oc-ui3kit-theme/blob/master/pages/ui3kit.htm)

@@ -48,3 +48,5 @@
     - Replaced vendor Modernizr with NPM configuration and build script
 1.9.1:
     - Upgraded UIkit framework to 3.2.7, rebuilt assets
+1.10.0:
+    - Upgraded UIkit framework to 3.3.0, rebuilt assets

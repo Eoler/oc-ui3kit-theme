@@ -4,7 +4,7 @@
  *
  * Installation (Node Package Manager):
  * > npm install --global gulp-cli
- * > npm i
+ * > npm install
  *
  * Usage (GulpJS):
  * > gulp styles  [--production][--src={filepath/filename.scss} [--dest={path/dirname}]]
