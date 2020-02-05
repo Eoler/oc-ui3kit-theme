@@ -3,8 +3,8 @@ fields:
         span: full
         label: Site brand color
         type: colorpicker
-        default: '#39f'
-        assetVar: 'global-emphasis-color'
+        default: '#1e87f0'
+        assetVar: 'global-primary-color'
     second_color:
         span: full
         label: Background color
@@ -18,4 +18,4 @@ fields:
     version:
         span: right
         label: Version (build)
-        default: 1100
+        default: 1110
