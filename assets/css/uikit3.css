@@ -5772,7 +5772,7 @@ ul.uk-nav-sub {
 /* Drag
  ========================================================================== */
 .uk-sortable-drag {
-  position: absolute !important;
+  position: fixed !important;
   z-index: 1050 !important;
   pointer-events: none; }
 
