@@ -58,3 +58,5 @@
     - Upgraded UIkit framework to 3.3.3, rebuilt assets
 1.11.3:
     - Upgraded UIkit framework to 3.3.7, rebuilt assets
+1.12.0:
+    - Upgraded UIkit framework to 3.4.0, Modernizr to 3.10.0
