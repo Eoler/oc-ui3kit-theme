@@ -778,6 +778,10 @@ a.uk-link-reset,
 .uk-list-large > li > ul {
   margin-top: 20px; }
 
+.uk-list-collapse > li:nth-child(n+2),
+.uk-list-collapse > li > ul {
+  margin-top: 0; }
+
 /*
  * Divider
  */
@@ -785,13 +789,22 @@ a.uk-link-reset,
   margin-top: 20px;
   padding-top: 20px; }
 
+.uk-list-collapse.uk-list-divider > li:nth-child(n+2) {
+  margin-top: 0;
+  padding-top: 0; }
+
 /*
  * Striped
  */
 .uk-list-large.uk-list-striped > li {
   padding: 20px 10px; }
 
-.uk-list-large.uk-list-striped > li:nth-child(n+2) {
+.uk-list-collapse.uk-list-striped > li {
+  padding-top: 0;
+  padding-bottom: 0; }
+
+.uk-list-large.uk-list-striped > li:nth-child(n+2),
+.uk-list-collapse.uk-list-striped > li:nth-child(n+2) {
   margin-top: 0; }
 
 /* ========================================================================
