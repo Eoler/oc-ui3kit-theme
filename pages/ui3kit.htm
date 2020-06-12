@@ -18,12 +18,12 @@ url = "/"
     <main class="uk-container uk-text-center">
         <h1 class="uk-heading-medium"><img src="{{ 'assets/images/uikit/icon.png'|theme }}"> {{ this.page.title }}</h1>
         <section class="uk-container uk-container-small">
-            <nav class="uk-flex uk-flex-between uk-margin-top">
+            <nav class="uk-flex uk-flex-between uk-margin-large-top">
                 <a href="https://github.com/uikit/uikit/releases"><span uk-icon="icon:tag"></span> Version <strong>{{ this.theme.version }}</strong></a>
                 <a href="{{ 'styleguide/uikit3'|page }}"><span uk-icon="icon:paint-bucket"></span> Style Guide</a>
                 <a href="https://getuikit.com/docs/introduction"><span uk-icon="icon:nut"></span> Documentation</a>
             </nav>
-            <nav class="uk-flex uk-flex-between uk-margin-top">
+            <nav class="uk-flex uk-flex-between uk-margin-large-top">
                 <a href="https://getuikit.com/changelog"><span uk-icon="icon:table"></span> Changelog</a>
             {% for social in this.theme.socialinks%}
                 <a href="{{ social.link }}"><span uk-icon="icon:{{ social.icon }}"></span> {{ social.name }}</a>
