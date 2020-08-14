@@ -1,12 +1,12 @@
 @import
-  "components-variables", // variable overrides
-  "mixins";
+    "components-variables", // variable overrides
+    "mixins";
 
 // mixin overrides
 
-@mixin hook-heading-medium(){
-  color: $global-primary-background;
+@mixin hook-heading-medium() {
+    color: $global-primary-background;
 }
 
 @import // UIkit components
-  "components-import";
+    "components-import";

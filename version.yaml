@@ -74,3 +74,5 @@
     - Upgraded UIkit framework to 3.5.4, rebuilt assets
 1.14.0:
     - Upgraded UIkit framework to 3.5.5, Modernizr to 3.11.3; updated SCSS imports and variables
+1.14.1:
+    - Upgraded UIkit framework to 3.5.6, updated SCSS imports

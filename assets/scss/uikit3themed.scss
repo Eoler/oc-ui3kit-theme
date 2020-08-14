@@ -1,19 +1,13 @@
 @import
-  "theme-variables", // variable overrides
-  "mixins-theme";
+    "theme-variables", // variable overrides
+    "mixins-theme";
 
 // mixin overrides
 
-@mixin hook-card-primary(){
-  box-shadow: $card-primary-box-shadow;
-  a { color: $inverse-link-muted-color; }
-  a:hover { color: $inverse-link-muted-hover-color; }
-}
-@mixin hook-section-primary(){
-  a { color: $inverse-link-muted-color; }
-  a:hover { color: $inverse-link-muted-hover-color; }
+@mixin hook-heading-medium() {
+    color: $global-primary-background;
 }
 
 @import // UIkit themed components
-  "theme-import",
-  "components-import";
+    "theme-import",
+    "components-import";
