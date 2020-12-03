@@ -7610,7 +7610,7 @@ iframe.uk-cover {
  * 3. Blur doesn't work on pseudo elements with negative `z-index` in Edge.
  *    Solved by using `before` and add position context to child elements.
  */
-@supports ((-webkit-filter: blur(0)) or (filter: blur(0))) {
+@supports (filter: blur(0)) {
   .uk-box-shadow-bottom {
     display: inline-block;
     position: relative;
@@ -7627,7 +7627,6 @@ iframe.uk-cover {
     height: 30px;
     border-radius: 100%;
     background: #444;
-    -webkit-filter: blur(20px);
     filter: blur(20px); }
   /* 3 */
   .uk-box-shadow-bottom > * {
@@ -8554,9 +8553,7 @@ iframe.uk-cover {
 [class*='uk-transition-scale'],
 [class*='uk-transition-slide'] {
   transition: 0.3s ease-out;
-  transition-property: opacity, transform, -webkit-filter;
   transition-property: opacity, transform, filter;
-  transition-property: opacity, transform, filter, -webkit-filter;
   opacity: 0; }
 
 /*
