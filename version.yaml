@@ -86,3 +86,5 @@
     - Replaced Gulp CSS processing with PostCSS and plugins, upgraded UIkit to 3.5.10
 1.15.1:
     - Updated NPM dependencies for NodeJS 12.x compatibility
+1.15.2:
+    - Upgraded UIkit framework to 3.5.11, updated NPM dependencies
