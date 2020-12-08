@@ -88,3 +88,5 @@
     - Updated NPM dependencies for NodeJS 12.x compatibility
 1.15.2:
     - Upgraded UIkit framework to 3.5.11, updated NPM dependencies
+1.15.3:
+    - Upgraded UIkit framework to 3.5.12, rebuilt assets
