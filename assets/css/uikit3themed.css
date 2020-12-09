@@ -4443,7 +4443,11 @@ select.uk-form-width-xsmall {
 /* Placeholder
  ========================================================================== */
 .uk-sortable-placeholder {
-  opacity: 0;
+  opacity: 0; }
+
+/* Item
+ ========================================================================== */
+.uk-sortable-item {
   pointer-events: none; }
 
 /* Empty modifier
