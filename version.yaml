@@ -98,3 +98,5 @@
     - Upgraded UIkit framework to 3.5.16, rebuilt assets
 1.15.7:
     - Upgraded UIkit framework to 3.5.17, rebuilt assets
+1.16.0:
+    - Upgraded UIkit framework to 3.6.0, updated NPM dependencies
