@@ -117,4 +117,6 @@
 1.16.8:
     - Upgraded UIkit framework to 3.6.14, rebuilt assets
 1.16.9:
-    - Upgraded UIkit framework to 3.6.15, updated NPM dependencies
+    - Upgraded UIkit framework to 3.6.16, updated NPM dependencies
+1.17.0:
+    - Upgraded UIkit framework to 3.6.17, rebuilt assets

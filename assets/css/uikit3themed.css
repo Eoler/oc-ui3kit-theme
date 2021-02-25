@@ -1483,6 +1483,10 @@ button.uk-icon:not(:disabled) {
   padding-bottom: 4px;
   vertical-align: top; }
 
+.uk-select[multiple],
+.uk-select[size] {
+  resize: vertical; }
+
 /* Focus */
 .uk-input:focus,
 .uk-select:focus,
@@ -7526,7 +7530,9 @@ iframe.uk-cover {
 /* Size
  ========================================================================== */
 .uk-background-cover,
-.uk-background-contain {
+.uk-background-contain,
+.uk-background-width-1-1,
+.uk-background-height-1-1 {
   background-position: 50% 50%;
   background-repeat: no-repeat; }
 
@@ -7535,6 +7541,12 @@ iframe.uk-cover {
 
 .uk-background-contain {
   background-size: contain; }
+
+.uk-background-width-1-1 {
+  background-size: 100%; }
+
+.uk-background-height-1-1 {
+  background-size: auto 100%; }
 
 /* Position
  ========================================================================== */

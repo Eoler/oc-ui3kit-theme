@@ -1,4 +1,4 @@
-/*! UIkit 3.6.15 | https://www.getuikit.com | (c) 2014 - 2021 YOOtheme | MIT License */
+/*! UIkit 3.6.17 | https://www.getuikit.com | (c) 2014 - 2021 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -2246,8 +2246,7 @@
 
             var scrollTop = scrollElement.scrollTop;
             var scrollHeight = scrollElement.scrollHeight;
-            var clientHeight = scrollElement.clientHeight;
-            var maxScroll = scrollHeight - clientHeight;
+            var maxScroll = scrollHeight - getViewportClientHeight(scrollElement);
 
             var top = Math.ceil(
                 offset(parents[i - 1] || element).top
@@ -2312,9 +2311,9 @@
 
         var ref = scrollParents(element, /auto|scroll/, true);
         var scrollElement = ref[0];
-        var clientHeight = scrollElement.clientHeight;
         var scrollHeight = scrollElement.scrollHeight;
         var scrollTop = scrollElement.scrollTop;
+        var clientHeight = getViewportClientHeight(scrollElement);
         var viewportTop = offsetPosition(element)[0] - scrollTop - offsetPosition(scrollElement)[0];
         var viewportDist = Math.min(clientHeight, viewportTop + scrollTop);
 
@@ -2342,12 +2341,17 @@
             ancestors = ancestors.slice(fixedIndex);
         }
 
-        return [scrollEl].concat(ancestors.filter(function (parent) { return overflowRe.test(css(parent, 'overflow')) && (!scrollable || parent.scrollHeight > parent.clientHeight); })
+        return [scrollEl].concat(ancestors.filter(function (parent) { return overflowRe.test(css(parent, 'overflow')) && (!scrollable || parent.scrollHeight > getViewportClientHeight(parent)); })
         ).reverse();
     }
 
     function getViewport(scrollElement) {
         return scrollElement === getScrollingElement(scrollElement) ? window : scrollElement;
+    }
+
+    // iOS 12 returns <body> as scrollingElement
+    function getViewportClientHeight(scrollElement) {
+        return (scrollElement === getScrollingElement(scrollElement) ? document.documentElement : scrollElement).clientHeight;
     }
 
     function getScrollingElement(element) {
@@ -2650,7 +2654,8 @@
         scrollIntoView: scrollIntoView,
         scrolledOver: scrolledOver,
         scrollParents: scrollParents,
-        getViewport: getViewport
+        getViewport: getViewport,
+        getViewportClientHeight: getViewportClientHeight
     });
 
     function globalAPI (UIkit) {
@@ -3153,7 +3158,6 @@
 
         function normalizeData(ref, ref$1) {
             var data = ref.data;
-            var el = ref.el;
             var args = ref$1.args;
             var props = ref$1.props; if ( props === void 0 ) props = {};
 
@@ -3438,7 +3442,7 @@
     UIkit.data = '__uikit__';
     UIkit.prefix = 'uk-';
     UIkit.options = {};
-    UIkit.version = '3.6.15';
+    UIkit.version = '3.6.17';
 
     globalAPI(UIkit);
     hooksAPI(UIkit);
@@ -7399,10 +7403,9 @@
 
                     var ref$1 = scrollParents(this.targets, /auto|scroll/, true);
                     var scrollElement = ref$1[0];
-                    var clientHeight = scrollElement.clientHeight;
                     var scrollTop = scrollElement.scrollTop;
                     var scrollHeight = scrollElement.scrollHeight;
-                    var max = scrollHeight - clientHeight;
+                    var max = scrollHeight - getViewportClientHeight(scrollElement);
                     var active = false;
 
                     if (scrollTop === max) {
@@ -8430,6 +8433,8 @@
                     var nodes = children(target);
                     var newHeight = height(target);
 
+                    // Ensure Grid cells do not stretch when height is applied
+                    css(target, 'alignContent', 'flex-start');
                     height(target, oldHeight);
 
                     var transitionNodes = getTransitionNodes(target);
@@ -8446,7 +8451,7 @@
                     Promise.all(transitions).then(function () {
                         removeClass(target, clsEnter);
                         if (index === transitionIndex(target)) {
-                            css(target, 'height', '');
+                            css(target, {height: '', alignContent: ''});
                             css(nodes, {opacity: ''});
                             delete target.dataset.transition;
                         }
@@ -8678,7 +8683,7 @@
                 get: function(ref, $el) {
                     var attrItem = ref.attrItem;
 
-                    return $$(("[" + (this.attrItem) + "],[data-" + (this.attrItem) + "]"), $el);
+                    return $$(("[" + attrItem + "],[data-" + attrItem + "]"), $el);
                 },
 
                 watch: function() {
@@ -9226,12 +9231,10 @@
                     this.prevIndex = this.index;
                 }
 
-                // Workaround for iOS's inert scrolling preventing pointerdown event
-                // https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action
-                on(this.list, 'touchmove', this.move, {passive: false});
-
                 on(document, pointerMove, this.move, {passive: false});
-                on(document, (pointerUp + " " + pointerCancel), this.end, true);
+
+                // 'input' event is triggered by video controls
+                on(document, (pointerUp + " " + pointerCancel + " input"), this.end, true);
 
                 css(this.list, 'userSelect', 'none');
 
@@ -9246,6 +9249,9 @@
                 if (distance === 0 || this.prevPos === this.pos || !this.dragging && Math.abs(distance) < this.threshold) {
                     return;
                 }
+
+                // prevent click event
+                css(this.list, 'pointerEvents', 'none');
 
                 e.cancelable && e.preventDefault();
 
@@ -9313,9 +9319,8 @@
 
             end: function() {
 
-                off(this.list, 'touchmove', this.move, {passive: false});
                 off(document, pointerMove, this.move, {passive: false});
-                off(document, (pointerUp + " " + pointerCancel), this.end, true);
+                off(document, (pointerUp + " " + pointerCancel + " input"), this.end, true);
 
                 if (this.dragging) {
 
@@ -9808,7 +9813,7 @@
             caption: function(ref, $el) {
                 var selCaption = ref.selCaption;
 
-                return $('.uk-lightbox-caption', $el);
+                return $(selCaption, $el);
             }
 
         },
@@ -9835,7 +9840,7 @@
 
                 handler: function(e) {
 
-                    if (e.defaultPrevented || Transition.inProgress(e.target)) {
+                    if (e.defaultPrevented) {
                         return;
                     }
 
@@ -11003,8 +11008,6 @@
             },
 
             maxIndex: function() {
-                var this$1 = this;
-
 
                 if (!this.finite || this.center && !this.sets) {
                     return this.length - 1;
@@ -11014,10 +11017,18 @@
                     return last(this.sets);
                 }
 
-                css(this.slides, 'order', '');
-
+                var lft = 0;
                 var max = getMax(this.list);
-                var index = findIndex(this.slides, function (el) { return getElLeft(el, this$1.list) >= max; });
+                var index = findIndex(this.slides, function (el) {
+
+                    if (lft >= max) {
+                        return true;
+                    }
+
+                    lft += dimensions(el).width;
+
+                });
+
                 return ~index ? index : this.length - 1;
             },
 
@@ -11103,8 +11114,10 @@
 
                 var actives = this._getTransitioner(this.index).getActives();
                 this.slides.forEach(function (slide) { return toggleClass(slide, this$1.clsActive, includes(actives, slide)); });
-                (!this.sets || includes(this.sets, toFloat(this.index))) && this.slides.forEach(function (slide) { return toggleClass(slide, this$1.clsActivated, includes(actives, slide)); });
 
+                if (this.clsActivated && (!this.sets || includes(this.sets, toFloat(this.index)))) {
+                    this.slides.forEach(function (slide) { return toggleClass(slide, this$1.clsActivated || '', includes(actives, slide)); });
+                }
             },
 
             events: ['resize']
