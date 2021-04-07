@@ -2636,11 +2636,30 @@ select.uk-form-width-xsmall {
 
 /* Badge
  ========================================================================== */
+/*
+ * 1. Position
+ * 2. Size
+ * 3. Style
+ * 4. Center child vertically
+ */
 .uk-card-badge {
+  /* 1 */
   position: absolute;
   top: 30px;
   right: 30px;
-  z-index: 1; }
+  z-index: 1;
+  /* 2 */
+  height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* 3 */
+  background: #1e87f0;
+  color: #fff;
+  font-size: 0.875rem;
+  /* 4 */
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 /*
  * Remove margin from adjacent element
@@ -3967,19 +3986,21 @@ select.uk-form-width-xsmall {
  ========================================================================== */
 /*
  * 1. Let items take content dimensions (0 0 auto)
- * 2. Create position context
- * 3. Disable horizontal panning gestures in IE11 and Edge
- * 4. Suppress outline on focus
+ *    `max-width` needed to keep image responsiveness and prevent content overflow
+ * 3. Create position context
+ * 4. Disable horizontal panning gestures in IE11 and Edge
+ * 5. Suppress outline on focus
  */
 .uk-slider-items > * {
   /* 1 */
   flex: none;
-  /* 2 */
-  position: relative;
+  max-width: 100%;
   /* 3 */
+  position: relative;
+  /* 4 */
   touch-action: pan-y; }
 
-/* 4 */
+/* 5 */
 .uk-slider-items > :focus {
   outline: none; }
 
@@ -8960,14 +8981,14 @@ iframe.uk-cover {
   transform: scale(1, 1); }
 
 .uk-transition-scale-down {
-  transform: scale(1.1, 1.1); }
+  transform: scale(1.03, 1.03); }
 
 /* Show */
 .uk-transition-toggle:hover .uk-transition-scale-up,
 .uk-transition-toggle:focus .uk-transition-scale-up,
 .uk-transition-active.uk-active .uk-transition-scale-up {
   opacity: 1;
-  transform: scale(1.1, 1.1); }
+  transform: scale(1.03, 1.03); }
 
 .uk-transition-toggle:hover .uk-transition-scale-down,
 .uk-transition-toggle:focus .uk-transition-scale-down,
