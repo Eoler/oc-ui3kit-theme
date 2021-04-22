@@ -2542,8 +2542,8 @@ select.uk-form-width-xsmall {
 .uk-card-badge {
   /* 1 */
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 15px;
+  right: 15px;
   z-index: 1;
   /* 2 */
   height: 30px;
@@ -8832,7 +8832,29 @@ iframe.uk-cover {
   .uk-card-secondary.uk-card-body .uk-link:hover,
   .uk-card-secondary > :not([class*='uk-card-media']) .uk-link:hover,
   .uk-overlay-primary .uk-link:hover,
-  .uk-offcanvas-bar .uk-link:hover {
+  .uk-offcanvas-bar .uk-link:hover,
+  .uk-light .uk-link-toggle:hover .uk-link,
+  .uk-section-primary:not(.uk-preserve-color) .uk-link-toggle:hover .uk-link,
+  .uk-section-secondary:not(.uk-preserve-color) .uk-link-toggle:hover .uk-link,
+  .uk-tile-primary:not(.uk-preserve-color) .uk-link-toggle:hover .uk-link,
+  .uk-tile-secondary:not(.uk-preserve-color) .uk-link-toggle:hover .uk-link,
+  .uk-card-primary.uk-card-body .uk-link-toggle:hover .uk-link,
+  .uk-card-primary > :not([class*='uk-card-media']) .uk-link-toggle:hover .uk-link,
+  .uk-card-secondary.uk-card-body .uk-link-toggle:hover .uk-link,
+  .uk-card-secondary > :not([class*='uk-card-media']) .uk-link-toggle:hover .uk-link,
+  .uk-overlay-primary .uk-link-toggle:hover .uk-link,
+  .uk-offcanvas-bar .uk-link-toggle:hover .uk-link,
+  .uk-light .uk-link-toggle:focus .uk-link,
+  .uk-section-primary:not(.uk-preserve-color) .uk-link-toggle:focus .uk-link,
+  .uk-section-secondary:not(.uk-preserve-color) .uk-link-toggle:focus .uk-link,
+  .uk-tile-primary:not(.uk-preserve-color) .uk-link-toggle:focus .uk-link,
+  .uk-tile-secondary:not(.uk-preserve-color) .uk-link-toggle:focus .uk-link,
+  .uk-card-primary.uk-card-body .uk-link-toggle:focus .uk-link,
+  .uk-card-primary > :not([class*='uk-card-media']) .uk-link-toggle:focus .uk-link,
+  .uk-card-secondary.uk-card-body .uk-link-toggle:focus .uk-link,
+  .uk-card-secondary > :not([class*='uk-card-media']) .uk-link-toggle:focus .uk-link,
+  .uk-overlay-primary .uk-link-toggle:focus .uk-link,
+  .uk-offcanvas-bar .uk-link-toggle:focus .uk-link {
     color: #fff; }
   .uk-light :not(pre) > code, .uk-section-primary:not(.uk-preserve-color) :not(pre) > code, .uk-section-secondary:not(.uk-preserve-color) :not(pre) > code, .uk-tile-primary:not(.uk-preserve-color) :not(pre) > code, .uk-tile-secondary:not(.uk-preserve-color) :not(pre) > code, .uk-card-primary.uk-card-body :not(pre) > code, .uk-card-primary > :not([class*='uk-card-media']) :not(pre) > code, .uk-card-secondary.uk-card-body :not(pre) > code, .uk-card-secondary > :not([class*='uk-card-media']) :not(pre) > code, .uk-overlay-primary :not(pre) > code, .uk-offcanvas-bar :not(pre) > code,
   .uk-light :not(pre) > kbd,

@@ -124,3 +124,5 @@
     - Upgraded UIkit framework to 3.6.18, updated NPM dependencies
 1.17.2:
     - Upgraded UIkit framework to 3.6.19, Modernizr to 3.11.6; updated SCSS variables
+1.18.0:
+    - Upgraded UIkit framework to 3.6.20, Modernizr to 3.11.7; added composer.json
