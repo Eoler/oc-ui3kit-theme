@@ -126,3 +126,5 @@
     - Upgraded UIkit framework to 3.6.19, Modernizr to 3.11.6; updated SCSS variables
 1.18.0:
     - Upgraded UIkit framework to 3.6.20, Modernizr to 3.11.7; added composer.json
+1.18.1:
+    - Upgraded UIkit framework to 3.6.21, updated SCSS variables
