@@ -1,12 +1,12 @@
 {
   "name": "oc-ui3kit-theme",
-  "version": "1.18.1",
+  "version": "1.19.0",
   "description": "Starter development template for building UIkit v3 themed OctoberCMS sites.",
   "author": "Danilo Cuculić <eoler@castus.me>",
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": ">=8.0 <=12.0"
+    "node": ">=10.0 <=14.0"
   },
   "main": "gulpfile.js",
   "paths": {
@@ -52,7 +52,7 @@
   "dependencies": {
     "modernizr": "^3.11.7",
     "autoprefixer": "^10.2.5",
-    "postcss": "^8.2.13",
+    "postcss": "^8.2.15",
     "postcss-csso": "^5.0.1",
     "uikit": "^3.6.21"
   },
