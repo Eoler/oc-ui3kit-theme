@@ -2687,7 +2687,7 @@ select.uk-form-width-xsmall {
 /* Hover modifier
  ========================================================================== */
 .uk-card-hover:not(.uk-card-default):not(.uk-card-primary):not(.uk-card-secondary):hover {
-  background: #fff;
+  background-color: #fff;
   box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16); }
 
 /* Style modifiers
@@ -2697,7 +2697,7 @@ select.uk-form-width-xsmall {
  * Note: Header and Footer are only implemented for the default style
  */
 .uk-card-default {
-  background: #fff;
+  background-color: #fff;
   color: #666;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }
 
@@ -2718,7 +2718,7 @@ select.uk-form-width-xsmall {
  * Primary
  */
 .uk-card-primary {
-  background: #1e87f0;
+  background-color: #1e87f0;
   color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }
 
@@ -2733,7 +2733,7 @@ select.uk-form-width-xsmall {
  * Secondary
  */
 .uk-card-secondary {
-  background: #222;
+  background-color: #222;
   color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }
 
@@ -5850,12 +5850,12 @@ ul.uk-nav-sub {
   border-bottom: none; }
 
 .uk-tab-left > * > a {
-  text-align: left;
+  justify-content: left;
   border-right: 1px solid transparent;
   border-bottom: none; }
 
 .uk-tab-right > * > a {
-  text-align: left;
+  justify-content: left;
   border-left: 1px solid transparent;
   border-bottom: none; }
 

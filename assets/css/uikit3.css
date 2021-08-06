@@ -2582,7 +2582,7 @@ select.uk-form-width-xsmall {
 /* Hover modifier
  ========================================================================== */
 .uk-card-hover:not(.uk-card-default):not(.uk-card-primary):not(.uk-card-secondary):hover {
-  background: #f8f8f8; }
+  background-color: #f8f8f8; }
 
 /* Style modifiers
  ========================================================================== */
@@ -2591,7 +2591,7 @@ select.uk-form-width-xsmall {
  * Note: Header and Footer are only implemented for the default style
  */
 .uk-card-default {
-  background: #f8f8f8;
+  background-color: #f8f8f8;
   color: #666; }
 
 .uk-card-default .uk-card-title {
@@ -2604,7 +2604,7 @@ select.uk-form-width-xsmall {
  * Primary
  */
 .uk-card-primary {
-  background: #1e87f0;
+  background-color: #1e87f0;
   color: #fff; }
 
 .uk-card-primary .uk-card-title {
@@ -2617,7 +2617,7 @@ select.uk-form-width-xsmall {
  * Secondary
  */
 .uk-card-secondary {
-  background: #222;
+  background-color: #222;
   color: #fff; }
 
 .uk-card-secondary .uk-card-title {
@@ -5506,10 +5506,10 @@ ul.uk-nav-sub {
   padding-left: 0; }
 
 .uk-tab-left > * > a {
-  text-align: left; }
+  justify-content: left; }
 
 .uk-tab-right > * > a {
-  text-align: left; }
+  justify-content: left; }
 
 /* ========================================================================
    Component: Slidenav
