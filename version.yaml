@@ -139,4 +139,6 @@
 1.20.2:
     - Upgraded UIkit framework to 3.7.3, updated SCSS variables and NPM dependencies
 1.20.3:
-    - Upgraded UIkit framework to 3.7.3, rebuilt assets
+    - Upgraded UIkit framework to 3.7.4, rebuilt assets
+1.20.4:
+    - Upgraded UIkit framework to 3.7.5, updated NPM dependencies
