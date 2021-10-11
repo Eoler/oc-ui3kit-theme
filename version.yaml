@@ -142,3 +142,5 @@
     - Upgraded UIkit framework to 3.7.4, rebuilt assets
 1.20.4:
     - Upgraded UIkit framework to 3.7.5, updated NPM dependencies
+1.20.5:
+    - Upgraded UIkit framework to 3.7.6, rebuilt assets
