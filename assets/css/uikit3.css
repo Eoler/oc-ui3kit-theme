@@ -460,7 +460,8 @@ template {
 /* Muted
  ========================================================================== */
 a.uk-link-muted,
-.uk-link-muted a {
+.uk-link-muted a,
+.uk-link-toggle .uk-link-muted {
   color: #999; }
 
 a.uk-link-muted:hover,
@@ -471,7 +472,8 @@ a.uk-link-muted:hover,
 /* Text
  ========================================================================== */
 a.uk-link-text,
-.uk-link-text a {
+.uk-link-text a,
+.uk-link-toggle .uk-link-text {
   color: inherit; }
 
 a.uk-link-text:hover,
@@ -482,7 +484,8 @@ a.uk-link-text:hover,
 /* Heading
  ========================================================================== */
 a.uk-link-heading,
-.uk-link-heading a {
+.uk-link-heading a,
+.uk-link-toggle .uk-link-heading {
   color: inherit; }
 
 a.uk-link-heading:hover,
@@ -744,7 +747,7 @@ a.uk-link-reset,
   counter-increment: decimal; }
 
 [class*='uk-list'] > ::before {
-  content: '';
+  content: "";
   position: relative;
   left: -30px;
   width: 30px;
@@ -3199,6 +3202,7 @@ select.uk-form-width-xsmall {
   background: transparent;
   font-size: 1.5rem; }
 
+/* Focus */
 /*
  * Icon
  */
@@ -3224,6 +3228,7 @@ select.uk-form-width-xsmall {
   background: transparent;
   font-size: 2.625rem; }
 
+/* Focus */
 /*
  * Icon
  */
@@ -6652,6 +6657,18 @@ ul.uk-nav-sub {
     flex: 1;
     min-width: 1px; } }
 
+/* Intrinsic Widths
+ ========================================================================== */
+.uk-width-max-content {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content; }
+
+.uk-width-min-content {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content; }
+
 /* ========================================================================
    Component: Height
  ========================================================================== */
@@ -7055,13 +7072,13 @@ td.uk-text-break {
  ========================================================================== */
 /*
  * Works with iframes and embedded content
- * 1. Apply transform instantly. Needed if transform is transitioned.
+ * 1. Use attribute to apply transform instantly. Needed if transform is transitioned.
  * 2. Reset responsiveness for embedded content
  * 3. Center object
  * Note: Percent values on the `top` property only works if this element
  *       is absolute positioned or if the container has a height
  */
-.uk-cover,
+/* 1 */
 [uk-cover] {
   /* 2 */
   max-width: none;
@@ -7519,6 +7536,12 @@ iframe.uk-cover {
   /* 3 */
   max-width: none; }
 
+/*
+ * Fix initial iframe width. Without the viewport is expanded on iOS devices
+ */
+[uk-responsive] {
+  max-width: 100%; }
+
 /* Border
  ========================================================================== */
 .uk-border-circle {
@@ -7583,7 +7606,7 @@ iframe.uk-cover {
     max-width: 100%;
     vertical-align: middle; }
   .uk-box-shadow-bottom::after {
-    content: '';
+    content: "";
     /* 1 */
     position: absolute;
     bottom: -30px;
