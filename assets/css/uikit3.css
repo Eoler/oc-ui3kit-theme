@@ -700,7 +700,9 @@ a.uk-link-reset,
 /* Vertical
  ========================================================================== */
 .uk-divider-vertical {
-  width: 1px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   height: 100px;
   margin-left: auto;
   margin-right: auto;
@@ -7079,7 +7081,8 @@ td.uk-text-break {
  *       is absolute positioned or if the container has a height
  */
 /* 1 */
-[uk-cover] {
+[uk-cover],
+[data-uk-cover] {
   /* 2 */
   max-width: none;
   /* 3 */
@@ -7090,7 +7093,8 @@ td.uk-text-break {
   --uk-position-translate-y: -50%;
   transform: translate(var(--uk-position-translate-x), var(--uk-position-translate-y)); }
 
-iframe.uk-cover {
+iframe[uk-cover],
+iframe[data-uk-cover] {
   pointer-events: none; }
 
 /* Container
@@ -7539,7 +7543,8 @@ iframe.uk-cover {
 /*
  * Fix initial iframe width. Without the viewport is expanded on iOS devices
  */
-[uk-responsive] {
+[uk-responsive],
+[data-uk-responsive] {
   max-width: 100%; }
 
 /* Border

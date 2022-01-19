@@ -152,3 +152,5 @@
     - Upgraded UIkit framework to 3.9.3, updated SCSS variables
 1.23.0:
     - Upgraded UIkit framework to 3.10.0, updated SCSS variables and NPM dependencies
+1.23.1:
+    - Upgraded UIkit framework to 3.10.1, rebuilt assets
