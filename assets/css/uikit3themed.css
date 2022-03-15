@@ -3797,6 +3797,7 @@ select.uk-form-width-xsmall {
  * 2. Reset list
  * 3. Clip child elements
  * 4. Prevent displaying the callout information on iOS.
+ * 5. Disable horizontal panning gestures
  */
 .uk-slideshow-items {
   /* 1 */
@@ -3809,7 +3810,9 @@ select.uk-form-width-xsmall {
   /* 3 */
   overflow: hidden;
   /* 4 */
-  -webkit-touch-callout: none; }
+  -webkit-touch-callout: none;
+  /* 5 */
+  touch-action: pan-y; }
 
 /* Item
  ========================================================================== */
@@ -3868,12 +3871,15 @@ select.uk-form-width-xsmall {
 /*
  * 1. Optimize animation
  * 2. Create a containing block. In Safari it's neither created by `transform` nor `will-change`.
+ * 3. Disable horizontal panning gestures
  */
 .uk-slider-items {
   /* 1 */
   will-change: transform;
   /* 2 */
-  position: relative; }
+  position: relative;
+  /* 3 */
+  touch-action: pan-y; }
 
 /*
  * 1. Reset list style without interfering with grid

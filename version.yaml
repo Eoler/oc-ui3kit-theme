@@ -158,3 +158,5 @@
     - Upgraded UIkit framework to 3.11.1, updated NPM dependencies
 2.0.0:
     - "!!! Upgraded UIkit framework to 3.12.1, removed IE11 support, updated SCSS variables"
+2.0.1:
+    - Upgraded UIkit framework to 3.12.2, Modernizr to 3.12.0
