@@ -3201,7 +3201,7 @@ select.uk-form-width-xsmall {
   /* 2 */
   position: absolute;
   z-index: 1020;
-  --uk-position-margin-offset: 20px;
+  --uk-position-offset: 20px;
   /* 3 */
   box-sizing: border-box;
   width: 300px;
@@ -3231,7 +3231,7 @@ select.uk-form-width-xsmall {
   /* 2 */
   position: absolute;
   z-index: 1020;
-  --uk-position-margin-offset: 10px;
+  --uk-position-offset: 10px;
   /* 3 */
   box-sizing: border-box;
   min-width: 200px;
@@ -4038,7 +4038,7 @@ select.uk-form-width-xsmall {
   /* 2 */
   position: absolute;
   z-index: 1030;
-  --uk-position-margin-offset: 10px;
+  --uk-position-offset: 10px;
   /* 3 */
   top: 0;
   /* 4 */
@@ -4506,7 +4506,6 @@ select.uk-form-width-xsmall {
 * 1. Center content vertically, e.g. an icon
 * 2. Imitate white space gap when using flexbox
 * 3. Reset link
-* 4. Space is allocated solely based on content dimensions: 0 0 auto
  */
 .uk-nav li > a {
   /* 1 */
@@ -4517,10 +4516,6 @@ select.uk-form-width-xsmall {
   column-gap: 0.25em;
   /* 3*/
   text-decoration: none; }
-
-/* 4 */
-.uk-nav li > a > * {
-  flex: none; }
 
 /*
  * Items
@@ -4576,7 +4571,7 @@ ul.uk-nav-sub {
 
 /* Divider
  ========================================================================== */
-.uk-nav > .uk-nav-divider {
+.uk-nav .uk-nav-divider {
   margin: 5px 0; }
 
 /* Default modifier
@@ -4889,7 +4884,7 @@ ul.uk-nav-sub {
   /* 2 */
   position: absolute;
   z-index: 1020;
-  --uk-position-margin-offset: 0;
+  --uk-position-offset: 0px;
   /* 3 */
   box-sizing: border-box;
   width: 200px;
@@ -4945,9 +4940,9 @@ ul.uk-nav-sub {
  */
 .uk-navbar-dropdown-dropbar {
   /* 1 */
-  --uk-position-margin-offset: 0;
+  --uk-position-offset: 0px;
   /* 2 */
-  margin-bottom: 0;
+  margin-bottom: 0px;
   padding: 15px; }
 
 /* Dropdown Nav

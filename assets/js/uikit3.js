@@ -1,4 +1,4 @@
-/*! UIkit 3.13.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! UIkit 3.13.7 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -1014,8 +1014,8 @@
         const offsetBy = { height: scrollY, width: scrollX };
 
         for (const dir in dirs$1) {
-          for (const i in dirs$1[dir]) {
-            currentOffset[dirs$1[dir][i]] += offsetBy[dir];
+          for (const prop of dirs$1[dir]) {
+            currentOffset[prop] += offsetBy[dir];
           }
         }
       }
@@ -1459,9 +1459,7 @@
     }
 
     function observeIntersection(targets, cb, options, intersecting) {if (intersecting === void 0) {intersecting = true;}
-      return observe(
-      IntersectionObserver,
-      targets,
+      const observer = new IntersectionObserver(
       intersecting ?
       (entries, observer) => {
         if (entries.some((entry) => entry.isIntersecting)) {
@@ -1471,6 +1469,11 @@
       cb,
       options);
 
+      for (const el of toNodes(targets)) {
+        observer.observe(el);
+      }
+
+      return observer;
     }
 
     const hasResizeObserver = inBrowser && window.ResizeObserver;
@@ -2889,7 +2892,7 @@
     UIkit.data = '__uikit__';
     UIkit.prefix = 'uk-';
     UIkit.options = {};
-    UIkit.version = '3.13.4';
+    UIkit.version = '3.13.7';
 
     globalAPI(UIkit);
     hooksAPI(UIkit);
@@ -3521,7 +3524,7 @@
             offset(target)[axis === 'x' ? 'right' : 'bottom'] :
             0;
           }
-          offset$1 += toPx(getCssVar('position-margin-offset', element));
+          offset$1 = toPx(offset$1) + toPx(getCssVar('position-offset', element));
 
           const { x, y } = positionAt(
           element,
@@ -3876,7 +3879,7 @@
           const targetOffset = offset(this.target);
           const alignTo = this.boundaryAlign ? boundaryOffset : targetOffset;
 
-          if (this.align === 'justify') {
+          if (this.pos[1] === 'justify') {
             const prop = this.getAxis() === 'y' ? 'width' : 'height';
             css(this.$el, prop, alignTo[prop]);
           } else if (
@@ -4274,6 +4277,8 @@
     }
 
     var heightMatch = {
+      mixins: [Resize],
+
       args: 'target',
 
       props: {
@@ -4391,11 +4396,13 @@
           const box = boxModelAdjust(this.$el, 'height', 'content-box');
 
           if (this.expand) {
-            minHeight =
+            minHeight = Math.max(
             height(window) - (
             dimensions$1(document.documentElement).height -
             dimensions$1(this.$el).height) -
-            box || '';
+            box,
+            0);
+
           } else {
             // on mobile devices (iOS and Android) window.innerHeight !== 100vh
             minHeight = 'calc(100vh';
@@ -4881,25 +4888,6 @@
         }
       },
 
-      update: {
-        write(store) {
-          if (!this.observer || isImg(this.$el)) {
-            return false;
-          }
-
-          const srcset = data(this.$el, 'data-srcset');
-          if (srcset && window.devicePixelRatio !== 1) {
-            const bgSize = css(this.$el, 'backgroundSize');
-            if (bgSize.match(/^(auto\s?)+$/) || toFloat(bgSize) === store.bgSize) {
-              store.bgSize = getSourceSize(srcset, data(this.$el, 'sizes'));
-              css(this.$el, 'backgroundSize', store.bgSize + "px");
-            }
-          }
-        },
-
-        events: ['resize'] },
-
-
       methods: {
         load() {
           if (this._data.image) {
@@ -4987,43 +4975,6 @@
       }
 
       return sources.filter((source) => !isEmpty(source));
-    }
-
-    const sizesRe = /\s*(.*?)\s*(\w+|calc\(.*?\))\s*(?:,|$)/g;
-    function sizesToPixel(sizes) {
-      let matches;
-
-      sizesRe.lastIndex = 0;
-
-      while (matches = sizesRe.exec(sizes)) {
-        if (!matches[1] || window.matchMedia(matches[1]).matches) {
-          matches = evaluateSize(matches[2]);
-          break;
-        }
-      }
-
-      return matches || '100vw';
-    }
-
-    const sizeRe = /\d+(?:\w+|%)/g;
-    const additionRe = /[+-]?(\d+)/g;
-    function evaluateSize(size) {
-      return startsWith(size, 'calc') ?
-      size.
-      slice(5, -1).
-      replace(sizeRe, (size) => toPx(size)).
-      replace(/ /g, '').
-      match(additionRe).
-      reduce((a, b) => a + +b, 0) :
-      size;
-    }
-
-    const srcSetRe = /\s+\d+w\s*(?:,|$)/g;
-    function getSourceSize(srcset, sizes) {
-      const srcSize = toPx(sizesToPixel(sizes));
-      const descriptors = (srcset.match(srcSetRe) || []).map(toFloat).sort((a, b) => a - b);
-
-      return descriptors.filter((size) => size >= srcSize)[0] || descriptors.pop() || '';
     }
 
     function ensureSrcAttribute(el) {
@@ -10071,7 +10022,7 @@
         selItem: '!li' },
 
 
-      connected() {
+      beforeConnect() {
         this.item = query(this.selItem, this.$el);
       },
 
@@ -10913,6 +10864,8 @@
 
       methods: {
         async upload(files) {
+          files = toArray(files);
+
           if (!files.length) {
             return;
           }
@@ -10999,7 +10952,6 @@
     }
 
     function chunk(files, size) {
-      files = toArray(files);
       const chunks = [];
       for (let i = 0; i < files.length; i += size) {
         chunks.push(files.slice(i, i + size));
