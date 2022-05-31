@@ -1108,9 +1108,12 @@ button.uk-icon:not(:disabled) {
  ========================================================================== */
 /*
  * Link
+ * 1. Allow text within link
  */
 .uk-icon-link {
-  color: #999; }
+  color: #999;
+  /* 1 */
+  text-decoration: none !important; }
 
 .uk-icon-link:hover {
   color: #666; }
@@ -3202,10 +3205,10 @@ select.uk-form-width-xsmall {
   position: absolute;
   z-index: 1020;
   --uk-position-offset: 20px;
+  --uk-position-viewport-offset: 10;
   /* 3 */
   box-sizing: border-box;
-  width: 300px;
-  max-width: 100vw; }
+  width: 300px; }
 
 /* Show */
 .uk-drop.uk-open {
@@ -3232,6 +3235,7 @@ select.uk-form-width-xsmall {
   position: absolute;
   z-index: 1020;
   --uk-position-offset: 10px;
+  --uk-position-viewport-offset: 10;
   /* 3 */
   box-sizing: border-box;
   min-width: 200px;
@@ -3248,9 +3252,6 @@ select.uk-form-width-xsmall {
 /* Nav
  * Adopts `uk-nav`
  ========================================================================== */
-.uk-dropdown-nav {
-  white-space: nowrap; }
-
 /*
  * Items
  */
@@ -3261,6 +3262,12 @@ select.uk-form-width-xsmall {
 .uk-dropdown-nav > li > a:hover,
 .uk-dropdown-nav > li.uk-active > a {
   color: #666; }
+
+/*
+ * Subtitle
+ */
+.uk-dropdown-nav .uk-nav-subtitle {
+  font-size: 0.875rem; }
 
 /*
  * Header
@@ -3616,17 +3623,20 @@ select.uk-form-width-xsmall {
    Component: Sticky
  ========================================================================== */
 /*
- * Create position context so it's t the same like when fixed.
+ * 1. Create position context so it's t the same like when fixed.
+ * 2. More robust if padding and border are used and the sticky height is transitioned
  */
 .uk-sticky {
-  position: relative; }
+  /* 1 */
+  position: relative;
+  /* 2 */
+  box-sizing: border-box; }
 
 /*
  * 1. Force new layer to resolve frame rate issues on devices with lower frame rates
  */
 .uk-sticky-fixed {
   z-index: 980;
-  box-sizing: border-box;
   margin: 0 !important;
   /* 1 */
   -webkit-backface-visibility: hidden;
@@ -3642,6 +3652,13 @@ select.uk-form-width-xsmall {
 .uk-sticky.uk-animation-reverse {
   -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s; }
+
+/*
+ * Placeholder
+ * Make content clickable for sticky cover and reveal effects
+ */
+.uk-sticky-placeholder {
+  pointer-events: none; }
 
 /* ========================================================================
    Component: Off-canvas
@@ -4039,6 +4056,7 @@ select.uk-form-width-xsmall {
   position: absolute;
   z-index: 1030;
   --uk-position-offset: 10px;
+  --uk-position-viewport-offset: 10;
   /* 3 */
   top: 0;
   /* 4 */
@@ -4591,6 +4609,12 @@ ul.uk-nav-sub {
   color: #333; }
 
 /*
+ * Subtitle
+ */
+.uk-nav-default .uk-nav-subtitle {
+  font-size: 0.875rem; }
+
+/*
  * Header
  */
 .uk-nav-default .uk-nav-header {
@@ -4631,6 +4655,12 @@ ul.uk-nav-sub {
 /* Active */
 .uk-nav-primary > li.uk-active > a {
   color: #333; }
+
+/*
+ * Subtitle
+ */
+.uk-nav-primary .uk-nav-subtitle {
+  font-size: 1.25rem; }
 
 /*
  * Header
@@ -4867,6 +4897,16 @@ ul.uk-nav-sub {
 .uk-navbar-subtitle {
   font-size: 0.875rem; }
 
+/* Justify modifier
+ ========================================================================== */
+.uk-navbar-justify .uk-navbar-left,
+.uk-navbar-justify .uk-navbar-right,
+.uk-navbar-justify .uk-navbar-nav,
+.uk-navbar-justify .uk-navbar-nav > li,
+.uk-navbar-justify .uk-navbar-item,
+.uk-navbar-justify .uk-navbar-toggle {
+  flex-grow: 1; }
+
 /* Style modifiers
  ========================================================================== */
 /* Dropdown
@@ -4885,6 +4925,7 @@ ul.uk-nav-sub {
   position: absolute;
   z-index: 1020;
   --uk-position-offset: 0px;
+  --uk-position-viewport-offset: 10;
   /* 3 */
   box-sizing: border-box;
   width: 200px;
@@ -4941,9 +4982,12 @@ ul.uk-nav-sub {
 .uk-navbar-dropdown-dropbar {
   /* 1 */
   --uk-position-offset: 0px;
+  --uk-position-viewport-offset: 0;
   /* 2 */
   margin-bottom: 0px;
-  padding: 15px; }
+  /* 3 */
+  padding-left: 15px;
+  padding-right: 15px; }
 
 /* Dropdown Nav
  * Adopts `uk-nav`
@@ -4961,6 +5005,12 @@ ul.uk-nav-sub {
 /* Active */
 .uk-navbar-dropdown-nav > li.uk-active > a {
   color: #333; }
+
+/*
+ * Subtitle
+ */
+.uk-navbar-dropdown-nav .uk-nav-subtitle {
+  font-size: 0.875rem; }
 
 /*
  * Header
@@ -7302,6 +7352,9 @@ iframe[data-uk-cover] {
 .uk-resize {
   resize: both; }
 
+.uk-resize-horizontal {
+  resize: horizontal; }
+
 .uk-resize-vertical {
   resize: vertical; }
 
@@ -7575,7 +7628,7 @@ iframe[data-uk-cover] {
   text-decoration: none; }
 
 .uk-logo > :where(img, svg, video) {
-  display: block; }
+  display: inline-block; }
 
 .uk-logo-inverse {
   display: none; }
