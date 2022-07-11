@@ -8,21 +8,21 @@ fields:
         span: storm
         cssClass: col-md-3
         label: Version (build)
-        default: 210
+        default: 300
     brand_color:
         span: storm
         cssClass: col-xs-12
         label: Site brand color
         type: colorpicker
         default: '#1e87f0'
-        assetVar: 'global-primary-color'
+        assetVar: 'global-link-color'
     second_color:
         span: storm
         cssClass: col-xs-12
         label: Site background color
         type: colorpicker
         default: '#333'
-        assetVar: 'global-secondary-background'
+        assetVar: 'global-emphasis-color'
     socialinks:
         span: storm
         cssClass: col-xs-12

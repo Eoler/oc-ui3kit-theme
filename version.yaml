@@ -1,170 +1,172 @@
-1.0.0:
+v1.0.0:
     - Initial UI3kit theme (framework version 3.0.0-Beta.40) with Gulp build
-1.0.1:
+v1.0.1:
     - Upgraded Gulp build with image optimization task
-1.1.0:
+v1.1.0:
     - Refactored Gulp build to use NPM package configuration (with "not dead" browserslist)
-1.1.1:
+v1.1.1:
     - Added style guide
-1.2.0:
+v1.2.0:
     - Split themed framework build from core, added NPM scripts
-1.2.1:
+v1.2.1:
     - Reintroduced custom SCSS variables partial, added mixin override example
-1.2.2:
+v1.2.2:
     - Upgraded UIkit framework to 3.0.0-Beta.42, rebuilt assets
-1.3.0:
+v1.3.0:
     - Upgraded SCSS imports and UIkit framework to 3.0.0-RC.10, rebuilt assets
-1.4.0:
+v1.4.0:
     - Upgraded SCSS imports and UIkit framework to 3.0.0-RC.25, replaced gulp-imagemin with gulp-responsive
-1.4.1:
+v1.4.1:
     - Upgraded SCSS imports and UIkit framework to 3.0.0-RC.26
-1.5.0:
+v1.5.0:
     - Upgraded SCSS imports and UIkit framework to 3.0.2, removed Yarn
-1.5.1:
+v1.5.1:
     - Upgraded UIkit framework to 3.0.3, optimized asset loading
-1.6.0:
+v1.6.0:
     - Upgraded SCSS imports and UIkit framework to 3.1.3, updated deprecated styles
-1.6.1:
+v1.6.1:
     - Upgraded SCSS imports and UIkit framework to 3.1.4, documented gulp-include
-1.6.2:
+v1.6.2:
     - Upgraded SCSS imports and UIkit framework to 3.1.5, updated NPM dependencies
-1.6.3:
+v1.6.3:
     - Upgraded SCSS imports and UIkit framework to 3.1.6, updated build dependencies
-1.6.4:
+v1.6.4:
     - Upgraded UIkit framework to 3.1.7, updated NPM dependencies
-1.6.5:
+v1.6.5:
     - Upgraded UIkit framework to 3.1.9, updated NPM dependencies
-1.7.0:
+v1.7.0:
     - Upgraded UIkit framework to 3.2.0, updated SCSS variables
-1.7.1:
+v1.7.1:
     - Upgraded UIkit framework to 3.2.1, rebuilt assets
-1.8.0:
+v1.8.0:
     - Upgraded UIkit framework to 3.2.3, updated NodeJS and NPM dependencies
-1.8.1:
+v1.8.1:
     - Upgraded UIkit framework to 3.2.4, updated NPM dependencies
-1.8.2:
+v1.8.2:
     - Upgraded UIkit framework to 3.2.6, fixed BrowsersList override
-1.9.0:
+v1.9.0:
     - Replaced vendor Modernizr with NPM configuration and build script
-1.9.1:
+v1.9.1:
     - Upgraded UIkit framework to 3.2.7, rebuilt assets
-1.10.0:
+v1.10.0:
     - Upgraded UIkit framework to 3.3.0, rebuilt assets
-1.11.0:
+v1.11.0:
     - Upgraded UIkit framework to 3.3.1, Modernizr to 3.9.0; updated SCSS variables
-1.11.1:
+v1.11.1:
     - Upgraded UIkit framework to 3.3.2, Modernizr to 3.9.1
-1.11.2:
+v1.11.2:
     - Upgraded UIkit framework to 3.3.3, rebuilt assets
-1.11.3:
+v1.11.3:
     - Upgraded UIkit framework to 3.3.7, rebuilt assets
-1.12.0:
+v1.12.0:
     - Upgraded UIkit framework to 3.4.0, Modernizr to 3.10.0
-1.12.1:
+v1.12.1:
     - Upgraded UIkit framework to 3.4.1, rebuilt assets
-1.12.2:
+v1.12.2:
     - Upgraded UIkit framework to 3.4.2, rebuilt assets
-1.12.3:
+v1.12.3:
     - Upgraded UIkit framework to 3.4.4, Modernizr to 3.11.1
-1.12.4:
+v1.12.4:
     - Upgraded UIkit framework to 3.4.6, rebuilt assets
-1.13.0:
+v1.13.0:
     - Added social links; upgraded UIkit framework to 3.5.3, Modernizr to 3.11.2, NPM dependencies
-1.13.1:
+v1.13.1:
     - Upgraded UIkit framework to 3.5.4, rebuilt assets
-1.14.0:
+v1.14.0:
     - Upgraded UIkit framework to 3.5.5, Modernizr to 3.11.3; updated SCSS imports and variables
-1.14.1:
+v1.14.1:
     - Upgraded UIkit framework to 3.5.6, updated SCSS imports
-1.14.2:
+v1.14.2:
     - Upgraded UIkit framework to 3.5.7, updated NPM dependencies
-1.14.3:
+v1.14.3:
     - Upgraded UIkit framework to 3.5.8, updated SCSS variables
-1.14.4:
+v1.14.4:
     - Upgraded UIkit framework to 3.5.9, rebuilt assets
-1.15.0:
+v1.15.0:
     - Replaced Gulp CSS processing with PostCSS and plugins, upgraded UIkit to 3.5.10
-1.15.1:
+v1.15.1:
     - Updated NPM dependencies for NodeJS 12.x compatibility
-1.15.2:
+v1.15.2:
     - Upgraded UIkit framework to 3.5.11, updated NPM dependencies
-1.15.3:
+v1.15.3:
     - Upgraded UIkit framework to 3.5.12, rebuilt assets
-1.15.4:
+v1.15.4:
     - Upgraded UIkit framework to 3.5.13, updated NPM dependencies
-1.15.5:
+v1.15.5:
     - Upgraded UIkit framework to 3.5.14, rebuilt assets
-1.15.6:
+v1.15.6:
     - Upgraded UIkit framework to 3.5.16, rebuilt assets
-1.15.7:
+v1.15.7:
     - Upgraded UIkit framework to 3.5.17, rebuilt assets
-1.16.0:
+v1.16.0:
     - Upgraded UIkit framework to 3.6.0, updated NPM dependencies
-1.16.1:
+v1.16.1:
     - Upgraded UIkit framework to 3.6.1, rebuilt assets
-1.16.2:
+v1.16.2:
     - Upgraded UIkit framework to 3.6.5, rebuilt assets
-1.16.3:
+v1.16.3:
     - Upgraded UIkit framework to 3.6.6, updated NPM dependencies
-1.16.4:
+v1.16.4:
     - Upgraded UIkit framework to 3.6.7, rebuilt assets
-1.16.5:
+v1.16.5:
     - Upgraded UIkit framework to 3.6.9, updated NPM dependencies
-1.16.6:
+v1.16.6:
     - Upgraded UIkit framework to 3.6.11, rebuilt assets
-1.16.7:
+v1.16.7:
     - Upgraded UIkit framework to 3.6.13, updated NPM dependencies
-1.16.8:
+v1.16.8:
     - Upgraded UIkit framework to 3.6.14, rebuilt assets
-1.16.9:
+v1.16.9:
     - Upgraded UIkit framework to 3.6.16, updated NPM dependencies
-1.17.0:
+v1.17.0:
     - Upgraded UIkit framework to 3.6.17, rebuilt assets
-1.17.1:
+v1.17.1:
     - Upgraded UIkit framework to 3.6.18, updated NPM dependencies
-1.17.2:
+v1.17.2:
     - Upgraded UIkit framework to 3.6.19, Modernizr to 3.11.6; updated SCSS variables
-1.18.0:
+v1.18.0:
     - Upgraded UIkit framework to 3.6.20, Modernizr to 3.11.7; added composer.json
-1.18.1:
+v1.18.1:
     - Upgraded UIkit framework to 3.6.21, updated SCSS variables
-1.19.0:
+v1.19.0:
     - Updated NPM dependencies for NodeJS 14.x compatibility
-1.19.1:
+v1.19.1:
     - Upgraded UIkit framework to 3.6.22, rebuilt assets
-1.20.0:
+v1.20.0:
     - Upgraded UIkit framework to 3.7.1, updated SCSS variables and pinned compilation to LibSASS
-1.20.1:
+v1.20.1:
     - Upgraded UIkit framework to 3.7.2, rebuilt assets
-1.20.2:
+v1.20.2:
     - Upgraded UIkit framework to 3.7.3, updated SCSS variables and NPM dependencies
-1.20.3:
+v1.20.3:
     - Upgraded UIkit framework to 3.7.4, rebuilt assets
-1.20.4:
+v1.20.4:
     - Upgraded UIkit framework to 3.7.5, updated NPM dependencies
-1.20.5:
+v1.20.5:
     - Upgraded UIkit framework to 3.7.6, rebuilt assets
-1.21.0:
+v1.21.0:
     - Upgraded UIkit framework to 3.8.0, updated SCSS variables and NPM dependencies
-1.21.1:
+v1.21.1:
     - Upgraded UIkit framework to 3.8.1, rebuilt assets
-1.22.0:
+v1.22.0:
     - Upgraded UIkit framework to 3.9.3, updated SCSS variables
-1.23.0:
+v1.23.0:
     - Upgraded UIkit framework to 3.10.0, updated SCSS variables and NPM dependencies
-1.23.1:
+v1.23.1:
     - Upgraded UIkit framework to 3.10.1, rebuilt assets
-1.24.0:
+v1.24.0:
     - Upgraded UIkit framework to 3.11.1, updated NPM dependencies
-2.0.0:
+v2.0.0:
     - Upgraded UIkit framework to 3.12.1, removed IE11 support, updated SCSS variables
-2.0.1:
+v2.0.1:
     - Upgraded UIkit framework to 3.12.2, Modernizr to 3.12.0
-2.0.2:
+v2.0.2:
     - Upgraded UIkit framework to 3.13.1, rebuilt assets
-2.0.3:
+v2.0.3:
     - Upgraded UIkit framework to 3.13.4, updated SCSS variables
-2.0.4:
+v2.0.4:
     - Upgraded UIkit framework to 3.13.7, rebuilt assets
-2.1.0:
+v2.1.0:
     - Upgraded UIkit framework to 3.14.3, updated SCSS variables
+v3.0.0:
+    - Upgraded UIkit framework to 3.15.0, updated imports, removed responsive images Gulp task
