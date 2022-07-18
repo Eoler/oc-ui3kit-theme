@@ -14,8 +14,28 @@ description = "Catalog of UIkit widgets."
                 <ul class="uk-navbar-nav">
                     <li class="uk-active"><a href="#">Active</a></li>
                     <li>
-                        <a href="#">Parent</a>
+                        <a href="#">Dropdown <span uk-navbar-parent-icon></span></a>
                         <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li class="uk-parent">
+                                    <a href="#">Parent</a>
+                                    <ul class="uk-nav-sub">
+                                        <li><a href="#">Sub item</a></li>
+                                        <li><a href="#">Sub item</a></li>
+                                    </ul>
+                                </li>
+                                <li class="uk-nav-header">Header</li>
+                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
+                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">Dropbar <span uk-navbar-parent-icon></span></a>
+                        <div class="uk-dropbar uk-dropbar-top" uk-drop="pos: bottom-left; stretch: x; target-y: !.uk-navbar-container; animation: slide-top; animate-out: true">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li class="uk-active"><a href="#">Active</a></li>
                                 <li class="uk-parent">
@@ -173,6 +193,9 @@ description = "Catalog of UIkit widgets."
                         <div>
                             <a class="uk-button uk-button-text" href="#">5 Comments</a>
                         </div>
+                        <div>
+                            <a class="uk-button uk-button-link" href="#">Button Link</a>
+                        </div>
                     </div>
 
                 </article>
@@ -181,7 +204,7 @@ description = "Catalog of UIkit widgets."
 
                 <ul class="uk-comment-list uk-margin-medium">
                     <li>
-                        <article class="uk-comment uk-visible-toggle">
+                        <article class="uk-comment uk-visible-toggle" tabindex="-1">
                             <header class="uk-comment-header uk-position-relative">
                                 <div class="uk-grid-medium uk-flex-middle" uk-grid>
                                     <div class="uk-width-auto">
@@ -227,10 +250,10 @@ description = "Catalog of UIkit widgets."
                     </form>
                 </div>
 
-                <ul class="uk-nav-default uk-nav-parent-icon uk-margin-medium" uk-nav>
+                <ul class="uk-nav-default uk-margin-medium" uk-nav>
                     <li class="uk-active"><a href="#">Active</a></li>
                     <li class="uk-parent">
-                        <a href="#">Parent</a>
+                        <a href="#">Parent <span uk-nav-parent-icon></span></a>
                         <ul class="uk-nav-sub">
                             <li><a href="#">Sub item</a></li>
                             <li><a href="#">Sub item</a>
@@ -242,7 +265,7 @@ description = "Catalog of UIkit widgets."
                         </ul>
                     </li>
                     <li class="uk-parent">
-                        <a href="#">Parent</a>
+                        <a href="#">Parent <span uk-nav-parent-icon></span></a>
                         <ul class="uk-nav-sub">
                             <li><a href="#">Sub item</a></li>
                             <li><a href="#">Sub item</a></li>
@@ -550,7 +573,7 @@ description = "Catalog of UIkit widgets."
 
         <hr class="uk-margin-medium">
 
-        <div class="uk-grid-divider uk-child-width-expand@m" uk-grid>
+        <div class="uk-grid-divider uk-child-width-auto@m" uk-grid>
             <div>
 
                 <ul class="uk-subnav uk-subnav-divider" uk-margin>
@@ -575,6 +598,15 @@ description = "Catalog of UIkit widgets."
                     <li class="uk-active"><a href="#">Active</a></li>
                     <li><a href="#">Item</a></li>
                     <li class="uk-disabled"><a>Disabled</a></li>
+                </ul>
+
+            </div>
+            <div>
+
+                <ul class="uk-iconnav">
+                    <li class="uk-active"><a href="#" uk-icon="icon: plus"></a></li>
+                    <li><a href="#" uk-icon="icon: pencil"></a></li>
+                    <li><a href="#"><span uk-icon="icon: bag"></span> (2)</a></li>
                 </ul>
 
             </div>
@@ -793,10 +825,8 @@ description = "Catalog of UIkit widgets."
 
 {% put scripts %}
 <script>
-    var date = (new Date(Date.now() + 864e5 * 7)).toISOString();
-
-    UIkit.util.$$('[js-countdown]').forEach(function(el) {
-        UIkit.countdown(el, {date: date});
+    UIkit.countdown('[js-countdown]', {
+        date: (new Date(Date.now() + 864e5 * 7)).toISOString()
     });
 </script>
 {% endput %}
