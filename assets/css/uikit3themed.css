@@ -1454,14 +1454,9 @@ button.uk-icon:not(:disabled) {
 /*
  * Placeholder
  */
-.uk-input::-webkit-input-placeholder {
-  color: #999; }
 .uk-input::-moz-placeholder {
   color: #999; }
 .uk-input::placeholder {
-  color: #999; }
-
-.uk-textarea::-webkit-input-placeholder {
   color: #999; }
 
 .uk-textarea::-moz-placeholder {
@@ -3238,8 +3233,6 @@ select.uk-form-width-xsmall {
   outline: none; }
 
 /* Placeholder */
-.uk-search-input::-webkit-input-placeholder {
-  color: #999; }
 .uk-search-input::-moz-placeholder {
   color: #999; }
 .uk-search-input::placeholder {
@@ -5124,7 +5117,7 @@ ul.uk-nav-sub {
  * Divider
  * Naming is in plural to prevent conflicts with divider sub object.
  */
-.uk-nav.uk-nav-divider > :not(.uk-nav-divider) + :not(.uk-nav-header):not(.uk-nav-divider) {
+.uk-nav.uk-nav-divider > :not(.uk-nav-header):not(.uk-nav-divider) + :not(.uk-nav-header):not(.uk-nav-divider) {
   margin-top: 5px;
   padding-top: 5px;
   border-top: 1px solid #e5e5e5; }
@@ -9630,13 +9623,9 @@ iframe[data-uk-cover] {
       background-color: rgba(255, 255, 255, 0.15);
       color: rgba(255, 255, 255, 0.7);
       border-color: rgba(255, 255, 255, 0.7); }
-  .uk-light .uk-input::-webkit-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input::-webkit-input-placeholder, .uk-card-primary.uk-card-body .uk-input::-webkit-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input::-webkit-input-placeholder, .uk-card-secondary.uk-card-body .uk-input::-webkit-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input::-webkit-input-placeholder, .uk-overlay-primary .uk-input::-webkit-input-placeholder, .uk-offcanvas-bar .uk-input::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-input::-moz-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input::-moz-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input::-moz-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input::-moz-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input::-moz-placeholder, .uk-card-primary.uk-card-body .uk-input::-moz-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input::-moz-placeholder, .uk-card-secondary.uk-card-body .uk-input::-moz-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input::-moz-placeholder, .uk-overlay-primary .uk-input::-moz-placeholder, .uk-offcanvas-bar .uk-input::-moz-placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-input::placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-input::placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-input::placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-input::placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-input::placeholder, .uk-card-primary.uk-card-body .uk-input::placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-input::placeholder, .uk-card-secondary.uk-card-body .uk-input::placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-input::placeholder, .uk-overlay-primary .uk-input::placeholder, .uk-offcanvas-bar .uk-input::placeholder {
-    color: rgba(255, 255, 255, 0.5); }
-  .uk-light .uk-textarea::-webkit-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::-webkit-input-placeholder, .uk-card-primary.uk-card-body .uk-textarea::-webkit-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-webkit-input-placeholder, .uk-card-secondary.uk-card-body .uk-textarea::-webkit-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-webkit-input-placeholder, .uk-overlay-primary .uk-textarea::-webkit-input-placeholder, .uk-offcanvas-bar .uk-textarea::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-textarea::-moz-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-textarea::-moz-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-textarea::-moz-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-textarea::-moz-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::-moz-placeholder, .uk-card-primary.uk-card-body .uk-textarea::-moz-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-moz-placeholder, .uk-card-secondary.uk-card-body .uk-textarea::-moz-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-moz-placeholder, .uk-overlay-primary .uk-textarea::-moz-placeholder, .uk-offcanvas-bar .uk-textarea::-moz-placeholder {
     color: rgba(255, 255, 255, 0.5); }
@@ -9867,8 +9856,6 @@ iframe[data-uk-cover] {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-search-input, .uk-section-primary:not(.uk-preserve-color) .uk-search-input, .uk-section-secondary:not(.uk-preserve-color) .uk-search-input, .uk-tile-primary:not(.uk-preserve-color) .uk-search-input, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-input, .uk-card-primary.uk-card-body .uk-search-input, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-input, .uk-card-secondary.uk-card-body .uk-search-input, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-input, .uk-overlay-primary .uk-search-input, .uk-offcanvas-bar .uk-search-input {
     color: rgba(255, 255, 255, 0.7); }
-  .uk-light .uk-search-input::-webkit-input-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-search-input::-webkit-input-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-search-input::-webkit-input-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-search-input::-webkit-input-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-input::-webkit-input-placeholder, .uk-card-primary.uk-card-body .uk-search-input::-webkit-input-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-input::-webkit-input-placeholder, .uk-card-secondary.uk-card-body .uk-search-input::-webkit-input-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-input::-webkit-input-placeholder, .uk-overlay-primary .uk-search-input::-webkit-input-placeholder, .uk-offcanvas-bar .uk-search-input::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-search-input::-moz-placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-search-input::-moz-placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-search-input::-moz-placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-search-input::-moz-placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-input::-moz-placeholder, .uk-card-primary.uk-card-body .uk-search-input::-moz-placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-input::-moz-placeholder, .uk-card-secondary.uk-card-body .uk-search-input::-moz-placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-input::-moz-placeholder, .uk-overlay-primary .uk-search-input::-moz-placeholder, .uk-offcanvas-bar .uk-search-input::-moz-placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .uk-light .uk-search-input::placeholder, .uk-section-primary:not(.uk-preserve-color) .uk-search-input::placeholder, .uk-section-secondary:not(.uk-preserve-color) .uk-search-input::placeholder, .uk-tile-primary:not(.uk-preserve-color) .uk-search-input::placeholder, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-input::placeholder, .uk-card-primary.uk-card-body .uk-search-input::placeholder, .uk-card-primary > :not([class*='uk-card-media']) .uk-search-input::placeholder, .uk-card-secondary.uk-card-body .uk-search-input::placeholder, .uk-card-secondary > :not([class*='uk-card-media']) .uk-search-input::placeholder, .uk-overlay-primary .uk-search-input::placeholder, .uk-offcanvas-bar .uk-search-input::placeholder {

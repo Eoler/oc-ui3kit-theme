@@ -172,3 +172,5 @@
     - Upgraded UIkit framework to 3.15.0, updated imports, removed responsive images Gulp task
 3.0.1:
     - Upgraded UIkit framework to 3.15.1, updated style guide
+3.0.2:
+    - Upgraded UIkit framework to 3.15.3, updated SCSS variables

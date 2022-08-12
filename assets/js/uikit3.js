@@ -1,4 +1,4 @@
-/*! UIkit 3.15.1 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! UIkit 3.15.3 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -1492,7 +1492,7 @@
           return;
         }
         pendingResize = true;
-        fastdom.read(() => pendingResize = false);
+        requestAnimationFrame(() => pendingResize = false);
         for (const listener of listeners) {
           listener();
         }
@@ -2062,7 +2062,10 @@
       }
 
       if (boundary) {
-        viewport = getIntersectionArea(viewport, offset(boundary));
+        viewport = getIntersectionArea(
+        viewport,
+        offset(isArray(boundary) ? boundary[i] : boundary));
+
       }
 
       return viewport;
@@ -2727,7 +2730,7 @@
     function initChildListObserver(component) {
       const { el } = component.$options;
 
-      const observer = new MutationObserver(() => component.$emit());
+      const observer = new MutationObserver(() => component._callWatches());
       observer.observe(el, {
         childList: true,
         subtree: true });
@@ -2896,7 +2899,7 @@
         opt.install == null ? void 0 : opt.install(UIkit, opt, name);
 
         if (UIkit._initialized && !opt.functional) {
-          fastdom.read(() => UIkit[name]("[uk-" + id + "],[data-uk-" + id + "]"));
+          requestAnimationFrame(() => UIkit[name]("[uk-" + id + "],[data-uk-" + id + "]"));
         }
 
         return components[name] = isPlainObject(options) ? opt : options;
@@ -2942,7 +2945,7 @@
     UIkit.data = '__uikit__';
     UIkit.prefix = 'uk-';
     UIkit.options = {};
-    UIkit.version = '3.15.1';
+    UIkit.version = '3.15.3';
 
     globalAPI(UIkit);
     hooksAPI(UIkit);
@@ -2957,7 +2960,7 @@
         return;
       }
 
-      fastdom.read(function () {
+      requestAnimationFrame(function () {
         if (document.body) {
           apply(document.body, connect);
         }
@@ -3097,7 +3100,6 @@
             const done = () => {
               removeClass(el, cls);
               trigger(el, show ? 'shown' : 'hidden', [this]);
-              this.$update(el);
             };
 
             return promise ?
@@ -3142,7 +3144,6 @@
 
           if (changed) {
             trigger(el, 'toggled', [toggled, this]);
-            this.$update(el);
           }
         } } };
 
@@ -3404,7 +3405,7 @@
 
               if (show) {
                 const toggle = $(this.$props.toggle, el);
-                fastdom.read(() => {
+                requestAnimationFrame(() => {
                   if (!isInView(toggle)) {
                     scrollIntoView(toggle, { offset: this.offset });
                   }
@@ -3558,7 +3559,7 @@
 
 
       resizeTargets() {
-        return [this.$el, parent(this.$el)];
+        return [this.$el, getPositionedParent(this.$el) || parent(this.$el)];
       },
 
       update: {
@@ -4071,6 +4072,8 @@
         mode: 'list',
         toggle: Boolean,
         boundary: Boolean,
+        boundaryX: Boolean,
+        boundaryY: Boolean,
         target: Boolean,
         targetX: Boolean,
         targetY: Boolean,
@@ -4087,6 +4090,8 @@
         mode: ['click', 'hover'],
         toggle: '- *',
         boundary: false,
+        boundaryX: false,
+        boundaryY: false,
         target: false,
         targetX: false,
         targetY: false,
@@ -4103,7 +4108,14 @@
 
 
       computed: {
-        target(_ref, $el) {let { target, targetX, targetY } = _ref;
+        boundary(_ref, $el) {let { boundary, boundaryX, boundaryY } = _ref;
+          return [
+          query(boundaryX || boundary, $el) || window,
+          query(boundaryY || boundary, $el) || window];
+
+        },
+
+        target(_ref2, $el) {let { target, targetX, targetY } = _ref2;
           targetX = targetX || target || this.targetEl;
           targetY = targetY || target || this.targetEl;
 
@@ -4163,7 +4175,7 @@
           return 'a[href^="#"]';
         },
 
-        handler(_ref2) {let { defaultPrevented, current: { hash } } = _ref2;
+        handler(_ref3) {let { defaultPrevented, current: { hash } } = _ref3;
           if (!defaultPrevented && hash && !within(hash, this.$el)) {
             this.hide(false);
           }
@@ -4276,12 +4288,12 @@
           on(
           document,
           pointerDown$1,
-          (_ref3) => {let { target } = _ref3;return (
+          (_ref4) => {let { target } = _ref4;return (
               !within(target, this.$el) &&
               once(
               document,
               pointerUp$1 + " " + pointerCancel + " scroll",
-              (_ref4) => {let { defaultPrevented, type, target: newTarget } = _ref4;
+              (_ref5) => {let { defaultPrevented, type, target: newTarget } = _ref5;
                 if (
                 !defaultPrevented &&
                 type === pointerUp$1 &&
@@ -4343,7 +4355,7 @@
       {
         name: 'hide',
 
-        handler(_ref5) {let { target } = _ref5;
+        handler(_ref6) {let { target } = _ref6;
           if (this.$el !== target) {
             active =
             active === null && within(target, this.$el) && this.isToggled() ?
@@ -4440,8 +4452,6 @@
           // Ensure none positioned element does not generate scrollbars
           this.$el.hidden = true;
 
-          const boundary = query(this.boundary, this.$el);
-          const boundaryOffset = offset(boundary || window);
           const viewports = this.target.map((target) => offsetViewport(scrollParents(target)[0]));
           const viewportOffset = this.getViewportOffset(this.$el);
 
@@ -4454,7 +4464,7 @@
             if (this.axis !== axis && includes([axis, true], this.stretch)) {
               css(this.$el, {
                 [prop]: Math.min(
-                boundaryOffset[prop],
+                offset(this.boundary[i])[prop],
                 viewports[i][prop] - 2 * viewportOffset),
 
                 ["overflow-" + axis]: 'auto' });
@@ -4472,7 +4482,7 @@
 
           this.$el.hidden = false;
 
-          this.positionAt(this.$el, this.target, boundary);
+          this.positionAt(this.$el, this.target, this.boundary);
 
           for (const [i, [axis, prop, start, end]] of dirs) {
             if (this.axis === axis && includes([axis, true], this.stretch)) {
@@ -4485,17 +4495,17 @@
                 (targetOffset[start] > elOffset[start] ?
                 targetOffset[start] -
                 Math.max(
-                boundaryOffset[start],
+                offset(this.boundary[i])[start],
                 viewports[i][start] + viewportOffset) :
 
                 Math.min(
-                boundaryOffset[end],
+                offset(this.boundary[i])[end],
                 viewports[i][end] - viewportOffset) -
                 targetOffset[end]) - positionOffset,
                 ["overflow-" + axis]: 'auto' });
 
 
-              this.positionAt(this.$el, this.target, boundary);
+              this.positionAt(this.$el, this.target, this.boundary);
             }
           }
         } } };
@@ -6655,7 +6665,7 @@
     function unregisterClick(cmp) {
       components$2.delete(cmp);
 
-      if (!components$2.length) {
+      if (!components$2.size) {
         off(document, 'click', clickHandler);
       }
     }
@@ -6814,8 +6824,6 @@
           trigger(el, inview ? 'inview' : 'outview');
 
           state.inview = inview;
-
-          this.$update(el);
         } } };
 
     var scrollspyNav = {
@@ -7863,10 +7871,10 @@
 
       const wrapIndexFn = (fn) => () => index === transitionIndex(target) ? fn() : Promise.reject();
 
-      const leaveFn = wrapIndexFn(() => {
+      const leaveFn = wrapIndexFn(async () => {
         addClass(target, clsLeave);
 
-        return Promise.all(
+        await Promise.all(
         getTransitionNodes(target).map(
         (child, i) =>
         new Promise((resolve) =>
@@ -7875,14 +7883,16 @@
         Transition.start(child, propsOut, duration / 2, 'ease').then(
         resolve),
 
-        i * stagger)))).
+        i * stagger))));
 
 
 
-        then(() => removeClass(target, clsLeave));
+
+
+        removeClass(target, clsLeave);
       });
 
-      const enterFn = wrapIndexFn(() => {
+      const enterFn = wrapIndexFn(async () => {
         const oldHeight = height(target);
 
         addClass(target, clsEnter);
@@ -7891,53 +7901,42 @@
         css(children(target), { opacity: 0 });
 
         // Ensure UIkit updates have propagated
-        return new Promise((resolve) =>
-        requestAnimationFrame(() => {
-          const nodes = children(target);
-          const newHeight = height(target);
+        await awaitFrame$1();
 
-          // Ensure Grid cells do not stretch when height is applied
-          css(target, 'alignContent', 'flex-start');
-          height(target, oldHeight);
+        const nodes = children(target);
+        const newHeight = height(target);
 
-          const transitionNodes = getTransitionNodes(target);
-          css(nodes, propsOut);
+        // Ensure Grid cells do not stretch when height is applied
+        css(target, 'alignContent', 'flex-start');
+        height(target, oldHeight);
 
-          const transitions = transitionNodes.map(
-          (child, i) =>
-          new Promise((resolve) =>
-          setTimeout(
-          () =>
-          Transition.start(child, propsIn, duration / 2, 'ease').then(
-          resolve),
+        const transitionNodes = getTransitionNodes(target);
+        css(nodes, propsOut);
 
-          i * stagger)));
+        const transitions = transitionNodes.map(async (child, i) => {
+          await awaitTimeout(i * stagger);
+          await Transition.start(child, propsIn, duration / 2, 'ease');
+        });
 
-
-
-
-          if (oldHeight !== newHeight) {
-            transitions.push(
-            Transition.start(
-            target,
-            { height: newHeight },
-            duration / 2 + transitionNodes.length * stagger,
-            'ease'));
+        if (oldHeight !== newHeight) {
+          transitions.push(
+          Transition.start(
+          target,
+          { height: newHeight },
+          duration / 2 + transitionNodes.length * stagger,
+          'ease'));
 
 
+        }
+
+        await Promise.all(transitions).then(() => {
+          removeClass(target, clsEnter);
+          if (index === transitionIndex(target)) {
+            css(target, { height: '', alignContent: '' });
+            css(nodes, { opacity: '' });
+            delete target.dataset.transition;
           }
-
-          Promise.all(transitions).then(() => {
-            removeClass(target, clsEnter);
-            if (index === transitionIndex(target)) {
-              css(target, { height: '', alignContent: '' });
-              css(nodes, { opacity: '' });
-              delete target.dataset.transition;
-            }
-            resolve();
-          });
-        }));
-
+        });
       });
 
       return hasClass(target, clsLeave) ?
@@ -7979,63 +7978,62 @@
 
     }
 
-    function slide (action, target, duration) {
-      return new Promise((resolve) =>
-      requestAnimationFrame(() => {
-        let nodes = children(target);
+    function awaitFrame$1() {
+      return new Promise((resolve) => requestAnimationFrame(resolve));
+    }
 
-        // Get current state
-        const currentProps = nodes.map((el) => getProps(el, true));
-        const targetProps = css(target, ['height', 'padding']);
+    function awaitTimeout(timeout) {
+      return new Promise((resolve) => setTimeout(resolve, timeout));
+    }
 
-        // Cancel previous animations
-        Transition.cancel(target);
-        nodes.forEach(Transition.cancel);
+    async function slide (action, target, duration) {
+      await awaitFrame();
+
+      let nodes = children(target);
+
+      // Get current state
+      const currentProps = nodes.map((el) => getProps(el, true));
+      const targetProps = css(target, ['height', 'padding']);
+
+      // Cancel previous animations
+      Transition.cancel(target);
+      nodes.forEach(Transition.cancel);
+      reset(target);
+
+      // Adding, sorting, removing nodes
+      action();
+
+      // Find new nodes
+      nodes = nodes.concat(children(target).filter((el) => !includes(nodes, el)));
+
+      // Wait for update to propagate
+      await Promise.resolve();
+
+      // Force update
+      fastdom.flush();
+
+      // Get new state
+      const targetPropsTo = css(target, ['height', 'padding']);
+      const [propsTo, propsFrom] = getTransitionProps(target, nodes, currentProps);
+
+      // Reset to previous state
+      nodes.forEach((el, i) => propsFrom[i] && css(el, propsFrom[i]));
+      css(target, { display: 'block', ...targetProps });
+
+      // Start transitions on next frame
+      await awaitFrame();
+
+      const transitions = nodes.
+      map((el, i) => parent(el) === target && Transition.start(el, propsTo[i], duration, 'ease')).
+      concat(Transition.start(target, targetPropsTo, duration, 'ease'));
+
+      await Promise.all(transitions).then(() => {
+        nodes.forEach(
+        (el, i) =>
+        parent(el) === target && css(el, 'display', propsTo[i].opacity === 0 ? 'none' : ''));
+
         reset(target);
-
-        // Adding, sorting, removing nodes
-        action();
-
-        // Find new nodes
-        nodes = nodes.concat(children(target).filter((el) => !includes(nodes, el)));
-
-        // Wait for update to propagate
-        Promise.resolve().then(() => {
-          // Force update
-          fastdom.flush();
-
-          // Get new state
-          const targetPropsTo = css(target, ['height', 'padding']);
-          const [propsTo, propsFrom] = getTransitionProps(target, nodes, currentProps);
-
-          // Reset to previous state
-          nodes.forEach((el, i) => propsFrom[i] && css(el, propsFrom[i]));
-          css(target, { display: 'block', ...targetProps });
-
-          // Start transitions on next frame
-          requestAnimationFrame(() => {
-            const transitions = nodes.
-            map(
-            (el, i) =>
-            parent(el) === target &&
-            Transition.start(el, propsTo[i], duration, 'ease')).
-
-            concat(Transition.start(target, targetPropsTo, duration, 'ease'));
-
-            Promise.all(transitions).
-            then(() => {
-              nodes.forEach(
-              (el, i) =>
-              parent(el) === target &&
-              css(el, 'display', propsTo[i].opacity === 0 ? 'none' : ''));
-
-              reset(target);
-            }, noop).
-            then(resolve);
-          });
-        });
-      }));
-
+      }, noop);
     }
 
     function getProps(el, opacity) {
@@ -8114,6 +8112,10 @@
       return { top, left, height, width, marginLeft, marginTop, transform: '' };
     }
 
+    function awaitFrame() {
+      return new Promise((resolve) => requestAnimationFrame(resolve));
+    }
+
     var Animate = {
       props: {
         duration: Number,
@@ -8171,7 +8173,7 @@
           },
 
           watch() {
-            this.updateState();
+            this.$emit();
 
             if (this.selActive !== false) {
               const actives = $$(this.selActive, this.$el);
@@ -8189,12 +8191,18 @@
 
           watch(list, old) {
             if (old && !isEqualList(list, old)) {
-              this.updateState();
+              this.$emit();
             }
           },
 
           immediate: true } },
 
+
+
+      update: {
+        write() {
+          this.setState(this.getState(), false);
+        } },
 
 
       events: [
@@ -8236,25 +8244,18 @@
 
           trigger(this.$el, 'beforeFilter', [this, state]);
 
-          this.toggles.forEach((el) =>
-          toggleClass(el, this.cls, !!matchFilter(el, this.attrItem, state)));
-
+          for (const el of this.toggles) {
+            toggleClass(el, this.cls, !!matchFilter(el, this.attrItem, state));
+          }
 
           await Promise.all(
           $$(this.target, this.$el).map((target) => {
-            const filterFn = () => {
-              applyState(state, target, children(target));
-              this.$update(this.$el);
-            };
+            const filterFn = () => applyState(state, target, children(target));
             return animate ? this.animate(filterFn, target) : filterFn();
           }));
 
 
           trigger(this.$el, 'afterFilter', [this]);
-        },
-
-        updateState() {
-          fastdom.write(() => this.setState(this.getState(), false));
         } } };
 
 
@@ -8886,7 +8887,7 @@
           },
 
           watch() {
-            this.$reset();
+            this.$emit('resize');
           } },
 
 
@@ -8949,7 +8950,7 @@
             trigger(next, 'itemshown', [this]);
 
             return new Promise((resolve) => {
-              fastdom.write(() => {
+              requestAnimationFrame(() => {
                 stack.shift();
                 if (stack.length) {
                   this.show(stack.shift(), true);
@@ -10069,6 +10070,8 @@
 
           if (!~this.prevIndex || this.index !== index) {
             this.show(index);
+          } else {
+            this._translate(1, this.prevIndex, this.index);
           }
         },
 
