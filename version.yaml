@@ -174,3 +174,5 @@
     - Upgraded UIkit framework to 3.15.1, updated style guide
 3.0.2:
     - Upgraded UIkit framework to 3.15.3, updated SCSS variables
+3.0.3:
+    - Upgraded UIkit framework to 3.15.5, rebuilt assets
