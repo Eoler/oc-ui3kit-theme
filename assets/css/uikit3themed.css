@@ -682,6 +682,13 @@ a.uk-link-reset,
   list-style: none; }
 
 /*
+ * Avoid column break within the list item, when using `column-count`
+ */
+.uk-list > * {
+  -moz-column-break-inside: avoid;
+  break-inside: avoid-column; }
+
+/*
  * Remove margin from the last-child
  */
 .uk-list > * > :last-child {
