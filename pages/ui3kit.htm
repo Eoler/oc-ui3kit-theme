@@ -25,7 +25,7 @@ url = "/"
             </nav>
             <nav class="uk-flex uk-flex-between uk-margin-large-top">
                 <a href="https://getuikit.com/changelog"><span uk-icon="icon:table"></span> Changelog</a>
-            {% for social in this.theme.socialinks%}
+            {% for social in this.theme.socialinks %}
                 <a href="{{ social.link }}"><span uk-icon="icon:{{ social.icon }}"></span> {{ social.name }}</a>
             {% endfor %}
             </nav>

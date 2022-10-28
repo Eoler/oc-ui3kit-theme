@@ -2771,14 +2771,7 @@ select.uk-form-width-xsmall {
 /* SVG
  ========================================================================== */
 .uk-spinner > * {
-  -webkit-animation: uk-spinner-rotate 1.4s linear infinite;
   animation: uk-spinner-rotate 1.4s linear infinite; }
-
-@-webkit-keyframes uk-spinner-rotate {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(270deg); } }
 
 @keyframes uk-spinner-rotate {
   0% {
@@ -2793,20 +2786,9 @@ select.uk-form-width-xsmall {
   stroke-dasharray: 88px;
   stroke-dashoffset: 0;
   transform-origin: center;
-  -webkit-animation: uk-spinner-dash 1.4s ease-in-out infinite;
   animation: uk-spinner-dash 1.4s ease-in-out infinite;
   stroke-width: 1;
   stroke-linecap: round; }
-
-@-webkit-keyframes uk-spinner-dash {
-  0% {
-    stroke-dashoffset: 88px; }
-  50% {
-    stroke-dashoffset: 22px;
-    transform: rotate(135deg); }
-  100% {
-    stroke-dashoffset: 88px;
-    transform: rotate(450deg); } }
 
 @keyframes uk-spinner-dash {
   0% {
@@ -3979,11 +3961,9 @@ select.uk-form-width-xsmall {
  * Faster animations
  */
 .uk-sticky[class*='uk-animation-'] {
-  -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s; }
 
 .uk-sticky.uk-animation-reverse {
-  -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s; }
 
 /*
@@ -6300,7 +6280,6 @@ ul.uk-nav-sub {
    Component: Animation
  ========================================================================== */
 [class*='uk-animation-'] {
-  -webkit-animation: 0.5s ease-out both;
   animation: 0.5s ease-out both; }
 
 /* Animations
@@ -6309,95 +6288,75 @@ ul.uk-nav-sub {
  * Fade
  */
 .uk-animation-fade {
-  -webkit-animation-name: uk-fade;
   animation-name: uk-fade;
-  -webkit-animation-duration: 0.8s;
   animation-duration: 0.8s;
-  -webkit-animation-timing-function: linear;
   animation-timing-function: linear; }
 
 /*
  * Scale
  */
 .uk-animation-scale-up {
-  -webkit-animation-name: uk-fade, uk-scale-up;
   animation-name: uk-fade, uk-scale-up; }
 
 .uk-animation-scale-down {
-  -webkit-animation-name: uk-fade, uk-scale-down;
   animation-name: uk-fade, uk-scale-down; }
 
 /*
  * Slide
  */
 .uk-animation-slide-top {
-  -webkit-animation-name: uk-fade, uk-slide-top;
   animation-name: uk-fade, uk-slide-top; }
 
 .uk-animation-slide-bottom {
-  -webkit-animation-name: uk-fade, uk-slide-bottom;
   animation-name: uk-fade, uk-slide-bottom; }
 
 .uk-animation-slide-left {
-  -webkit-animation-name: uk-fade, uk-slide-left;
   animation-name: uk-fade, uk-slide-left; }
 
 .uk-animation-slide-right {
-  -webkit-animation-name: uk-fade, uk-slide-right;
   animation-name: uk-fade, uk-slide-right; }
 
 /*
  * Slide Small
  */
 .uk-animation-slide-top-small {
-  -webkit-animation-name: uk-fade, uk-slide-top-small;
   animation-name: uk-fade, uk-slide-top-small; }
 
 .uk-animation-slide-bottom-small {
-  -webkit-animation-name: uk-fade, uk-slide-bottom-small;
   animation-name: uk-fade, uk-slide-bottom-small; }
 
 .uk-animation-slide-left-small {
-  -webkit-animation-name: uk-fade, uk-slide-left-small;
   animation-name: uk-fade, uk-slide-left-small; }
 
 .uk-animation-slide-right-small {
-  -webkit-animation-name: uk-fade, uk-slide-right-small;
   animation-name: uk-fade, uk-slide-right-small; }
 
 /*
  * Slide Medium
  */
 .uk-animation-slide-top-medium {
-  -webkit-animation-name: uk-fade, uk-slide-top-medium;
   animation-name: uk-fade, uk-slide-top-medium; }
 
 .uk-animation-slide-bottom-medium {
-  -webkit-animation-name: uk-fade, uk-slide-bottom-medium;
   animation-name: uk-fade, uk-slide-bottom-medium; }
 
 .uk-animation-slide-left-medium {
-  -webkit-animation-name: uk-fade, uk-slide-left-medium;
   animation-name: uk-fade, uk-slide-left-medium; }
 
 .uk-animation-slide-right-medium {
-  -webkit-animation-name: uk-fade, uk-slide-right-medium;
   animation-name: uk-fade, uk-slide-right-medium; }
 
 /*
  * Kenburns
  */
 .uk-animation-kenburns {
-  -webkit-animation-name: uk-kenburns;
   animation-name: uk-kenburns;
-  -webkit-animation-duration: 15s;
   animation-duration: 15s; }
 
 /*
  * Shake
  */
 .uk-animation-shake {
-  -webkit-animation-name: uk-shake;
   animation-name: uk-shake; }
 
 /*
@@ -6408,9 +6367,7 @@ ul.uk-nav-sub {
  * To end simultaneously, `pathLength="1"` could be used, but it's not working in Safari yet.
  */
 .uk-animation-stroke {
-  -webkit-animation-name: uk-stroke;
   animation-name: uk-stroke;
-  -webkit-animation-duration: 2s;
   animation-duration: 2s;
   stroke-dasharray: var(--uk-animation-stroke); }
 
@@ -6418,19 +6375,16 @@ ul.uk-nav-sub {
  ========================================================================== */
 .uk-animation-reverse {
   animation-direction: reverse;
-  -webkit-animation-timing-function: ease-in;
   animation-timing-function: ease-in; }
 
 /* Duration modifier
  ========================================================================== */
 .uk-animation-fast {
-  -webkit-animation-duration: 0.1s;
   animation-duration: 0.1s; }
 
 /* Toggle animation based on the State of the Parent Element
  ========================================================================== */
 .uk-animation-toggle:not(:hover):not(:focus) [class*='uk-animation-'] {
-  -webkit-animation-name: none;
   animation-name: none; }
 
 /* Keyframes used by animation classes
@@ -6438,11 +6392,6 @@ ul.uk-nav-sub {
 /*
  * Fade
  */
-@-webkit-keyframes uk-fade {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
 @keyframes uk-fade {
   0% {
     opacity: 0; }
@@ -6452,20 +6401,9 @@ ul.uk-nav-sub {
 /*
  * Scale
  */
-@-webkit-keyframes uk-scale-up {
-  0% {
-    transform: scale(0.9); }
-  100% {
-    transform: scale(1); } }
 @keyframes uk-scale-up {
   0% {
     transform: scale(0.9); }
-  100% {
-    transform: scale(1); } }
-
-@-webkit-keyframes uk-scale-down {
-  0% {
-    transform: scale(1.1); }
   100% {
     transform: scale(1); } }
 
@@ -6478,20 +6416,9 @@ ul.uk-nav-sub {
 /*
  * Slide
  */
-@-webkit-keyframes uk-slide-top {
-  0% {
-    transform: translateY(-100%); }
-  100% {
-    transform: translateY(0); } }
 @keyframes uk-slide-top {
   0% {
     transform: translateY(-100%); }
-  100% {
-    transform: translateY(0); } }
-
-@-webkit-keyframes uk-slide-bottom {
-  0% {
-    transform: translateY(100%); }
   100% {
     transform: translateY(0); } }
 
@@ -6501,21 +6428,9 @@ ul.uk-nav-sub {
   100% {
     transform: translateY(0); } }
 
-@-webkit-keyframes uk-slide-left {
-  0% {
-    transform: translateX(-100%); }
-  100% {
-    transform: translateX(0); } }
-
 @keyframes uk-slide-left {
   0% {
     transform: translateX(-100%); }
-  100% {
-    transform: translateX(0); } }
-
-@-webkit-keyframes uk-slide-right {
-  0% {
-    transform: translateX(100%); }
   100% {
     transform: translateX(0); } }
 
@@ -6528,20 +6443,9 @@ ul.uk-nav-sub {
 /*
  * Slide Small
  */
-@-webkit-keyframes uk-slide-top-small {
-  0% {
-    transform: translateY(-10px); }
-  100% {
-    transform: translateY(0); } }
 @keyframes uk-slide-top-small {
   0% {
     transform: translateY(-10px); }
-  100% {
-    transform: translateY(0); } }
-
-@-webkit-keyframes uk-slide-bottom-small {
-  0% {
-    transform: translateY(10px); }
   100% {
     transform: translateY(0); } }
 
@@ -6551,21 +6455,9 @@ ul.uk-nav-sub {
   100% {
     transform: translateY(0); } }
 
-@-webkit-keyframes uk-slide-left-small {
-  0% {
-    transform: translateX(-10px); }
-  100% {
-    transform: translateX(0); } }
-
 @keyframes uk-slide-left-small {
   0% {
     transform: translateX(-10px); }
-  100% {
-    transform: translateX(0); } }
-
-@-webkit-keyframes uk-slide-right-small {
-  0% {
-    transform: translateX(10px); }
   100% {
     transform: translateX(0); } }
 
@@ -6578,20 +6470,9 @@ ul.uk-nav-sub {
 /*
  * Slide Medium
  */
-@-webkit-keyframes uk-slide-top-medium {
-  0% {
-    transform: translateY(-50px); }
-  100% {
-    transform: translateY(0); } }
 @keyframes uk-slide-top-medium {
   0% {
     transform: translateY(-50px); }
-  100% {
-    transform: translateY(0); } }
-
-@-webkit-keyframes uk-slide-bottom-medium {
-  0% {
-    transform: translateY(50px); }
   100% {
     transform: translateY(0); } }
 
@@ -6601,21 +6482,9 @@ ul.uk-nav-sub {
   100% {
     transform: translateY(0); } }
 
-@-webkit-keyframes uk-slide-left-medium {
-  0% {
-    transform: translateX(-50px); }
-  100% {
-    transform: translateX(0); } }
-
 @keyframes uk-slide-left-medium {
   0% {
     transform: translateX(-50px); }
-  100% {
-    transform: translateX(0); } }
-
-@-webkit-keyframes uk-slide-right-medium {
-  0% {
-    transform: translateX(50px); }
   100% {
     transform: translateX(0); } }
 
@@ -6628,11 +6497,6 @@ ul.uk-nav-sub {
 /*
  * Kenburns
  */
-@-webkit-keyframes uk-kenburns {
-  0% {
-    transform: scale(1); }
-  100% {
-    transform: scale(1.2); } }
 @keyframes uk-kenburns {
   0% {
     transform: scale(1); }
@@ -6642,27 +6506,6 @@ ul.uk-nav-sub {
 /*
  * Shake
  */
-@-webkit-keyframes uk-shake {
-  0%, 100% {
-    transform: translateX(0); }
-  10% {
-    transform: translateX(-9px); }
-  20% {
-    transform: translateX(8px); }
-  30% {
-    transform: translateX(-7px); }
-  40% {
-    transform: translateX(6px); }
-  50% {
-    transform: translateX(-5px); }
-  60% {
-    transform: translateX(4px); }
-  70% {
-    transform: translateX(-3px); }
-  80% {
-    transform: translateX(2px); }
-  90% {
-    transform: translateX(-1px); } }
 @keyframes uk-shake {
   0%, 100% {
     transform: translateX(0); }
@@ -6688,11 +6531,6 @@ ul.uk-nav-sub {
 /*
  * Stroke
  */
-@-webkit-keyframes uk-stroke {
-  0% {
-    stroke-dashoffset: var(--uk-animation-stroke); }
-  100% {
-    stroke-dashoffset: 0; } }
 @keyframes uk-stroke {
   0% {
     stroke-dashoffset: var(--uk-animation-stroke); }
