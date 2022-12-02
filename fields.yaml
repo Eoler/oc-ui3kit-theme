@@ -10,7 +10,7 @@ fields:
         cssClass: col-md-3
         spanClass: col-md-3
         label: Version (build)
-        default: 307
+        default: 308
     brand_color:
         span: storm #row
         cssClass: col-xs-12

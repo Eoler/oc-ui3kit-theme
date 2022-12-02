@@ -184,3 +184,5 @@
     - Upgraded UIkit framework to 3.15.11, improved compatibility with v2+ backend
 3.0.7:
     - Upgraded UIkit framework to 3.15.13, rebuilt assets
+3.0.8:
+    - Upgraded UIkit framework to 3.15.15, switched to native sticky
