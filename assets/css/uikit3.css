@@ -3195,93 +3195,6 @@ select.uk-form-width-xsmall {
   width: 100% !important; }
 
 /* ========================================================================
-   Component: Dropdown
- ========================================================================== */
-/*
- * 1. Hide by default
- * 2. Set position
- * 3. Set a default width
- * 4. Style
- */
-.uk-dropdown {
-  /* 1 */
-  display: none;
-  /* 2 */
-  position: absolute;
-  z-index: 1020;
-  --uk-position-offset: 10px;
-  --uk-position-viewport-offset: 15px;
-  /* 3 */
-  box-sizing: border-box;
-  min-width: 200px;
-  /* 4 */
-  padding: 15px;
-  background: #f8f8f8;
-  color: #666; }
-
-/* Show */
-.uk-dropdown.uk-open {
-  display: block; }
-
-/*
- * Remove margin from the last-child
- */
-.uk-dropdown > :last-child {
-  margin-bottom: 0; }
-
-/* Size modifier
- ========================================================================== */
-.uk-dropdown-large {
-  padding: 40px; }
-
-/* Nav
- * Adopts `uk-nav`
- ========================================================================== */
-/*
- * Items
- */
-.uk-dropdown-nav > li > a {
-  color: #999; }
-
-/* Hover + Active */
-.uk-dropdown-nav > li > a:hover,
-.uk-dropdown-nav > li.uk-active > a {
-  color: #666; }
-
-/*
- * Subtitle
- */
-.uk-dropdown-nav .uk-nav-subtitle {
-  font-size: 0.875rem; }
-
-/*
- * Header
- */
-.uk-dropdown-nav .uk-nav-header {
-  color: #333; }
-
-/*
- * Divider
- */
-.uk-dropdown-nav .uk-nav-divider {
-  border-top: 1px solid #e5e5e5; }
-
-/*
- * Sublists
- */
-.uk-dropdown-nav .uk-nav-sub a {
-  color: #999; }
-
-.uk-dropdown-nav .uk-nav-sub a:hover,
-.uk-dropdown-nav .uk-nav-sub li.uk-active > a {
-  color: #666; }
-
-/* Grid modifiers
- ========================================================================== */
-.uk-dropdown-stack .uk-dropdown-grid > * {
-  width: 100% !important; }
-
-/* ========================================================================
    Component: Dropbar
  ========================================================================== */
 /*
@@ -3671,19 +3584,22 @@ select.uk-form-width-xsmall {
  ========================================================================== */
 /*
  * 1. Create position context so it's t the same like when fixed.
+ * 2. Create stacking context already when not sticky to have the same context
+*     for position set to `sticky` and `relative`
  * 2. More robust if padding and border are used and the sticky height is transitioned
  */
 .uk-sticky {
   /* 1 */
   position: relative;
   /* 2 */
+  z-index: 980;
+  /* 3 */
   box-sizing: border-box; }
 
 /*
  * 1. Force new layer to resolve frame rate issues on devices with lower frame rates
  */
 .uk-sticky-fixed {
-  z-index: 980;
   margin: 0 !important;
   /* 1 */
   -webkit-backface-visibility: hidden;
@@ -5775,6 +5691,93 @@ ul.uk-nav-sub {
   padding-top: 10px; }
 
 /* ========================================================================
+   Component: Dropdown
+ ========================================================================== */
+/*
+ * 1. Hide by default
+ * 2. Set position
+ * 3. Set a default width
+ * 4. Style
+ */
+.uk-dropdown {
+  /* 1 */
+  display: none;
+  /* 2 */
+  position: absolute;
+  z-index: 1020;
+  --uk-position-offset: 10px;
+  --uk-position-viewport-offset: 15px;
+  /* 3 */
+  box-sizing: border-box;
+  min-width: 200px;
+  /* 4 */
+  padding: 15px;
+  background: #f8f8f8;
+  color: #666; }
+
+/* Show */
+.uk-dropdown.uk-open {
+  display: block; }
+
+/*
+ * Remove margin from the last-child
+ */
+.uk-dropdown > :last-child {
+  margin-bottom: 0; }
+
+/* Size modifier
+ ========================================================================== */
+.uk-dropdown-large {
+  padding: 40px; }
+
+/* Nav
+ * Adopts `uk-nav`
+ ========================================================================== */
+/*
+ * Items
+ */
+.uk-dropdown-nav > li > a {
+  color: #999; }
+
+/* Hover + Active */
+.uk-dropdown-nav > li > a:hover,
+.uk-dropdown-nav > li.uk-active > a {
+  color: #666; }
+
+/*
+ * Subtitle
+ */
+.uk-dropdown-nav .uk-nav-subtitle {
+  font-size: 0.875rem; }
+
+/*
+ * Header
+ */
+.uk-dropdown-nav .uk-nav-header {
+  color: #333; }
+
+/*
+ * Divider
+ */
+.uk-dropdown-nav .uk-nav-divider {
+  border-top: 1px solid #e5e5e5; }
+
+/*
+ * Sublists
+ */
+.uk-dropdown-nav .uk-nav-sub a {
+  color: #999; }
+
+.uk-dropdown-nav .uk-nav-sub a:hover,
+.uk-dropdown-nav .uk-nav-sub li.uk-active > a {
+  color: #666; }
+
+/* Grid modifiers
+ ========================================================================== */
+.uk-dropdown-stack .uk-dropdown-grid > * {
+  width: 100% !important; }
+
+/* ========================================================================
    Component: Lightbox
  ========================================================================== */
 /*
@@ -7501,7 +7504,7 @@ iframe[data-uk-cover] {
   -o-object-fit: scale-down;
   object-fit: scale-down; }
 
-/* 
+/*
  * Position
  */
 .uk-object-top-left {

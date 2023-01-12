@@ -1,35 +1,30 @@
 fields:
     site_name:
-        span: storm #row
-        cssClass: col-md-9
+        span: row
         spanClass: col-md-9
         label: Site name
         default: UI3kit
     version:
-        span: storm #row
-        cssClass: col-md-3
+        span: row
         spanClass: col-md-3
         label: Version (build)
-        default: 309
+        default: 310
     brand_color:
-        span: storm #row
-        cssClass: col-xs-12
+        span: row
         spanClass: col-xs-12
         label: Site brand color
         type: colorpicker
         default: '#1e87f0'
         assetVar: 'global-link-color'
     second_color:
-        span: storm #row
-        cssClass: col-xs-12
+        span: row
         spanClass: col-xs-12
         label: Site background color
         type: colorpicker
         default: '#333'
         assetVar: 'global-emphasis-color'
     socialinks:
-        span: storm #row
-        cssClass: col-xs-12
+        span: row
         spanClass: col-xs-12
         label: Links to social networks
         type: repeater
@@ -45,20 +40,17 @@ fields:
         form:
             fields:
                 name:
-                    span: storm #row
-                    cssClass: col-md-4
+                    span: row
                     spanClass: col-md-4
                     label: Name
                     type: text
                 icon:
-                    span: storm #row
-                    cssClass: col-md-2
+                    span: row
                     spanClass: col-md-2
                     label: Icon
                     type: text
                 link:
-                    span: storm #row
-                    cssClass: col-md-6
+                    span: row
                     spanClass: col-md-6
                     label: Link URL
                     type: text
