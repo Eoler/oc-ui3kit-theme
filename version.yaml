@@ -190,3 +190,5 @@
     - Upgraded UIkit framework to 3.15.18, increased supported iOS version
 3.1.0:
     - Upgraded UIkit framework to 3.15.21, updated imports and SCSS variables
+3.1.1:
+    - Upgraded UIkit framework to 3.15.24, updated SCSS variables

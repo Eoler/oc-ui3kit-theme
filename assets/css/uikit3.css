@@ -3270,7 +3270,6 @@ select.uk-form-width-xsmall {
   z-index: 1010;
   /* 3 */
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
   /* 4 */
   padding: 15px 15px;
   /* 5 */
@@ -3664,8 +3663,7 @@ select.uk-form-width-xsmall {
   padding: 20px 20px;
   background: #222;
   /* 3 */
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; }
+  overflow-y: auto; }
 
 /* Phone landscape and bigger */
 @media (min-width: 640px) {
@@ -5189,6 +5187,14 @@ ul.uk-nav-sub {
 /* Active */
 .uk-subnav > .uk-active > a {
   color: #333; }
+
+/* Parent icon modifier
+ ========================================================================== */
+.uk-subnav-parent-icon {
+  margin-left: 4px; }
+
+.uk-subnav > li > a[aria-expanded="true"] .uk-subnav-parent-icon {
+  transform: rotate(180deg); }
 
 /* Divider modifier
  ========================================================================== */
@@ -7323,7 +7329,6 @@ iframe[data-uk-cover] {
   padding: 10px;
   border: 1px solid #e5e5e5;
   overflow: auto;
-  -webkit-overflow-scrolling: touch;
   resize: both; }
 
 /* Clearfix
@@ -7368,8 +7373,7 @@ iframe[data-uk-cover] {
  * Enable scrollbars if content is clipped
  */
 .uk-overflow-auto {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch; }
+  overflow: auto; }
 
 .uk-overflow-auto > :last-child {
   margin-bottom: 0; }
