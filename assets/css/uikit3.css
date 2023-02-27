@@ -3194,32 +3194,33 @@ select.uk-form-width-xsmall {
 .uk-drop-stack .uk-drop-grid > * {
   width: 100% !important; }
 
+/* Parent icon
+ ========================================================================== */
+.uk-drop-parent-icon {
+  margin-left: 0.25em;
+  transition: transform 0.3s ease-out; }
+
+[aria-expanded="true"] > .uk-drop-parent-icon {
+  transform: rotateX(180deg); }
+
 /* ========================================================================
    Component: Dropbar
  ========================================================================== */
 /*
- * 1. Hide by default
- * 2. Set position
- * 3. Style
+ * Adopts `uk-drop`
+ * 1. Reset drop
+ * 2. Style
  */
 .uk-dropbar {
   --uk-position-offset: 0;
   --uk-position-shift-offset: 0;
   --uk-position-viewport-offset: 0;
   /* 1 */
-  display: none;
+  width: auto;
   /* 2 */
-  position: absolute;
-  z-index: 1020;
-  /* 3 */
-  box-sizing: border-box;
   padding: 15px 15px 15px 15px;
   background: #f8f8f8;
   color: #666; }
-
-/* Show */
-.uk-dropbar.uk-open {
-  display: block; }
 
 /*
  * Remove margin from the last-child
@@ -3247,6 +3248,24 @@ select.uk-form-width-xsmall {
 
 /* Direction modifier
  ========================================================================== */
+/* ========================================================================
+   Component: Dropnav
+ ========================================================================== */
+/*
+ * 1. Position
+ * 2. Reset dropbar
+ * 3. Width
+ */
+.uk-dropnav-dropbar {
+  /* 1 */
+  position: absolute;
+  z-index: 980;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+  left: 0;
+  right: 0; }
+
 /* ========================================================================
    Component: Modal
  ========================================================================== */
@@ -4528,10 +4547,11 @@ ul.uk-nav-sub {
 /* Parent icon
  ========================================================================== */
 .uk-nav-parent-icon {
-  margin-left: auto; }
+  margin-left: auto;
+  transition: transform 0.3s ease-out; }
 
-.uk-nav > li > a[aria-expanded="true"] .uk-nav-parent-icon {
-  transform: rotate(180deg); }
+.uk-nav > li.uk-open > a .uk-nav-parent-icon {
+  transform: rotateX(180deg); }
 
 /* Header
  ========================================================================== */
@@ -4740,7 +4760,7 @@ ul.uk-nav-sub {
 
 /* Parent icon  */
 .uk-nav-center .uk-nav-parent-icon {
-  margin-left: 4px; }
+  margin-left: 0.25em; }
 
 /* Style modifier
  ========================================================================== */
@@ -4905,10 +4925,11 @@ ul.uk-nav-sub {
 /* Parent icon modifier
  ========================================================================== */
 .uk-navbar-parent-icon {
-  margin-left: 4px; }
+  margin-left: 4px;
+  transition: transform 0.3s ease-out; }
 
 .uk-navbar-nav > li > a[aria-expanded="true"] .uk-navbar-parent-icon {
-  transform: rotate(180deg); }
+  transform: rotateX(180deg); }
 
 /* Item
  ========================================================================== */
@@ -4958,32 +4979,20 @@ ul.uk-nav-sub {
 /* Dropdown
  ========================================================================== */
 /*
- * Adopts `uk-dropdown`
- * 1. Hide by default
- * 2. Set position
- * 3. Set a default width
- * 4. Style
+ * Adopts `uk-drop`
+ * 1. Set a default width
+ * 2. Style
  */
 .uk-navbar-dropdown {
-  /* 1 */
-  display: none;
-  /* 2 */
-  position: absolute;
-  z-index: 1020;
   --uk-position-offset: 0;
   --uk-position-shift-offset: 0;
   --uk-position-viewport-offset: 15px;
-  /* 3 */
-  box-sizing: border-box;
+  /* 1 */
   width: 200px;
-  /* 4 */
+  /* 2 */
   padding: 15px;
   background: #f8f8f8;
   color: #666; }
-
-/* Show */
-.uk-navbar-dropdown.uk-open {
-  display: block; }
 
 /*
  * Remove margin from the last-child
@@ -4996,33 +5005,29 @@ ul.uk-nav-sub {
  * Adopts `uk-grid`
  */
 /* Gutter Horizontal */
-.uk-navbar-dropdown-grid {
+.uk-navbar-dropdown .uk-drop-grid {
   margin-left: -30px; }
 
-.uk-navbar-dropdown-grid > * {
+.uk-navbar-dropdown .uk-drop-grid > * {
   padding-left: 30px; }
 
 /* Gutter Vertical */
-.uk-navbar-dropdown-grid > .uk-grid-margin {
+.uk-navbar-dropdown .uk-drop-grid > .uk-grid-margin {
   margin-top: 30px; }
-
-/* Stack */
-.uk-navbar-dropdown-stack .uk-navbar-dropdown-grid > * {
-  width: 100% !important; }
 
 /*
  * Width modifier
  */
-.uk-navbar-dropdown-width-2:not(.uk-navbar-dropdown-stack) {
+.uk-navbar-dropdown-width-2:not(.uk-drop-stack) {
   width: 400px; }
 
-.uk-navbar-dropdown-width-3:not(.uk-navbar-dropdown-stack) {
+.uk-navbar-dropdown-width-3:not(.uk-drop-stack) {
   width: 600px; }
 
-.uk-navbar-dropdown-width-4:not(.uk-navbar-dropdown-stack) {
+.uk-navbar-dropdown-width-4:not(.uk-drop-stack) {
   width: 800px; }
 
-.uk-navbar-dropdown-width-5:not(.uk-navbar-dropdown-stack) {
+.uk-navbar-dropdown-width-5:not(.uk-drop-stack) {
   width: 1000px; }
 
 /*
@@ -5114,18 +5119,8 @@ ul.uk-nav-sub {
 /* Dropbar
  ========================================================================== */
 /*
- * 1. Reset dropbar
- * 2. Width
+ * Adopts `uk-dropnav-dropbar`
  */
-.uk-navbar-dropbar {
-  /* 1 */
-  display: block !important;
-  z-index: 980;
-  padding: 0;
-  /* 2 */
-  left: 0;
-  right: 0; }
-
 /* ========================================================================
    Component: Subnav
  ========================================================================== */
@@ -5187,14 +5182,6 @@ ul.uk-nav-sub {
 /* Active */
 .uk-subnav > .uk-active > a {
   color: #333; }
-
-/* Parent icon modifier
- ========================================================================== */
-.uk-subnav-parent-icon {
-  margin-left: 4px; }
-
-.uk-subnav > li > a[aria-expanded="true"] .uk-subnav-parent-icon {
-  transform: rotate(180deg); }
 
 /* Divider modifier
  ========================================================================== */
@@ -5700,30 +5687,22 @@ ul.uk-nav-sub {
    Component: Dropdown
  ========================================================================== */
 /*
- * 1. Hide by default
- * 2. Set position
- * 3. Set a default width
- * 4. Style
+ * Adopts `uk-drop`
+ * 1. Reset drop and let text expand the width instead of wrapping
+ * 2. Set a default width
+ * 3. Style
  */
 .uk-dropdown {
-  /* 1 */
-  display: none;
-  /* 2 */
-  position: absolute;
-  z-index: 1020;
   --uk-position-offset: 10px;
   --uk-position-viewport-offset: 15px;
-  /* 3 */
-  box-sizing: border-box;
+  /* 1 */
+  width: auto;
+  /* 2 */
   min-width: 200px;
-  /* 4 */
+  /* 3 */
   padding: 15px;
   background: #f8f8f8;
   color: #666; }
-
-/* Show */
-.uk-dropdown.uk-open {
-  display: block; }
 
 /*
  * Remove margin from the last-child
@@ -5735,6 +5714,36 @@ ul.uk-nav-sub {
  ========================================================================== */
 .uk-dropdown-large {
   padding: 40px; }
+
+/* Dropbar modifier
+ ========================================================================== */
+/*
+ * 1. Reset dropdown width to prevent to early shifting
+ * 2. Reset style
+ * 3. Padding
+ */
+.uk-dropdown-dropbar {
+  /* 1 */
+  width: auto;
+  /* 2 */
+  background: transparent;
+  /* 3 */
+  padding: 15px 0 15px 0;
+  --uk-position-viewport-offset: 15px; }
+
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .uk-dropdown-dropbar {
+    --uk-position-viewport-offset: 30px; } }
+
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .uk-dropdown-dropbar {
+    --uk-position-viewport-offset: 40px; } }
+
+.uk-dropdown-dropbar-large {
+  padding-top: 40px;
+  padding-bottom: 40px; }
 
 /* Nav
  * Adopts `uk-nav`
@@ -5777,11 +5786,6 @@ ul.uk-nav-sub {
 .uk-dropdown-nav .uk-nav-sub a:hover,
 .uk-dropdown-nav .uk-nav-sub li.uk-active > a {
   color: #666; }
-
-/* Grid modifiers
- ========================================================================== */
-.uk-dropdown-stack .uk-dropdown-grid > * {
-  width: 100% !important; }
 
 /* ========================================================================
    Component: Lightbox
