@@ -3485,6 +3485,9 @@ select.uk-form-width-xsmall {
     padding-left: 40px;
     padding-right: 40px; } }
 
+.uk-dropbar :focus-visible {
+  outline-color: #333 !important; }
+
 /* Size modifier
  ========================================================================== */
 .uk-dropbar-large {
@@ -5279,6 +5282,9 @@ ul.uk-nav-sub {
 .uk-navbar-dropdown > :last-child {
   margin-bottom: 0; }
 
+.uk-navbar-dropdown :focus-visible {
+  outline-color: #333 !important; }
+
 /*
  * Grid
  * Adopts `uk-grid`
@@ -6085,6 +6091,9 @@ ul.uk-nav-sub {
 .uk-dropdown > :last-child {
   margin-bottom: 0; }
 
+.uk-dropdown :focus-visible {
+  outline-color: #333 !important; }
+
 /* Size modifier
  ========================================================================== */
 .uk-dropdown-large {
@@ -6103,7 +6112,7 @@ ul.uk-nav-sub {
   /* 2 */
   background: transparent;
   /* 3 */
-  padding: 25px 0 25px 0;
+  padding: 5px 0 25px 0;
   --uk-position-viewport-offset: 15px;
   box-shadow: none; }
 
@@ -9058,25 +9067,45 @@ iframe[data-uk-cover] {
 /* Based on the State of the Parent Element
  ========================================================================== */
 /*
- * Can't use `display: none` nor `visibility: hidden` because both are not focusable.
+ * Mind that `display: none`, `visibility: hidden` and `opacity: 0`
+ * remove the element from the accessibility tree and that
+ * `display: none` and `visibility: hidden` are not focusable.
+ *
  * The target stays visible if any element within receives focus through keyboard.
  */
 /*
- * Discard space when hidden.
+ * Remove space when hidden.
+ * 1. Remove from document flow.
+ * 2. Hide element and shrink its dimension. Can't use zero dimensions together
+ *    with `overflow: hidden` it would remove it from the accessibility tree.
+ * 3. Hide the single rendered pixel.
+ * 4. Prevent text wrapping caused by `width: 1px` because it has side effects on vocalisation
+ *    by screen readers and the visual tracking indicator of other assistive technologies.
  */
+.uk-hidden-visually:not(:focus):not(:active):not(:focus-within),
 .uk-visible-toggle:not(:hover):not(:focus) .uk-hidden-hover:not(:focus-within) {
+  /* 1 */
   position: absolute !important;
-  width: 0 !important;
-  height: 0 !important;
+  /* 2 */
+  width: 1px !important;
+  height: 1px !important;
   padding: 0 !important;
+  border: 0 !important;
   margin: 0 !important;
-  overflow: hidden !important; }
+  overflow: hidden !important;
+  /* 3 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  /* 4 */
+  white-space: nowrap !important; }
 
 /*
  * Keep space when hidden.
+ * Hide element without shrinking its dimension.
  */
 .uk-visible-toggle:not(:hover):not(:focus) .uk-invisible-hover:not(:focus-within) {
-  opacity: 0 !important; }
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; }
 
 /* Based on Hover Capability of the Pointing Device
  ========================================================================== */
@@ -9285,8 +9314,6 @@ iframe[data-uk-cover] {
     color: rgba(255, 255, 255, 0.7); }
   .uk-light hr, .uk-section-primary:not(.uk-preserve-color) hr, .uk-section-secondary:not(.uk-preserve-color) hr, .uk-tile-primary:not(.uk-preserve-color) hr, .uk-tile-secondary:not(.uk-preserve-color) hr, .uk-card-primary.uk-card-body hr, .uk-card-primary > :not([class*='uk-card-media']) hr, .uk-card-secondary.uk-card-body hr, .uk-card-secondary > :not([class*='uk-card-media']) hr, .uk-overlay-primary hr, .uk-offcanvas-bar hr, .uk-light .uk-hr, .uk-section-primary:not(.uk-preserve-color) .uk-hr, .uk-section-secondary:not(.uk-preserve-color) .uk-hr, .uk-tile-primary:not(.uk-preserve-color) .uk-hr, .uk-tile-secondary:not(.uk-preserve-color) .uk-hr, .uk-card-primary.uk-card-body .uk-hr, .uk-card-primary > :not([class*='uk-card-media']) .uk-hr, .uk-card-secondary.uk-card-body .uk-hr, .uk-card-secondary > :not([class*='uk-card-media']) .uk-hr, .uk-overlay-primary .uk-hr, .uk-offcanvas-bar .uk-hr {
     border-top-color: rgba(255, 255, 255, 0.2); }
-  .uk-light :focus, .uk-section-primary:not(.uk-preserve-color) :focus, .uk-section-secondary:not(.uk-preserve-color) :focus, .uk-tile-primary:not(.uk-preserve-color) :focus, .uk-tile-secondary:not(.uk-preserve-color) :focus, .uk-card-primary.uk-card-body :focus, .uk-card-primary > :not([class*='uk-card-media']) :focus, .uk-card-secondary.uk-card-body :focus, .uk-card-secondary > :not([class*='uk-card-media']) :focus, .uk-overlay-primary :focus, .uk-offcanvas-bar :focus {
-    outline-color: #fff; }
   .uk-light :focus-visible, .uk-section-primary:not(.uk-preserve-color) :focus-visible, .uk-section-secondary:not(.uk-preserve-color) :focus-visible, .uk-tile-primary:not(.uk-preserve-color) :focus-visible, .uk-tile-secondary:not(.uk-preserve-color) :focus-visible, .uk-card-primary.uk-card-body :focus-visible, .uk-card-primary > :not([class*='uk-card-media']) :focus-visible, .uk-card-secondary.uk-card-body :focus-visible, .uk-card-secondary > :not([class*='uk-card-media']) :focus-visible, .uk-overlay-primary :focus-visible, .uk-offcanvas-bar :focus-visible {
     outline-color: #fff; }
   .uk-light a.uk-link-muted, .uk-section-primary:not(.uk-preserve-color) a.uk-link-muted, .uk-section-secondary:not(.uk-preserve-color) a.uk-link-muted, .uk-tile-primary:not(.uk-preserve-color) a.uk-link-muted, .uk-tile-secondary:not(.uk-preserve-color) a.uk-link-muted, .uk-card-primary.uk-card-body a.uk-link-muted, .uk-card-primary > :not([class*='uk-card-media']) a.uk-link-muted, .uk-card-secondary.uk-card-body a.uk-link-muted, .uk-card-secondary > :not([class*='uk-card-media']) a.uk-link-muted, .uk-overlay-primary a.uk-link-muted, .uk-offcanvas-bar a.uk-link-muted,
