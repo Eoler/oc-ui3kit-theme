@@ -196,3 +196,5 @@
     - Upgraded UIkit framework to 3.16.3, updated NPM dependencies, imports and SCSS variables
 3.2.1:
     - Upgraded UIkit framework to 3.16.10, updated SCSS variables
+3.2.2:
+    - Upgraded UIkit framework to 3.16.13, rebuilt assets

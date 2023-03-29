@@ -3,7 +3,7 @@
 !.idea/webResources.xml
 !.idea/scopes/
 .idea
-*.css.map
+#*.css.map
 
 # build
 package-lock.json
