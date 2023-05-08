@@ -1,8 +1,11 @@
 # IDEvelop/debug
+!.gitignore
+.gitattributes
+.editorconfig
 !.idea/watcherTasks.xml
 !.idea/webResources.xml
 !.idea/scopes/
-.idea
+.idea/
 #*.css.map
 
 # build
