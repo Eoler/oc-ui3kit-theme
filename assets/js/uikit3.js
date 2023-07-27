@@ -1,4 +1,4 @@
-/*! UIkit 3.16.19 | https://www.getuikit.com | (c) 2014 - 2023 YOOtheme | MIT License */
+/*! UIkit 3.16.23 | https://www.getuikit.com | (c) 2014 - 2023 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -798,6 +798,9 @@
       };
     }
     function offset(element, coordinates) {
+      if (coordinates) {
+        css(element, { left: 0, top: 0 });
+      }
       const currentOffset = dimensions$1(element);
       if (element) {
         const { scrollY, scrollX } = toWindow(element);
@@ -811,15 +814,9 @@
       if (!coordinates) {
         return currentOffset;
       }
-      const pos = css(element, "position");
-      each(
-        css(element, ["left", "top"]),
-        (value, prop) => css(
-          element,
-          prop,
-          coordinates[prop] - currentOffset[prop] + toFloat(pos === "absolute" && value === "auto" ? position(element)[prop] : value)
-        )
-      );
+      for (const prop of ["left", "top"]) {
+        css(element, prop, coordinates[prop] - currentOffset[prop]);
+      }
     }
     function position(element) {
       let { top, left } = offset(element);
@@ -2131,7 +2128,7 @@
     };
     App.util = util;
     App.options = {};
-    App.version = "3.16.19";
+    App.version = "3.16.23";
 
     const PREFIX = "uk-";
     const DATA = "__uikit__";
@@ -3559,19 +3556,12 @@
             `uk-${this.$options.name}-dropbar`
           );
         },
-        dropdowns(dropdowns) {
-          this.$create(
-            "drop",
-            dropdowns.filter((el) => !this.getDropdown(el)),
-            {
-              ...this.$props,
-              flip: false,
-              shift: true,
-              pos: `bottom-${this.align}`,
-              boundary: this.boundary === true ? this.$el : this.boundary
-            }
-          );
+        dropdowns() {
+          this.initializeDropdowns();
         }
+      },
+      connected() {
+        this.initializeDropdowns();
       },
       disconnected() {
         remove$1(this._dropbar);
@@ -3771,6 +3761,19 @@
         },
         isDropbarDrop(el) {
           return this.getDropdown(el) && hasClass(el, this.clsDrop);
+        },
+        initializeDropdowns() {
+          this.$create(
+            "drop",
+            this.dropdowns.filter((el) => !this.getDropdown(el)),
+            {
+              ...this.$props,
+              flip: false,
+              shift: true,
+              pos: `bottom-${this.align}`,
+              boundary: this.boundary === true ? this.$el : this.boundary
+            }
+          );
         }
       }
     };
@@ -4127,7 +4130,7 @@
         target: ({ $el }) => [$el, ...scrollParents($el)]
       }),
       update: {
-        read({ minHeight: prev }) {
+        read() {
           if (!isVisible(this.$el)) {
             return false;
           }
@@ -4139,10 +4142,7 @@
             scrollElement === body ? scrollingElement : scrollElement
           );
           if (this.expand) {
-            minHeight = Math.max(
-              viewportHeight - (dimensions$1(scrollElement).height - dimensions$1(this.$el).height) - box,
-              0
-            );
+            minHeight = `${viewportHeight - (dimensions$1(scrollElement).height - dimensions$1(this.$el).height) - box}px`;
           } else {
             const isScrollingElement = scrollingElement === scrollElement || body === scrollElement;
             minHeight = `calc(${isScrollingElement ? "100vh" : `${viewportHeight}px`}`;
@@ -4165,13 +4165,10 @@
             }
             minHeight += `${box ? ` - ${box}px` : ""})`;
           }
-          return { minHeight, prev };
+          return { minHeight };
         },
         write({ minHeight }) {
-          css(this.$el, { minHeight });
-          if (this.minHeight && toFloat(css(this.$el, "minHeight")) < this.minHeight) {
-            css(this.$el, "minHeight", this.minHeight);
-          }
+          css(this.$el, "minHeight", `max(${this.minHeight || 0}px, ${minHeight})`);
         },
         events: ["resize"]
       }
@@ -6168,7 +6165,7 @@
           },
           handler(e) {
             this._preventClick = null;
-            if (!isTouch(e) || this._showState || this.$el.disabled) {
+            if (!isTouch(e) || isBoolean(this._showState) || this.$el.disabled) {
               return;
             }
             trigger(this.$el, "focus");
@@ -6195,13 +6192,13 @@
             }
             const show = includes([pointerEnter, "focus"], e.type);
             const expanded = this.isToggled(this.target);
-            if (!show && (e.type === pointerLeave && matches(this.$el, ":focus") || e.type === "blur" && matches(this.$el, ":hover"))) {
-              return;
-            }
-            if (this._showState && show && expanded !== this._showState) {
-              if (!show) {
+            if (!show && (!isBoolean(this._showState) || expanded === this._showState || e.type === pointerLeave && matches(this.$el, ":focus") || e.type === "blur" && matches(this.$el, ":hover"))) {
+              if (expanded === this._showState) {
                 this._showState = null;
               }
+              return;
+            }
+            if (show && isBoolean(this._showState) && expanded !== this._showState) {
               return;
             }
             this._showState = show ? expanded : null;
@@ -6975,7 +6972,7 @@
       connected() {
         attr(this.$el, {
           role: this.role,
-          ariaRoleDescription: "carousel"
+          "aria-roledescription": "carousel"
         });
       },
       update: [
@@ -7784,10 +7781,14 @@
         }
       },
       created() {
-        const container = $(`.${this.clsContainer}-${this.pos}`, this.container) || append(
-          this.container,
-          `<div class="${this.clsContainer} ${this.clsContainer}-${this.pos}" style="display: block"></div>`
-        );
+        const posClass = `${this.clsContainer}-${this.pos}`;
+        let container = $(`.${posClass}`, this.container);
+        if (!container || !isVisible(container)) {
+          container = append(
+            this.container,
+            `<div class="${this.clsContainer} ${posClass}"></div>`
+          );
+        }
         this.$mount(
           append(
             container,

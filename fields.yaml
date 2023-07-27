@@ -1,31 +1,31 @@
 fields:
     site_name:
         span: row
-        spanClass: col-md-9
+        spanClass: col-sm-9
         label: Site name
         default: UI3kit
     version:
         span: row
-        spanClass: col-md-3
+        spanClass: col-sm-3
         label: Version (build)
-        default: 324
+        default: 330
     brand_color:
         span: row
-        spanClass: col-xs-12
+        spanClass: col-12
         label: Site brand color
         type: colorpicker
         default: '#1e87f0'
         assetVar: 'global-link-color'
     second_color:
         span: row
-        spanClass: col-xs-12
+        spanClass: col-12
         label: Site background color
         type: colorpicker
         default: '#333'
         assetVar: 'global-emphasis-color'
     socialinks:
         span: row
-        spanClass: col-xs-12
+        spanClass: col-12
         label: Links to social networks
         type: repeater
 #        default:
