@@ -208,3 +208,5 @@
     - Upgraded UIkit framework to 3.16.24, fixed styleguide combiner
 3.3.2:
     - Upgraded UIkit framework to 3.16.27, Modernizr to 3.13.0
+3.4.0:
+    - Upgraded UIkit framework to 3.17.2, updated SCSS variables

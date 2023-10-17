@@ -212,7 +212,8 @@ h6, .uk-h6,
 .uk-heading-medium,
 .uk-heading-large,
 .uk-heading-xlarge,
-.uk-heading-2xlarge {
+.uk-heading-2xlarge,
+.uk-heading-3xlarge {
   margin: 0 0 20px 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: normal;
@@ -230,7 +231,8 @@ h6, .uk-h6,
 * + .uk-heading-medium,
 * + .uk-heading-large,
 * + .uk-heading-xlarge,
-* + .uk-heading-2xlarge {
+* + .uk-heading-2xlarge,
+* + .uk-heading-3xlarge {
   margin-top: 40px; }
 
 /*
@@ -490,6 +492,10 @@ a.uk-link-reset,
   font-size: 6rem;
   line-height: 1; }
 
+.uk-heading-3xlarge {
+  font-size: 8rem;
+  line-height: 1; }
+
 /* Tablet Landscape and bigger */
 @media (min-width: 960px) {
   .uk-heading-small {
@@ -501,7 +507,9 @@ a.uk-link-reset,
   .uk-heading-xlarge {
     font-size: 6rem; }
   .uk-heading-2xlarge {
-    font-size: 8rem; } }
+    font-size: 8rem; }
+  .uk-heading-3xlarge {
+    font-size: 11rem; } }
 
 /* Laptop and bigger */
 @media (min-width: 1200px) {
@@ -512,7 +520,9 @@ a.uk-link-reset,
   .uk-heading-xlarge {
     font-size: 8rem; }
   .uk-heading-2xlarge {
-    font-size: 11rem; } }
+    font-size: 11rem; }
+  .uk-heading-3xlarge {
+    font-size: 15rem; } }
 
 /* Primary
    Deprecated: Use `uk-heading-medium` instead
@@ -1336,11 +1346,14 @@ button.uk-icon:not(:disabled) {
 
 /*
  * Define consistent border, margin, and padding.
+ * 1. Reset `min-width`
  */
 .uk-fieldset {
   border: none;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  /* 1 */
+  min-width: 0; }
 
 /* Input, select and textarea
  * Allowed: `text`, `password`, `datetime-local`, `date`,  `month`,
@@ -2141,25 +2154,29 @@ select.uk-form-width-xsmall {
  * Default
  */
 .uk-section-default {
-  background: #fff; }
+  background: #fff;
+  --uk-navbar-color: dark; }
 
 /*
  * Muted
  */
 .uk-section-muted {
-  background: #f8f8f8; }
+  background: #f8f8f8;
+  --uk-navbar-color: dark; }
 
 /*
  * Primary
  */
 .uk-section-primary {
-  background: #1e87f0; }
+  background: #1e87f0;
+  --uk-navbar-color: light; }
 
 /*
  * Secondary
  */
 .uk-section-secondary {
-  background: #222; }
+  background: #222;
+  --uk-navbar-color: light; }
 
 /* Overlap modifier
  ========================================================================== */
@@ -4786,11 +4803,14 @@ ul.uk-nav-sub {
  ========================================================================== */
 /*
  * 1. Create position context to center navbar group
+ * 2. Pass dropbar behind color to JS
  */
 .uk-navbar {
   display: flex;
   /* 1 */
-  position: relative; }
+  position: relative;
+  /* 2 */
+  --uk-navbar-dropbar-behind-color: dark; }
 
 /* Container
  ========================================================================== */
@@ -5132,14 +5152,6 @@ ul.uk-nav-sub {
 /*
  * Adopts `uk-dropnav-dropbar`
  */
-/*
- * Create navbar placeholder space if dropbar is behind navbar
- */
-.uk-navbar-dropbar-behind::before {
-  content: "";
-  display: block;
-  height: 80px; }
-
 /* ========================================================================
    Component: Subnav
  ========================================================================== */
@@ -5313,16 +5325,19 @@ ul.uk-nav-sub {
  ========================================================================== */
 /*
  * 1. Allow items to wrap into the next line
- * 2. Gutter
- * 3. Reset list
+ * 2. Center items vertically if they have a different height
+ * 3. Gutter
+ * 4. Reset list
  */
 .uk-pagination {
   display: flex;
   /* 1 */
   flex-wrap: wrap;
   /* 2 */
-  margin-left: 0;
+  align-items: center;
   /* 3 */
+  margin-left: 0;
+  /* 4 */
   padding: 0;
   list-style: none; }
 
@@ -5342,13 +5357,18 @@ ul.uk-nav-sub {
 /* Items
  ========================================================================== */
 /*
- * 1. Prevent gap if child element is `inline-block`, e.g. an icon
- * 2. Style
+ * 1. Center content vertically, e.g. an icon
+ * 2. Imitate white space gap when using flexbox
+ * 3. Style
  */
 .uk-pagination > * > * {
   /* 1 */
-  display: block;
+  display: flex;
+  align-items: center;
   /* 2 */
+  -moz-column-gap: 0.25em;
+  column-gap: 0.25em;
+  /* 3 */
   padding: 5px 10px;
   color: #999; }
 
@@ -7027,6 +7047,23 @@ td.uk-text-break {
    Component: Cover
  ========================================================================== */
 /*
+ * Works with embedded content
+ */
+img[uk-cover],
+video[uk-cover],
+img[data-uk-cover],
+video[data-uk-cover] {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center; }
+
+/*
  * Works with iframes and embedded content
  * 1. Use attribute to apply transform instantly. Needed if transform is transitioned.
  * 2. Reset responsiveness for embedded content
@@ -7035,8 +7072,9 @@ td.uk-text-break {
  *       is absolute positioned or if the container has a height
  */
 /* 1 */
-[uk-cover],
-[data-uk-cover] {
+:not(img):not(video)[uk-cover],
+:not(img):not(video)[data-uk-cover] {
+  pointer-events: none;
   /* 2 */
   max-width: none;
   /* 3 */
@@ -8500,6 +8538,9 @@ iframe[data-uk-cover] {
 .uk-position-z-index-negative {
   z-index: -1; }
 
+.uk-position-z-index-high {
+  z-index: 990; }
+
 /* ========================================================================
    Component: Transition
  ========================================================================== */
@@ -8939,7 +8980,18 @@ iframe[data-uk-cover] {
   .uk-card-secondary.uk-card-body .uk-heading-2xlarge,
   .uk-card-secondary > :not([class*='uk-card-media']) .uk-heading-2xlarge,
   .uk-overlay-primary .uk-heading-2xlarge,
-  .uk-offcanvas-bar .uk-heading-2xlarge {
+  .uk-offcanvas-bar .uk-heading-2xlarge,
+  .uk-light .uk-heading-3xlarge,
+  .uk-section-primary:not(.uk-preserve-color) .uk-heading-3xlarge,
+  .uk-section-secondary:not(.uk-preserve-color) .uk-heading-3xlarge,
+  .uk-tile-primary:not(.uk-preserve-color) .uk-heading-3xlarge,
+  .uk-tile-secondary:not(.uk-preserve-color) .uk-heading-3xlarge,
+  .uk-card-primary.uk-card-body .uk-heading-3xlarge,
+  .uk-card-primary > :not([class*='uk-card-media']) .uk-heading-3xlarge,
+  .uk-card-secondary.uk-card-body .uk-heading-3xlarge,
+  .uk-card-secondary > :not([class*='uk-card-media']) .uk-heading-3xlarge,
+  .uk-overlay-primary .uk-heading-3xlarge,
+  .uk-offcanvas-bar .uk-heading-3xlarge {
     color: #fff; }
   .uk-light hr, .uk-section-primary:not(.uk-preserve-color) hr, .uk-section-secondary:not(.uk-preserve-color) hr, .uk-tile-primary:not(.uk-preserve-color) hr, .uk-tile-secondary:not(.uk-preserve-color) hr, .uk-card-primary.uk-card-body hr, .uk-card-primary > :not([class*='uk-card-media']) hr, .uk-card-secondary.uk-card-body hr, .uk-card-secondary > :not([class*='uk-card-media']) hr, .uk-overlay-primary hr, .uk-offcanvas-bar hr, .uk-light .uk-hr, .uk-section-primary:not(.uk-preserve-color) .uk-hr, .uk-section-secondary:not(.uk-preserve-color) .uk-hr, .uk-tile-primary:not(.uk-preserve-color) .uk-hr, .uk-tile-secondary:not(.uk-preserve-color) .uk-hr, .uk-card-primary.uk-card-body .uk-hr, .uk-card-primary > :not([class*='uk-card-media']) .uk-hr, .uk-card-secondary.uk-card-body .uk-hr, .uk-card-secondary > :not([class*='uk-card-media']) .uk-hr, .uk-overlay-primary .uk-hr, .uk-offcanvas-bar .uk-hr {
     border-top-color: rgba(255, 255, 255, 0.2); }
