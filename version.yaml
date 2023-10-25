@@ -210,3 +210,5 @@
     - Upgraded UIkit framework to 3.16.27, Modernizr to 3.13.0
 3.4.0:
     - Upgraded UIkit framework to 3.17.2, updated SCSS variables
+3.4.1:
+    - Upgraded UIkit framework to 3.17.5, deprecated JS functions
