@@ -212,3 +212,5 @@
     - Upgraded UIkit framework to 3.17.2, updated SCSS variables
 3.4.1:
     - Upgraded UIkit framework to 3.17.5, deprecated JS functions
+3.4.2:
+    - Upgraded UIkit framework to 3.17.8, added utility styles

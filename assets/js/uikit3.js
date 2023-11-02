@@ -1,4 +1,4 @@
-/*! UIkit 3.17.5 | https://www.getuikit.com | (c) 2014 - 2023 YOOtheme | MIT License */
+/*! UIkit 3.17.8 | https://www.getuikit.com | (c) 2014 - 2023 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -3517,7 +3517,7 @@
     };
     App.util = util;
     App.options = {};
-    App.version = "3.17.5";
+    App.version = "3.17.8";
 
     const PREFIX = "uk-";
     const DATA = "__uikit__";
@@ -6536,7 +6536,7 @@
       },
       observe: [
         intersection({
-          filter: ({ $el }) => isVideo($el),
+          filter: ({ $el, autoplay }) => autoplay && isVideo($el),
           handler([{ isIntersecting }]) {
             if (isIntersecting) {
               play(this.$el);
@@ -8902,7 +8902,7 @@
             }
             const hide = this.isFixed && !this.transitionInProgress;
             if (hide) {
-              preventTransition(this.selTarget);
+              preventTransition(this.$el);
               this.hide();
             }
             if (!this.active) {
@@ -9144,8 +9144,8 @@
       css(el, { position: "", top: "", marginTop: "", width: "" });
     }
     function preventTransition(el) {
-      css(el, "transition", "0s");
-      requestAnimationFrame(() => css(el, "transition", ""));
+      addClass(el, "uk-transition-disable");
+      requestAnimationFrame(() => removeClass(el, "uk-transition-disable"));
     }
 
     var svg = {
