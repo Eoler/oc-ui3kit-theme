@@ -214,3 +214,5 @@
     - Upgraded UIkit framework to 3.17.5, deprecated JS functions
 3.4.2:
     - Upgraded UIkit framework to 3.17.8, added utility styles
+3.4.3:
+    - Upgraded UIkit framework to 3.17.8, fixed uk-countdown styleguide

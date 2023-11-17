@@ -429,7 +429,7 @@ description = "Catalog of UIkit widgets."
                 <div class="uk-grid-divider uk-margin-medium-top uk-child-width-expand@m" uk-grid>
                     <div>
 
-                        <div class="uk-grid-small uk-child-width-auto uk-margin" uk-grid js-countdown>
+                        <div class="uk-grid-small uk-child-width-auto uk-margin" uk-grid uk-countdown="date:{{ '+22 hours'|date('c') }}">
                             <div>
                                 <div class="uk-countdown-number uk-countdown-days"></div>
                             </div>
@@ -824,10 +824,10 @@ description = "Catalog of UIkit widgets."
     </div>
 </div>
 
-{% put scripts %}
-<script>
-    UIkit.countdown('[js-countdown]', {
-        date: (new Date(Date.now() + 864e5 * 7)).toISOString()
-    });
-</script>
-{% endput %}
+{#{% put scripts %}#}
+{#<script>#}
+{#    UIkit.countdown('[js-countdown]', {#}
+{#        date: (new Date(Date.now() + 864e5 * 7)).toISOString()#}
+{#    });#}
+{#</script>#}
+{#{% endput %}#}
