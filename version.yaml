@@ -215,4 +215,6 @@
 3.4.2:
     - Upgraded UIkit framework to 3.17.8, added utility styles
 3.4.3:
-    - Upgraded UIkit framework to 3.17.8, fixed uk-countdown styleguide
+    - Upgraded UIkit framework to 3.17.10, fixed uk-countdown styleguide
+3.5.0:
+    - Upgraded UIkit framework to 3.18.1, updated NPM dependencies and SCSS variables
