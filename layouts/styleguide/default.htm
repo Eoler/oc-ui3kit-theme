@@ -15,15 +15,15 @@ description = "UIkit 3 style guide"
 
     <script src="{{ 'assets/js/detect.js'|theme }}"></script>
     <link rel="stylesheet" href="{{ [
-        '@framework.extras.css',
+        'assets/css/framework.extras.css',
         'assets/css/uikit3themed.css',
     ]|theme }}.css?v={{ this.theme.version }}">
 {% styles %}
     <script src="{{ 'assets/js/uikit3.js'|theme }}?v={{ this.theme.version }}"></script>
     <script src="{{ [
         '@jquery',
-        '@framework',
-        '@framework.extras.js',
+        'assets/js/framework.js',
+        'assets/js/framework.extras.js',
         'assets/js/uikit3-icons.js',
     ]|theme }}.js?v={{ this.theme.version }}"></script>
 </head>

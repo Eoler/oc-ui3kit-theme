@@ -218,3 +218,5 @@
     - Upgraded UIkit framework to 3.17.10, fixed uk-countdown styleguide
 3.5.0:
     - Upgraded UIkit framework to 3.18.1, updated NPM dependencies and SCSS variables
+3.5.1:
+    - Upgraded UIkit framework to 3.18.3, restored OCv2 framework extras
