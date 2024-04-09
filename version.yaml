@@ -222,3 +222,5 @@
     - Upgraded UIkit framework to 3.18.3, restored OCv2 framework extras
 3.6.0:
     - Upgraded UIkit framework to 3.19.2, updated SCSS variables
+3.6.1:
+    - Upgraded UIkit framework to 3.19.4, updated NPM dependencies
