@@ -2154,24 +2154,28 @@ select.uk-form-width-xsmall {
  * Default
  */
 .uk-section-default {
+  --uk-inverse: dark;
   background: #fff; }
 
 /*
  * Muted
  */
 .uk-section-muted {
+  --uk-inverse: dark;
   background: #f8f8f8; }
 
 /*
  * Primary
  */
 .uk-section-primary {
+  --uk-inverse: light;
   background: #1e87f0; }
 
 /*
  * Secondary
  */
 .uk-section-secondary {
+  --uk-inverse: light;
   background: #222; }
 
 /* Overlap modifier
@@ -2393,24 +2397,28 @@ select.uk-form-width-xsmall {
  * Default
  */
 .uk-tile-default {
+  --uk-inverse: dark;
   background-color: #fff; }
 
 /*
  * Muted
  */
 .uk-tile-muted {
+  --uk-inverse: dark;
   background-color: #f8f8f8; }
 
 /*
  * Primary
  */
 .uk-tile-primary {
+  --uk-inverse: light;
   background-color: #1e87f0; }
 
 /*
  * Secondary
  */
 .uk-tile-secondary {
+  --uk-inverse: light;
   background-color: #222; }
 
 /* ========================================================================
@@ -2508,6 +2516,7 @@ select.uk-form-width-xsmall {
  * Note: Header and Footer are only implemented for the default style
  */
 .uk-card-default {
+  --uk-inverse: dark;
   background-color: #f8f8f8;
   color: #666; }
 
@@ -2521,6 +2530,7 @@ select.uk-form-width-xsmall {
  * Primary
  */
 .uk-card-primary {
+  --uk-inverse: light;
   background-color: #1e87f0;
   color: #fff; }
 
@@ -2534,6 +2544,7 @@ select.uk-form-width-xsmall {
  * Secondary
  */
 .uk-card-secondary {
+  --uk-inverse: light;
   background-color: #222;
   color: #fff; }
 
@@ -2826,12 +2837,14 @@ select.uk-form-width-xsmall {
  * Default
  */
 .uk-overlay-default {
+  --uk-inverse: dark;
   background: rgba(255, 255, 255, 0.8); }
 
 /*
  * Primary
  */
 .uk-overlay-primary {
+  --uk-inverse: light;
   background: rgba(34, 34, 34, 0.8); }
 
 /* ========================================================================
@@ -3228,6 +3241,7 @@ select.uk-form-width-xsmall {
   --uk-position-offset: 0;
   --uk-position-shift-offset: 0;
   --uk-position-viewport-offset: 0;
+  --uk-inverse: dark;
   /* 1 */
   width: auto;
   /* 2 */
@@ -3692,6 +3706,7 @@ select.uk-form-width-xsmall {
  * 3. Allow scrolling
  */
 .uk-offcanvas-bar {
+  --uk-inverse: light;
   /* 1 */
   position: absolute;
   top: 0;
@@ -4157,6 +4172,138 @@ select.uk-form-width-xsmall {
 
 /* Label
  ========================================================================== */
+/* ========================================================================
+   Component: Thumbnav
+ ========================================================================== */
+/*
+ * 1. Allow items to wrap into the next line
+ * 2. Reset list
+ * 3. Gutter
+ */
+.uk-thumbnav {
+  display: flex;
+  /* 1 */
+  flex-wrap: wrap;
+  /* 2 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* 3 */
+  margin-left: -15px; }
+
+/*
+ * Space is allocated based on content dimensions, but shrinks: 0 1 auto
+ * 1. Gutter
+ */
+.uk-thumbnav > * {
+  /* 1 */
+  padding-left: 15px; }
+
+/* Items
+ ========================================================================== */
+/*
+ * Items
+ */
+.uk-thumbnav > * > * {
+  display: inline-block; }
+
+/* Hover */
+/* Active */
+/* Modifier: 'uk-thumbnav-vertical'
+ ========================================================================== */
+/*
+ * 1. Change direction
+ * 2. Gutter
+ */
+.uk-thumbnav-vertical {
+  /* 1 */
+  flex-direction: column;
+  /* 2 */
+  margin-left: 0;
+  margin-top: -15px; }
+
+/* 2 */
+.uk-thumbnav-vertical > * {
+  padding-left: 0;
+  padding-top: 15px; }
+
+/* ========================================================================
+   Component: Iconnav
+ ========================================================================== */
+/*
+ * 1. Allow items to wrap into the next line
+ * 2. Reset list
+ * 3. Gutter
+ */
+.uk-iconnav {
+  display: flex;
+  /* 1 */
+  flex-wrap: wrap;
+  /* 2 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* 3 */
+  margin-left: -10px; }
+
+/*
+ * Space is allocated based on content dimensions, but shrinks: 0 1 auto
+ * 1. Gutter
+ */
+.uk-iconnav > * {
+  /* 1 */
+  padding-left: 10px; }
+
+/* Items
+ ========================================================================== */
+/*
+ * Items must target `a` elements to exclude other elements (e.g. dropdowns)
+ * 1. Center content vertically if there is still some text
+ * 2. Imitate white space gap when using flexbox
+ * 3. Force text not to affect item height
+ * 4. Style
+ * 5. Required for `a` if there is still some text
+ */
+.uk-iconnav > * > a {
+  /* 1 */
+  display: flex;
+  align-items: center;
+  /* 2 */
+  -moz-column-gap: 0.25em;
+  column-gap: 0.25em;
+  /* 3 */
+  line-height: 0;
+  /* 4 */
+  color: #999;
+  /* 5 */
+  text-decoration: none; }
+
+/* Hover */
+.uk-iconnav > * > a:hover {
+  color: #666; }
+
+/* Active */
+.uk-iconnav > .uk-active > a {
+  color: #666; }
+
+/* Modifier: 'uk-iconnav-vertical'
+ ========================================================================== */
+/*
+ * 1. Change direction
+ * 2. Gutter
+ */
+.uk-iconnav-vertical {
+  /* 1 */
+  flex-direction: column;
+  /* 2 */
+  margin-left: 0;
+  margin-top: -10px; }
+
+/* 2 */
+.uk-iconnav-vertical > * {
+  padding-left: 0;
+  padding-top: 10px; }
+
 /* ========================================================================
    Component: Grid
  ========================================================================== */
@@ -5043,6 +5190,7 @@ ul.uk-nav-sub {
   --uk-position-offset: 0;
   --uk-position-shift-offset: 0;
   --uk-position-viewport-offset: 15px;
+  --uk-inverse: dark;
   /* 1 */
   width: 200px;
   /* 2 */
@@ -5619,138 +5767,6 @@ ul.uk-nav-sub {
   padding-top: 12px; }
 
 /* ========================================================================
-   Component: Thumbnav
- ========================================================================== */
-/*
- * 1. Allow items to wrap into the next line
- * 2. Reset list
- * 3. Gutter
- */
-.uk-thumbnav {
-  display: flex;
-  /* 1 */
-  flex-wrap: wrap;
-  /* 2 */
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  /* 3 */
-  margin-left: -15px; }
-
-/*
- * Space is allocated based on content dimensions, but shrinks: 0 1 auto
- * 1. Gutter
- */
-.uk-thumbnav > * {
-  /* 1 */
-  padding-left: 15px; }
-
-/* Items
- ========================================================================== */
-/*
- * Items
- */
-.uk-thumbnav > * > * {
-  display: inline-block; }
-
-/* Hover */
-/* Active */
-/* Modifier: 'uk-thumbnav-vertical'
- ========================================================================== */
-/*
- * 1. Change direction
- * 2. Gutter
- */
-.uk-thumbnav-vertical {
-  /* 1 */
-  flex-direction: column;
-  /* 2 */
-  margin-left: 0;
-  margin-top: -15px; }
-
-/* 2 */
-.uk-thumbnav-vertical > * {
-  padding-left: 0;
-  padding-top: 15px; }
-
-/* ========================================================================
-   Component: Iconnav
- ========================================================================== */
-/*
- * 1. Allow items to wrap into the next line
- * 2. Reset list
- * 3. Gutter
- */
-.uk-iconnav {
-  display: flex;
-  /* 1 */
-  flex-wrap: wrap;
-  /* 2 */
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  /* 3 */
-  margin-left: -10px; }
-
-/*
- * Space is allocated based on content dimensions, but shrinks: 0 1 auto
- * 1. Gutter
- */
-.uk-iconnav > * {
-  /* 1 */
-  padding-left: 10px; }
-
-/* Items
- ========================================================================== */
-/*
- * Items must target `a` elements to exclude other elements (e.g. dropdowns)
- * 1. Center content vertically if there is still some text
- * 2. Imitate white space gap when using flexbox
- * 3. Force text not to affect item height
- * 4. Style
- * 5. Required for `a` if there is still some text
- */
-.uk-iconnav > * > a {
-  /* 1 */
-  display: flex;
-  align-items: center;
-  /* 2 */
-  -moz-column-gap: 0.25em;
-  column-gap: 0.25em;
-  /* 3 */
-  line-height: 0;
-  /* 4 */
-  color: #999;
-  /* 5 */
-  text-decoration: none; }
-
-/* Hover */
-.uk-iconnav > * > a:hover {
-  color: #666; }
-
-/* Active */
-.uk-iconnav > .uk-active > a {
-  color: #666; }
-
-/* Modifier: 'uk-iconnav-vertical'
- ========================================================================== */
-/*
- * 1. Change direction
- * 2. Gutter
- */
-.uk-iconnav-vertical {
-  /* 1 */
-  flex-direction: column;
-  /* 2 */
-  margin-left: 0;
-  margin-top: -10px; }
-
-/* 2 */
-.uk-iconnav-vertical > * {
-  padding-left: 0;
-  padding-top: 10px; }
-
-/* ========================================================================
    Component: Dropdown
  ========================================================================== */
 /*
@@ -5762,6 +5778,7 @@ ul.uk-nav-sub {
 .uk-dropdown {
   --uk-position-offset: 10px;
   --uk-position-viewport-offset: 15px;
+  --uk-inverse: dark;
   /* 1 */
   width: auto;
   /* 2 */
@@ -7565,7 +7582,7 @@ iframe[data-uk-cover] {
 [class*="uk-float-"] {
   max-width: 100%; }
 
-/* Overfow
+/* Overflow
  ========================================================================== */
 .uk-overflow-hidden {
   overflow: hidden; }

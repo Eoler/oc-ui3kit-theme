@@ -56,7 +56,10 @@
 // Toggle
 // Scroll
 
-@import "components/grid.scss";
+@import "components/thumbnav.scss";
+@import "components/iconnav.scss";
+
+@import "components/grid.scss"; // After: Thumbnav, Iconnav
 
 // Navs
 @import "components/nav.scss";
@@ -67,9 +70,6 @@
 @import "components/tab.scss";
 @import "components/slidenav.scss"; // After: Icon
 @import "components/dotnav.scss";
-@import "components/thumbnav.scss";
-@import "components/iconnav.scss";
-
 @import "components/dropdown.scss"; // After: Card, Nav
 @import "components/lightbox.scss"; // After: Close, Slidenav
 
