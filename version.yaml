@@ -226,3 +226,5 @@
     - Upgraded UIkit framework to 3.19.4, updated NPM dependencies
 3.7.0:
     - Upgraded UIkit framework to 3.20.9, updated components import
+3.7.1:
+    - Upgraded UIkit framework to 3.20.11, rebuilt assets

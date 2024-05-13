@@ -1,4 +1,4 @@
-/*! UIkit 3.20.9 | https://www.getuikit.com | (c) 2014 - 2024 YOOtheme | MIT License */
+/*! UIkit 3.20.11 | https://www.getuikit.com | (c) 2014 - 2024 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -192,6 +192,47 @@
       return (key, ...args) => cache[key] || (cache[key] = fn(key, ...args));
     }
 
+    function addClass(element, ...classes) {
+      for (const node of toNodes(element)) {
+        const add = toClasses(classes).filter((cls) => !hasClass(node, cls));
+        if (add.length) {
+          node.classList.add(...add);
+        }
+      }
+    }
+    function removeClass(element, ...classes) {
+      for (const node of toNodes(element)) {
+        const remove = toClasses(classes).filter((cls) => hasClass(node, cls));
+        if (remove.length) {
+          node.classList.remove(...remove);
+        }
+      }
+    }
+    function replaceClass(element, oldClass, newClass) {
+      newClass = toClasses(newClass);
+      oldClass = toClasses(oldClass).filter((cls) => !includes(newClass, cls));
+      removeClass(element, oldClass);
+      addClass(element, newClass);
+    }
+    function hasClass(element, cls) {
+      [cls] = toClasses(cls);
+      return toNodes(element).some((node) => node.classList.contains(cls));
+    }
+    function toggleClass(element, cls, force) {
+      const classes = toClasses(cls);
+      if (!isUndefined(force)) {
+        force = !!force;
+      }
+      for (const node of toNodes(element)) {
+        for (const cls2 of classes) {
+          node.classList.toggle(cls2, force);
+        }
+      }
+    }
+    function toClasses(str) {
+      return str ? isArray(str) ? str.map(toClasses).flat() : String(str).split(" ").filter(Boolean) : [];
+    }
+
     function attr(element, name, value) {
       var _a;
       if (isObject(name)) {
@@ -227,53 +268,6 @@
           return attr(element, name);
         }
       }
-    }
-
-    function addClass(element, ...classes) {
-      for (const node of toNodes(element)) {
-        const add = toClasses(classes).filter((cls) => !hasClass(node, cls));
-        if (add.length) {
-          node.classList.add(...add);
-        }
-      }
-    }
-    function removeClass(element, ...classes) {
-      for (const node of toNodes(element)) {
-        const remove = toClasses(classes).filter((cls) => hasClass(node, cls));
-        if (remove.length) {
-          node.classList.remove(...remove);
-        }
-      }
-    }
-    function removeClasses(element, clsRegex) {
-      clsRegex = new RegExp(clsRegex);
-      for (const node of toNodes(element)) {
-        node.classList.remove(...toArray(node.classList).filter((cls) => cls.match(clsRegex)));
-      }
-    }
-    function replaceClass(element, oldClass, newClass) {
-      newClass = toClasses(newClass);
-      oldClass = toClasses(oldClass).filter((cls) => !includes(newClass, cls));
-      removeClass(element, oldClass);
-      addClass(element, newClass);
-    }
-    function hasClass(element, cls) {
-      [cls] = toClasses(cls);
-      return toNodes(element).some((node) => node.classList.contains(cls));
-    }
-    function toggleClass(element, cls, force) {
-      const classes = toClasses(cls);
-      if (!isUndefined(force)) {
-        force = !!force;
-      }
-      for (const node of toNodes(element)) {
-        for (const cls2 of classes) {
-          node.classList.toggle(cls2, force);
-        }
-      }
-    }
-    function toClasses(str) {
-      return str ? isArray(str) ? str.map(toClasses).flat() : String(str).split(" ").filter(Boolean) : [];
     }
 
     const inBrowser = typeof window !== "undefined";
@@ -354,9 +348,9 @@
     }
     function getTargetedElement(el) {
       if (isSameSiteAnchor(el)) {
-        el = toNode(el);
-        const id = decodeURIComponent(el.hash).substring(1);
-        return document.getElementById(id) || document.getElementsByName(id)[0];
+        const { hash, ownerDocument } = toNode(el);
+        const id = decodeURIComponent(hash).slice(1);
+        return ownerDocument.getElementById(id) || ownerDocument.getElementsByName(id)[0];
       }
     }
 
@@ -395,9 +389,9 @@
       };
     });
     const parsePositionSelector = memoize((selector) => {
-      selector = selector.substr(1).trim();
+      selector = selector.slice(1).trim();
       const index2 = selector.indexOf(" ");
-      return ~index2 ? [selector.substring(0, index2), selector.substring(index2 + 1)] : [selector, ""];
+      return ~index2 ? [selector.slice(0, index2), selector.slice(index2 + 1)] : [selector, ""];
     });
     function _query(selector, context = document, queryFn) {
       if (!selector || !isString(selector)) {
@@ -648,10 +642,7 @@
         toNodes(element).map(
           (element2) => new Promise((resolve, reject) => {
             for (const name in props) {
-              const value = css(element2, name);
-              if (value === "") {
-                css(element2, name, value);
-              }
+              css(element2, name);
             }
             const timer = setTimeout(() => trigger(element2, transitionEnd), duration);
             once(
@@ -694,14 +685,23 @@
         return hasClass(element, clsTransition);
       }
     };
-    const animationPrefix = "uk-animation-";
+    const clsAnimation = "uk-animation";
     const animationEnd = "animationend";
     const animationCanceled = "animationcanceled";
     function animate$2(element, animation, duration = 200, origin, out) {
       return Promise.all(
         toNodes(element).map(
           (element2) => new Promise((resolve, reject) => {
-            trigger(element2, animationCanceled);
+            if (hasClass(element2, clsAnimation)) {
+              trigger(element2, animationCanceled);
+            }
+            const classes = [
+              animation,
+              clsAnimation,
+              `${clsAnimation}-${out ? "leave" : "enter"}`,
+              origin && `uk-transform-origin-${origin}`,
+              out && `${clsAnimation}-reverse`
+            ];
             const timer = setTimeout(() => trigger(element2, animationEnd), duration);
             once(
               element2,
@@ -710,28 +710,23 @@
                 clearTimeout(timer);
                 type === animationCanceled ? reject() : resolve(element2);
                 css(element2, "animationDuration", "");
-                removeClasses(element2, `${animationPrefix}\\S*`);
+                removeClass(element2, classes);
               },
               { self: true }
             );
             css(element2, "animationDuration", `${duration}ms`);
-            addClass(element2, animation, animationPrefix + (out ? "leave" : "enter"));
-            if (startsWith(animation, animationPrefix)) {
-              origin && addClass(element2, `uk-transform-origin-${origin}`);
-              out && addClass(element2, `${animationPrefix}reverse`);
-            }
+            addClass(element2, classes);
           })
         )
       );
     }
-    const inProgressRe = new RegExp(`${animationPrefix}(enter|leave)`);
     const Animation = {
       in: animate$2,
       out(element, animation, duration, origin) {
         return animate$2(element, animation, duration, origin, true);
       },
       inProgress(element) {
-        return inProgressRe.test(attr(element, "class"));
+        return hasClass(element, clsAnimation);
       },
       cancel(element) {
         trigger(element, animationCanceled);
@@ -1650,7 +1645,6 @@
         remove: remove$1,
         removeAttr: removeAttr,
         removeClass: removeClass,
-        removeClasses: removeClasses,
         replaceClass: replaceClass,
         scrollIntoView: scrollIntoView,
         scrollParent: scrollParent,
@@ -1750,8 +1744,7 @@
             if (!el) {
               continue;
             }
-            let digits = String(Math.trunc(timespan[unit]));
-            digits = digits.length < 2 ? `0${digits}` : digits;
+            let digits = Math.trunc(timespan[unit]).toString().padStart(2, "0");
             if (el.textContent !== digits) {
               digits = digits.split("");
               if (digits.length !== el.children.length) {
@@ -2402,7 +2395,7 @@
       return ["filter", "sort"].every((prop) => isEqual(stateA[prop], stateB[prop]));
     }
     function applyState(state, target, children) {
-      const selector = getSelector(state);
+      const selector = Object.values(state.filter).join("");
       for (const el of children) {
         css(el, "display", selector && !matches(el, selector) ? "none" : "");
       }
@@ -2439,11 +2432,6 @@
     function matchFilter(el, attr2, { filter: stateFilter = { "": "" }, sort: [stateSort, stateOrder] }) {
       const { filter = "", group = "", sort, order = "asc" } = getFilter(el, attr2);
       return isUndefined(sort) ? group in stateFilter && filter === stateFilter[group] || !filter && group && !(group in stateFilter) && !stateFilter[""] : stateSort === sort && stateOrder === order;
-    }
-    function getSelector({ filter }) {
-      let selector = "";
-      each(filter, (value) => selector += value || "");
-      return selector;
     }
     function sortItems(nodes, sort, order) {
       return [...nodes].sort(
@@ -3355,7 +3343,7 @@
       }
       const key = `_observe${instance._observers.length}`;
       if (isFunction(target) && !hasOwn(instance, key)) {
-        registerComputed(instance, key, () => target.call(instance, instance));
+        registerComputed(instance, key, () => toNodes(target.call(instance, instance)));
       }
       handler = isString(handler) ? instance[handler] : handler.bind(instance);
       if (isFunction(options)) {
@@ -3546,7 +3534,7 @@
     };
     App.util = util;
     App.options = {};
-    App.version = "3.20.9";
+    App.version = "3.20.11";
 
     const PREFIX = "uk-";
     const DATA = "__uikit__";
@@ -4001,14 +3989,14 @@
         getValidIndex(index = this.index, prevIndex = this.prevIndex) {
           return this.getIndex(index, prevIndex);
         },
-        _show(prev, next, force) {
+        async _show(prev, next, force) {
           this._transitioner = this._getTransitioner(prev, next, this.dir, {
             easing: force ? next.offsetWidth < 600 ? "cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "cubic-bezier(0.165, 0.84, 0.44, 1)" : this.easing,
             ...this.transitionOptions
           });
           if (!force && !prev) {
             this._translate(1);
-            return Promise.resolve();
+            return;
           }
           const { length } = this.stack;
           return this._transitioner[length > 1 ? "forward" : "show"](
@@ -4529,7 +4517,7 @@
     function toMedia(value, element) {
       if (isString(value)) {
         if (startsWith(value, "@")) {
-          value = toFloat(css(element, `--uk-breakpoint-${value.substr(1)}`));
+          value = toFloat(css(element, `--uk-breakpoint-${value.slice(1)}`));
         } else if (isNaN(value)) {
           return value;
         }
@@ -4732,13 +4720,13 @@
       };
     }
     function getBackgroundPos(el, prop) {
-      return getCssValue(el, `background-position-${prop.substr(-1)}`, "");
+      return getCssValue(el, `background-position-${prop.slice(-1)}`, "");
     }
     function setBackgroundPosFn(bgProps, positions, props2) {
       return function(css2, percent) {
         for (const prop of bgProps) {
           const value = getValue(props2[prop], percent);
-          css2[`background-position-${prop.substr(-1)}`] = `calc(${positions[prop]} + ${value}px)`;
+          css2[`background-position-${prop.slice(-1)}`] = `calc(${positions[prop]} + ${value}px)`;
         }
       };
     }
@@ -4945,6 +4933,9 @@
             return false;
           }
           const target = this.parallaxTarget;
+          if (!target) {
+            return false;
+          }
           const start = toPx(this.parallaxStart, "height", target, true);
           const end = toPx(this.parallaxEnd, "height", target, true);
           const percent = ease(scrolledOver(target, start, end), this.parallaxEasing);
@@ -5061,7 +5052,9 @@
         show(duration, percent = 0, linear) {
           const timing = linear ? "linear" : easing;
           duration -= Math.round(duration * clamp(percent, -1, 1));
+          css(list, "transitionProperty", "none");
           this.translate(percent);
+          css(list, "transitionProperty", "");
           percent = prev ? percent : clamp(percent, 0, 1);
           triggerUpdate(this.getItemIn(), "itemin", { percent, duration, timing, dir });
           prev && triggerUpdate(this.getItemIn(true), "itemout", {
@@ -5746,11 +5739,10 @@
         },
         move: throttle(function(e) {
           assign(this.pos, getEventPos(e));
-          if (this.drag) {
-            this.$emit("move");
-          } else if (Math.abs(this.pos.x - this.origin.x) > this.threshold || Math.abs(this.pos.y - this.origin.y) > this.threshold) {
+          if (!this.drag && (Math.abs(this.pos.x - this.origin.x) > this.threshold || Math.abs(this.pos.y - this.origin.y) > this.threshold)) {
             this.start(e);
           }
+          this.$emit("move");
         }),
         end() {
           off(document, pointerMove$1, this.move);
@@ -5910,10 +5902,8 @@
       return function(...args) {
         if (!throttled) {
           throttled = true;
-          requestAnimationFrame(() => {
-            throttled = false;
-            fn.call(this, ...args);
-          });
+          fn.call(this, ...args);
+          requestAnimationFrame(() => throttled = false);
         }
       };
     }
@@ -6274,7 +6264,7 @@
       e.preventDefault();
       e.stopPropagation();
     }
-    function ajax(url, options) {
+    async function ajax(url, options) {
       const env = {
         data: null,
         method: "GET",
@@ -6284,7 +6274,8 @@
         responseType: "",
         ...options
       };
-      return Promise.resolve().then(() => env.beforeSend(env)).then(() => send(url, env));
+      await env.beforeSend(env);
+      return send(url, env);
     }
     function send(url, env) {
       return new Promise((resolve, reject) => {
@@ -7895,6 +7886,107 @@
       dimensions.forEach((val, i) => attr(el, props[i], toFloat(val) * this.ratio || null));
     }
 
+    var svg = {
+      mixins: [Svg],
+      args: "src",
+      props: {
+        src: String,
+        icon: String,
+        attributes: "list",
+        strokeAnimation: Boolean
+      },
+      data: {
+        strokeAnimation: false
+      },
+      observe: [
+        mutation({
+          async handler() {
+            const svg = await this.svg;
+            if (svg) {
+              applyAttributes.call(this, svg);
+            }
+          },
+          options: {
+            attributes: true,
+            attributeFilter: ["id", "class", "style"]
+          }
+        })
+      ],
+      async connected() {
+        if (includes(this.src, "#")) {
+          [this.src, this.icon] = this.src.split("#");
+        }
+        const svg = await this.svg;
+        if (svg) {
+          applyAttributes.call(this, svg);
+          if (this.strokeAnimation) {
+            applyAnimation(svg);
+          }
+        }
+      },
+      methods: {
+        async getSvg() {
+          if (isTag(this.$el, "img") && !this.$el.complete && this.$el.loading === "lazy") {
+            await new Promise((resolve) => once(this.$el, "load", resolve));
+          }
+          return parseSVG(await loadSVG(this.src), this.icon) || Promise.reject("SVG not found.");
+        }
+      }
+    };
+    function applyAttributes(el) {
+      const { $el } = this;
+      addClass(el, attr($el, "class"), "uk-svg");
+      for (let i = 0; i < $el.style.length; i++) {
+        const prop = $el.style[i];
+        css(el, prop, css($el, prop));
+      }
+      for (const attribute in this.attributes) {
+        const [prop, value] = this.attributes[attribute].split(":", 2);
+        attr(el, prop, value);
+      }
+      if (!this.$el.id) {
+        removeAttr(el, "id");
+      }
+    }
+    const loadSVG = memoize(async (src) => {
+      if (src) {
+        if (startsWith(src, "data:")) {
+          return decodeURIComponent(src.split(",")[1]);
+        } else {
+          return (await fetch(src)).text();
+        }
+      } else {
+        return Promise.reject();
+      }
+    });
+    function parseSVG(svg, icon) {
+      if (icon && includes(svg, "<symbol")) {
+        svg = parseSymbols(svg)[icon] || svg;
+      }
+      return stringToSvg(svg);
+    }
+    const symbolRe = /<symbol([^]*?id=(['"])(.+?)\2[^]*?<\/)symbol>/g;
+    const parseSymbols = memoize(function(svg) {
+      const symbols = {};
+      symbolRe.lastIndex = 0;
+      let match;
+      while (match = symbolRe.exec(svg)) {
+        symbols[match[3]] = `<svg ${match[1]}svg>`;
+      }
+      return symbols;
+    });
+    function applyAnimation(el) {
+      const length = getMaxPathLength(el);
+      if (length) {
+        css(el, "--uk-animation-stroke", length);
+      }
+    }
+    function stringToSvg(string) {
+      const container = document.createElement("template");
+      container.innerHTML = string;
+      return container.content.firstElementChild;
+    }
+
     const icons = {
       spinner,
       totop,
@@ -8065,7 +8157,7 @@
         return null;
       }
       if (!parsed[icon]) {
-        parsed[icon] = $((icons[applyRtl(icon)] || icons[icon]).trim());
+        parsed[icon] = stringToSvg(icons[applyRtl(icon)] || icons[icon]);
       }
       return parsed[icon].cloneNode(true);
     }
@@ -8256,18 +8348,21 @@
             return false;
           }
           for (const target of toNodes(this.target)) {
-            replaceClass(
-              target,
-              "uk-light uk-dark",
-              !this.selActive || matches(target, this.selActive) ? findTargetColor(target) : ""
-            );
+            let color = !this.selActive || matches(target, this.selActive) ? findTargetColor(target) : "";
+            if (color !== false) {
+              replaceClass(target, "uk-light uk-dark", color);
+            }
           }
         }
       }
     };
     function findTargetColor(target) {
-      const { left, top, height, width } = dimensions$1(target);
+      const dim = dimensions$1(target);
       const viewport = dimensions$1(window);
+      if (!intersectRect(dim, viewport)) {
+        return false;
+      }
+      const { left, top, height, width } = dim;
       let last;
       for (const percent of [0.25, 0.5, 0.75]) {
         const elements = target.ownerDocument.elementsFromPoint(
@@ -8752,6 +8847,7 @@
       }
     }
 
+    const clsInView = "uk-scrollspy-inview";
     var scrollspy = {
       args: "cls",
       props: {
@@ -8768,8 +8864,7 @@
         hidden: true,
         margin: "-1px",
         repeat: false,
-        delay: 0,
-        inViewClass: "uk-scrollspy-inview"
+        delay: 0
       }),
       computed: {
         elements: ({ target }, $el) => target ? $$(target, $el) : [$el]
@@ -8777,7 +8872,7 @@
       watch: {
         elements(elements) {
           if (this.hidden) {
-            css(filter$1(elements, `:not(.${this.inViewClass})`), "opacity", 0);
+            css(filter$1(elements, `:not(.${clsInView})`), "opacity", 0);
           }
         }
       },
@@ -8786,7 +8881,7 @@
       },
       disconnected() {
         for (const [el, state] of this.elementData.entries()) {
-          removeClass(el, this.inViewClass, (state == null ? void 0 : state.cls) || "");
+          removeClass(el, clsInView, (state == null ? void 0 : state.cls) || "");
         }
         delete this.elementData;
       },
@@ -8840,10 +8935,11 @@
           }
           (_b = state.off) == null ? void 0 : _b.call(state);
           css(el, "opacity", !inview && this.hidden ? 0 : "");
-          toggleClass(el, this.inViewClass, inview);
+          toggleClass(el, clsInView, inview);
           toggleClass(el, state.cls);
-          if (/\buk-animation-/.test(state.cls)) {
-            const removeAnimationClasses = () => removeClasses(el, "uk-animation-[\\w-]+");
+          let match;
+          if (match = state.cls.match(/\buk-animation-[\w-]+/g)) {
+            const removeAnimationClasses = () => removeClass(el, match);
             if (inview) {
               state.off = once(el, "animationcancel animationend", removeAnimationClasses, {
                 self: true
@@ -9277,103 +9373,6 @@
       if (!hasClass(element, clsTransitionDisable)) {
         addClass(element, clsTransitionDisable);
         requestAnimationFrame(() => removeClass(element, clsTransitionDisable));
-      }
-    }
-
-    var svg = {
-      mixins: [Svg],
-      args: "src",
-      props: {
-        src: String,
-        icon: String,
-        attributes: "list",
-        strokeAnimation: Boolean
-      },
-      data: {
-        strokeAnimation: false
-      },
-      observe: [
-        mutation({
-          async handler() {
-            const svg = await this.svg;
-            if (svg) {
-              applyAttributes.call(this, svg);
-            }
-          },
-          options: {
-            attributes: true,
-            attributeFilter: ["id", "class", "style"]
-          }
-        })
-      ],
-      async connected() {
-        if (includes(this.src, "#")) {
-          [this.src, this.icon] = this.src.split("#");
-        }
-        const svg = await this.svg;
-        if (svg) {
-          applyAttributes.call(this, svg);
-          if (this.strokeAnimation) {
-            applyAnimation(svg);
-          }
-        }
-      },
-      methods: {
-        async getSvg() {
-          if (isTag(this.$el, "img") && !this.$el.complete && this.$el.loading === "lazy") {
-            await new Promise((resolve) => once(this.$el, "load", resolve));
-          }
-          return parseSVG(await loadSVG(this.src), this.icon) || Promise.reject("SVG not found.");
-        }
-      }
-    };
-    function applyAttributes(el) {
-      const { $el } = this;
-      addClass(el, attr($el, "class"), "uk-svg");
-      for (let i = 0; i < $el.style.length; i++) {
-        const prop = $el.style[i];
-        css(el, prop, css($el, prop));
-      }
-      for (const attribute in this.attributes) {
-        const [prop, value] = this.attributes[attribute].split(":", 2);
-        attr(el, prop, value);
-      }
-      if (!this.$el.id) {
-        removeAttr(el, "id");
-      }
-    }
-    const loadSVG = memoize(async (src) => {
-      if (src) {
-        if (startsWith(src, "data:")) {
-          return decodeURIComponent(src.split(",")[1]);
-        } else {
-          return (await fetch(src)).text();
-        }
-      } else {
-        return Promise.reject();
-      }
-    });
-    function parseSVG(svg, icon) {
-      if (icon && includes(svg, "<symbol")) {
-        svg = parseSymbols(svg)[icon] || svg;
-      }
-      svg = $(svg.substr(svg.indexOf("<svg")));
-      return (svg == null ? void 0 : svg.hasChildNodes()) && svg;
-    }
-    const symbolRe = /<symbol([^]*?id=(['"])(.+?)\2[^]*?<\/)symbol>/g;
-    const parseSymbols = memoize(function(svg) {
-      const symbols = {};
-      symbolRe.lastIndex = 0;
-      let match;
-      while (match = symbolRe.exec(svg)) {
-        symbols[match[3]] = `<svg ${match[1]}svg>`;
-      }
-      return symbols;
-    });
-    function applyAnimation(el) {
-      const length = getMaxPathLength(el);
-      if (length) {
-        css(el, "--uk-animation-stroke", length);
       }
     }
 
