@@ -3079,7 +3079,7 @@ select.uk-form-width-xsmall {
 
 /* Focus */
 .uk-search-default .uk-search-input:focus {
-  background-color: #ebebeb; }
+  background-color: #f3f3f3; }
 
 /*
  * Icon
@@ -3087,21 +3087,51 @@ select.uk-form-width-xsmall {
 .uk-search-default .uk-search-icon {
   width: 40px; }
 
-.uk-search-default .uk-search-icon:not(.uk-search-icon-flip) ~ .uk-search-input {
+.uk-search-default:has(.uk-search-icon:not(.uk-search-icon-flip)) .uk-search-input {
   padding-left: 40px; }
 
-.uk-search-default .uk-search-icon-flip ~ .uk-search-input {
+.uk-search-default:has(.uk-search-icon-flip) .uk-search-input {
   padding-right: 40px; }
 
 /* Navbar modifier
  ========================================================================== */
 .uk-search-navbar {
-  width: 400px; }
+  width: 240px; }
 
 /*
  * Input
  */
 .uk-search-navbar .uk-search-input {
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #fff; }
+
+/* Focus */
+.uk-search-navbar .uk-search-input:focus {
+  background-color: #fcfcfc; }
+
+/*
+ * Icon
+ */
+.uk-search-navbar .uk-search-icon {
+  width: 40px; }
+
+.uk-search-navbar:has(.uk-search-icon:not(.uk-search-icon-flip)) .uk-search-input {
+  padding-left: 40px; }
+
+.uk-search-navbar:has(.uk-search-icon-flip) .uk-search-input {
+  padding-right: 40px; }
+
+/* Medium modifier
+ ========================================================================== */
+.uk-search-medium {
+  width: 400px; }
+
+/*
+ * Input
+ */
+.uk-search-medium .uk-search-input {
   height: 40px;
   background: transparent;
   font-size: 1.5rem; }
@@ -3110,13 +3140,13 @@ select.uk-form-width-xsmall {
 /*
  * Icon
  */
-.uk-search-navbar .uk-search-icon {
+.uk-search-medium .uk-search-icon {
   width: 40px; }
 
-.uk-search-navbar .uk-search-icon:not(.uk-search-icon-flip) ~ .uk-search-input {
+.uk-search-medium:has(.uk-search-icon:not(.uk-search-icon-flip)) .uk-search-input {
   padding-left: 40px; }
 
-.uk-search-navbar .uk-search-icon-flip ~ .uk-search-input {
+.uk-search-medium:has(.uk-search-icon-flip) .uk-search-input {
   padding-right: 40px; }
 
 /* Large modifier
@@ -3139,10 +3169,10 @@ select.uk-form-width-xsmall {
 .uk-search-large .uk-search-icon {
   width: 80px; }
 
-.uk-search-large .uk-search-icon:not(.uk-search-icon-flip) ~ .uk-search-input {
+.uk-search-large:has(.uk-search-icon:not(.uk-search-icon-flip)) .uk-search-input {
   padding-left: 80px; }
 
-.uk-search-large .uk-search-icon-flip ~ .uk-search-input {
+.uk-search-large:has(.uk-search-icon-flip) .uk-search-input {
   padding-right: 80px; }
 
 /* Toggle
@@ -9851,6 +9881,10 @@ iframe[data-uk-cover] {
   .uk-light .uk-search-default .uk-search-input:focus, .uk-section-primary:not(.uk-preserve-color) .uk-search-default .uk-search-input:focus, .uk-section-secondary:not(.uk-preserve-color) .uk-search-default .uk-search-input:focus, .uk-tile-primary:not(.uk-preserve-color) .uk-search-default .uk-search-input:focus, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-default .uk-search-input:focus, .uk-card-primary.uk-card-body .uk-search-default .uk-search-input:focus, .uk-card-primary > :not([class*="uk-card-media"]) .uk-search-default .uk-search-input:focus, .uk-card-secondary.uk-card-body .uk-search-default .uk-search-input:focus, .uk-card-secondary > :not([class*="uk-card-media"]) .uk-search-default .uk-search-input:focus, .uk-overlay-primary .uk-search-default .uk-search-input:focus, .uk-offcanvas-bar .uk-search-default .uk-search-input:focus {
     background-color: rgba(255, 255, 255, 0.15); }
   .uk-light .uk-search-navbar .uk-search-input, .uk-section-primary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input, .uk-section-secondary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input, .uk-tile-primary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input, .uk-card-primary.uk-card-body .uk-search-navbar .uk-search-input, .uk-card-primary > :not([class*="uk-card-media"]) .uk-search-navbar .uk-search-input, .uk-card-secondary.uk-card-body .uk-search-navbar .uk-search-input, .uk-card-secondary > :not([class*="uk-card-media"]) .uk-search-navbar .uk-search-input, .uk-overlay-primary .uk-search-navbar .uk-search-input, .uk-offcanvas-bar .uk-search-navbar .uk-search-input {
+    background-color: rgba(255, 255, 255, 0.1); }
+  .uk-light .uk-search-navbar .uk-search-input:focus, .uk-section-primary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input:focus, .uk-section-secondary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input:focus, .uk-tile-primary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input:focus, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-navbar .uk-search-input:focus, .uk-card-primary.uk-card-body .uk-search-navbar .uk-search-input:focus, .uk-card-primary > :not([class*="uk-card-media"]) .uk-search-navbar .uk-search-input:focus, .uk-card-secondary.uk-card-body .uk-search-navbar .uk-search-input:focus, .uk-card-secondary > :not([class*="uk-card-media"]) .uk-search-navbar .uk-search-input:focus, .uk-overlay-primary .uk-search-navbar .uk-search-input:focus, .uk-offcanvas-bar .uk-search-navbar .uk-search-input:focus {
+    background-color: rgba(255, 255, 255, 0.15); }
+  .uk-light .uk-search-medium .uk-search-input, .uk-section-primary:not(.uk-preserve-color) .uk-search-medium .uk-search-input, .uk-section-secondary:not(.uk-preserve-color) .uk-search-medium .uk-search-input, .uk-tile-primary:not(.uk-preserve-color) .uk-search-medium .uk-search-input, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-medium .uk-search-input, .uk-card-primary.uk-card-body .uk-search-medium .uk-search-input, .uk-card-primary > :not([class*="uk-card-media"]) .uk-search-medium .uk-search-input, .uk-card-secondary.uk-card-body .uk-search-medium .uk-search-input, .uk-card-secondary > :not([class*="uk-card-media"]) .uk-search-medium .uk-search-input, .uk-overlay-primary .uk-search-medium .uk-search-input, .uk-offcanvas-bar .uk-search-medium .uk-search-input {
     background-color: transparent; }
   .uk-light .uk-search-large .uk-search-input, .uk-section-primary:not(.uk-preserve-color) .uk-search-large .uk-search-input, .uk-section-secondary:not(.uk-preserve-color) .uk-search-large .uk-search-input, .uk-tile-primary:not(.uk-preserve-color) .uk-search-large .uk-search-input, .uk-tile-secondary:not(.uk-preserve-color) .uk-search-large .uk-search-input, .uk-card-primary.uk-card-body .uk-search-large .uk-search-input, .uk-card-primary > :not([class*="uk-card-media"]) .uk-search-large .uk-search-input, .uk-card-secondary.uk-card-body .uk-search-large .uk-search-input, .uk-card-secondary > :not([class*="uk-card-media"]) .uk-search-large .uk-search-input, .uk-overlay-primary .uk-search-large .uk-search-input, .uk-offcanvas-bar .uk-search-large .uk-search-input {
     background-color: transparent; }
