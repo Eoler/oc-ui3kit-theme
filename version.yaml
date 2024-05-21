@@ -228,5 +228,5 @@
     - Upgraded UIkit framework to 3.20.9, updated components import
 3.7.1:
     - Upgraded UIkit framework to 3.20.11, rebuilt assets
-3.8.0:
-    - Upgraded UIkit framework to 3.21.0, updated SCSS variables
+3.8.1:
+    - Upgraded UIkit framework to 3.21.1, updated SCSS variables
