@@ -8,7 +8,7 @@ fields:
         span: row
         spanClass: col-sm-3
         label: Version (build)
-        default: 382
+        default: 383
     brand_color:
         span: row
         spanClass: col-12
