@@ -234,3 +234,5 @@
     - Upgraded UIkit framework to 3.21.4, updated SCSS variables
 3.8.3:
     - Upgraded UIkit framework to 3.21.6, updated NPM dependencies
+3.8.4:
+    - Upgraded UIkit framework to 3.21.9, Modernizr to 3.13.1
