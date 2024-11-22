@@ -1,0 +1,32 @@
+@import
+    "theme-variables"; // variable overrides
+
+// forms
+
+.uk-form-icon:not(.uk-form-icon-flip) + .uk-select,
+.uk-form-icon:not(.uk-form-icon-flip) + .uk-textarea {
+    padding-left: $form-icon-width !important;
+}
+
+//@import "../../../../modules/system/assets/css/framework-extras";
+@import "../css/framework.extras";
+
+.stripe-loading-indicator {
+    .stripe, .stripe-loaded {
+        background-color: $global-link-color;
+    }
+}
+
+//@import "../../../../plugins/castus/curator/assets/css/frontend";
+
+.val-error {
+    color: $global-danger-background;
+    padding-top: 5px;
+    font-size: 15px;
+}
+
+// debug
+
+samp.sf-dump-expanded {
+    white-space: pre;
+}
