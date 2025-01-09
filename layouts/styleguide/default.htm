@@ -8,19 +8,21 @@ description = "UIkit 3 style guide"
     <meta name="robots" content="noindex,nofollow">
     <title>{{ this.page.meta_title|default(this.page.title) }} | {{ this.theme.site_name }}</title>
     <link rel="canonical" href="{{ ''|page }}">
+    <script src="{{ 'assets/js/detect.js'|theme }}"></script>
 
     <!-- Theming / branding -->
     <meta name="theme-color" content="{{ this.theme.brand_color }}">
     <link rel="shortcut icon" href="{{ 'assets/images/uikit/icon.png'|theme }}">
 
-    <script src="{{ 'assets/js/detect.js'|theme }}"></script>
     <link rel="stylesheet" href="{{ [
         'assets/css/uikit3themed.css',
         'assets/css/app.css',
     ]|theme }}.css?v={{ this.theme.version }}">
 {% styles %}
-    <script src="{{ 'assets/js/uikit3.js'|theme }}?v={{ this.theme.version }}"></script>
-    <script src="{{ 'assets/js/uikit3-icons.js'|theme }}?v={{ this.theme.version }}"></script>
+    <script src="{{ [
+        'assets/js/uikit3.js',
+        'assets/js/uikit3-icons.js',
+    ]|theme }}.js?v={{ this.theme.version }}"></script>
 </head>
 <body>
 {% page %}

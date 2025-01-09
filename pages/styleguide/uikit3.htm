@@ -14,7 +14,7 @@ description = "Catalog of UIkit widgets."
                 <ul class="uk-navbar-nav">
                     <li class="uk-active"><a href="#">Active</a></li>
                     <li>
-                        <a href="#">Dropdown <span uk-navbar-parent-icon></span></a>
+                        <a href>Dropdown <span uk-navbar-parent-icon></span></a>
                         <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li class="uk-active"><a href="#">Active</a></li>
@@ -26,15 +26,15 @@ description = "Catalog of UIkit widgets."
                                     </ul>
                                 </li>
                                 <li class="uk-nav-header">Header</li>
-                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                                <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: table"></span> Item</a></li>
+                                <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: thumbnails"></span> Item</a></li>
                                 <li class="uk-nav-divider"></li>
-                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                                <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: trash"></span> Item</a></li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a href="#">Dropbar <span uk-navbar-parent-icon></span></a>
+                        <a href>Dropbar <span uk-navbar-parent-icon></span></a>
                         <div class="uk-dropbar uk-dropbar-top" uk-drop="pos: bottom-left; stretch: x; target-y: !.uk-navbar-container; animation: slide-top; animate-out: true">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li class="uk-active"><a href="#">Active</a></li>
@@ -46,19 +46,26 @@ description = "Catalog of UIkit widgets."
                                     </ul>
                                 </li>
                                 <li class="uk-nav-header">Header</li>
-                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                                <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: table"></span> Item</a></li>
+                                <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: thumbnails"></span> Item</a></li>
                                 <li class="uk-nav-divider"></li>
-                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                                <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: trash"></span> Item</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a target="_blank" href="https://getuikit.com/docs/introduction"><span class="uk-margin-small-right" uk-icon="icon:nut"></span> Documentation</a></li>
-                    <li><a target="_blank" href="https://getuikit.com/changelog"><span class="uk-margin-small-right" uk-icon="icon:table"></span> Changelog</a></li>
+                    <li><a target="_blank" href="https://getuikit.com/docs/introduction"><span class="uk-margin-xsmall-right" uk-icon="icon:nut"></span> Documentation</a></li>
+                    <li><a target="_blank" href="https://getuikit.com/changelog"><span class="uk-margin-xsmall-right" uk-icon="icon:table"></span> Changelog</a></li>
                 </ul>
 
             </div>
             <div class="uk-navbar-right">
+
+                <div class="uk-navbar-item">
+                    <form class="uk-search uk-search-navbar uk-width-1-1">
+                        <span uk-search-icon></span>
+                        <input class="uk-search-input" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
                 <a class="uk-navbar-toggle" href="#modal" uk-icon="icon: more-vertical" uk-toggle></a>
                 <a class="uk-navbar-toggle" href="#modal-search" uk-search-icon uk-toggle></a>
                 <a class="uk-navbar-toggle" href="#offcanvas" uk-navbar-toggle-icon uk-toggle></a>
@@ -69,15 +76,18 @@ description = "Catalog of UIkit widgets."
 
 <div class="uk-section uk-section-default">
     <div class="uk-container">
+
         <div uk-grid>
             <div class="uk-width-2-3@m">
 
-                <ul class="uk-breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li class="uk-disabled"><a>Category</a></li>
-                    <li><span>Post</span></li>
-                </ul>
+                <nav aria-label="Breadcrumb">
+                    <ul class="uk-breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li class="uk-disabled"><a>Category</a></li>
+                        <li><span aria-current="page">Post</span></li>
+                    </ul>
+                </nav>
 
                 <article class="uk-article">
 
@@ -107,10 +117,10 @@ description = "Catalog of UIkit widgets."
                                         </ul>
                                     </li>
                                     <li class="uk-nav-header">Header</li>
-                                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-                                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                                    <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: table"></span> Item</a></li>
+                                    <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: thumbnails"></span> Item</a></li>
                                     <li class="uk-nav-divider"></li>
-                                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                                    <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: trash"></span> Item</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -179,7 +189,7 @@ description = "Catalog of UIkit widgets."
                         </div>
                     </div>
 
-                    <pre class="uk-pre uk-margin-medium"><code>&lt;div class="myclass">...&lt;div></code></pre>
+                    <pre class="uk-pre uk-margin-medium"><code>&lt;div class="myclass"&gt;…&lt;div&gt;</code></pre>
 
                     <blockquote class="uk-margin-medium" cite="#">
                         <p>The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a footer or cite element.</p>
@@ -204,11 +214,11 @@ description = "Catalog of UIkit widgets."
 
                 <ul class="uk-comment-list uk-margin-medium">
                     <li>
-                        <article class="uk-comment uk-visible-toggle" tabindex="-1">
+                        <article class="uk-comment uk-visible-toggle" tabindex="-1" role="comment">
                             <header class="uk-comment-header uk-position-relative">
                                 <div class="uk-grid-medium uk-flex-middle" uk-grid>
                                     <div class="uk-width-auto">
-                                        <img class="uk-comment-avatar" src="{{ assetPath }}images/avatar.jpg" width="50" alt="">
+                                        <img class="uk-comment-avatar" src="{{ assetPath }}images/avatar.jpg" width="50" height="50" alt="">
                                     </div>
                                     <div class="uk-width-expand">
                                         <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Author</a></h4>
@@ -224,29 +234,31 @@ description = "Catalog of UIkit widgets."
                     </li>
                 </ul>
 
-                <ul class="uk-pagination uk-flex-center" uk-margin>
-                    <li><a href="#"><span uk-pagination-previous></span></a></li>
-                    <li><a href="#">1</a></li>
-                    <li class="uk-disabled"><span>...</span></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li class="uk-active"><span>7</span></li>
-                    <li><a href="#">8</a></li>
-                    <li><a href="#">9</a></li>
-                    <li><a href="#">10</a></li>
-                    <li class="uk-disabled"><span>...</span></li>
-                    <li><a href="#">20</a></li>
-                    <li><a href="#"><span uk-pagination-next></span></a></li>
-                </ul>
+                <nav aria-label="Pagination">
+                    <ul class="uk-pagination uk-flex-center" uk-margin>
+                        <li><a href="#"><span uk-pagination-previous></span></a></li>
+                        <li><a href="#">1</a></li>
+                        <li class="uk-disabled"><span>…</span></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li class="uk-active"><span aria-current="page">7</span></li>
+                        <li><a href="#">8</a></li>
+                        <li><a href="#">9</a></li>
+                        <li><a href="#">10</a></li>
+                        <li class="uk-disabled"><span>…</span></li>
+                        <li><a href="#">20</a></li>
+                        <li><a href="#"><span uk-pagination-next></span></a></li>
+                    </ul>
+                </nav>
 
             </div>
             <div class="uk-width-expand@m">
 
                 <div class="uk-margin-medium-bottom">
-                    <form class="uk-search uk-search-default uk-width-1-1" aria-label="Search">
-                        <button uk-search-icon></button>
-                        <input class="uk-search-input" type="search" placeholder="Search...">
+                    <form class="uk-search uk-search-default uk-width-1-1">
+                        <span uk-search-icon></span>
+                        <input class="uk-search-input" type="search" placeholder="Search" aria-label="Search">
                     </form>
                 </div>
 
@@ -272,10 +284,10 @@ description = "Catalog of UIkit widgets."
                         </ul>
                     </li>
                     <li class="uk-nav-header">Header</li>
-                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                    <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: table"></span> Item</a></li>
+                    <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: thumbnails"></span> Item</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                    <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: trash"></span> Item</a></li>
                 </ul>
 
                 <div class="uk-card uk-card-body uk-card-default uk-card-hover">
@@ -303,71 +315,28 @@ description = "Catalog of UIkit widgets."
 
         <hr class="uk-margin-large">
 
-        <div class="uk-grid-divider uk-child-width-expand@m" uk-grid>
-            <div>
+        <div class="uk-grid-divider" uk-grid>
+            <div class="uk-width-2-3@m">
 
-                <div class="uk-child-width-expand@s" uk-grid>
-                    <div>
+                <!--h1 class="uk-heading-3xlarge uk-margin-small">3XL</h1-->
+                <h1 class="uk-heading-2xlarge uk-margin-small">2X-Large</h1>
+                <h1 class="uk-heading-xlarge uk-margin-small">X-Large</h1>
+                <h1 class="uk-heading-large uk-margin-small">Heading L</h1>
+                <h1 class="uk-heading-medium uk-margin-small">Heading M</h1>
+                <h1 class="uk-heading-small uk-margin-small">Heading S</h1>
 
-                        <form class="uk-form-stacked">
+                <h1 class="uk-margin-small">Heading H1</h1>
+                <h2 class="uk-margin-small">Heading H2</h2>
+                <h3 class="uk-margin-small"><a href="#">Heading H3 linked</a></h3>
+                <h4 class="uk-margin-small">Heading H4</h4>
+                <h5 class="uk-margin-small">Heading H5</h5>
+                <h6 class="uk-margin-small">Heading H6</h6>
 
-                            <div class="uk-margin-small">
-                                <label class="uk-form-label">Text</label>
-                                <input class="uk-input" type="text" placeholder="Some text...">
-                            </div>
+                <h3 class="uk-heading-divider">Heading Divider</h3>
+                <h3 class="uk-heading-bullet">Heading Bullet</h3>
+                <h3 class="uk-heading-line"><span>Heading Line</span></h3>
 
-                            <div class="uk-margin-small">
-                                <select class="uk-select">
-                                    <option>Option 01</option>
-                                    <option>Option 02</option>
-                                </select>
-                            </div>
-
-                            <div class="uk-margin-small">
-                                 <textarea class="uk-textarea" rows="2" placeholder="Some text..."></textarea>
-                            </div>
-
-                            <div class="uk-grid-small uk-child-width-auto" uk-grid>
-                                <div>
-                                    <label><input class="uk-radio" type="radio" name="radio"> Radio</label>
-                                </div>
-                                <div>
-                                    <label><input class="uk-checkbox" type="checkbox"> Checkbox</label>
-                                </div>
-                            </div>
-
-                            <div class="uk-margin-small">
-                                <input class="uk-range" type="range" value="2" min="0" max="10" step="0.1">
-                            </div>
-
-                        </form>
-
-                    </div>
-                    <div>
-
-                        <form class="uk-form-stacked">
-
-                            <div class="uk-margin-small">
-                                <label class="uk-form-label">States</label>
-                                <input class="uk-input" type="text" placeholder=":disabled" disabled>
-                            </div>
-
-                            <div class="uk-margin-small">
-                                <input class="uk-input uk-form-danger" type="text" placeholder="form-danger" value="form-danger">
-                            </div>
-                            <div class="uk-margin-small">
-                                <input class="uk-input uk-form-success" type="text" placeholder="form-success" value="form-success">
-                            </div>
-                            <div class="uk-margin-small">
-                                <input class="uk-input uk-form-blank" type="text" placeholder="form-blank">
-                            </div>
-
-                        </form>
-
-                    </div>
-                </div>
-
-                <div class="uk-overflow-auto uk-margin-large-top">
+                <div class="uk-overflow-auto uk-margin-medium-top">
                     <table class="uk-table uk-table-divider uk-table-hover uk-table-small">
                         <thead>
                             <tr>
@@ -401,6 +370,98 @@ description = "Catalog of UIkit widgets."
                     </table>
                 </div>
 
+                <div class="uk-grid-small uk-child-width-auto uk-margin-medium-top" uk-grid uk-countdown="date:{{ '+22 hours'|date('c') }}">
+                    <div>
+                        <div class="uk-countdown-number uk-countdown-days"></div>
+                    </div>
+                    <div class="uk-countdown-separator">:</div>
+                    <div>
+                        <div class="uk-countdown-number uk-countdown-hours"></div>
+                    </div>
+                    <div class="uk-countdown-separator">:</div>
+                    <div>
+                        <div class="uk-countdown-number uk-countdown-minutes"></div>
+                    </div>
+                    <div class="uk-countdown-separator">:</div>
+                    <div>
+                        <div class="uk-countdown-number uk-countdown-seconds"></div>
+                    </div>
+                </div>
+
+{#{% put scripts %}#}
+{#<script>#}
+{#    UIkit.countdown('[js-countdown]', {#}
+{#        date: (new Date(Date.now() + 864e5 * 7)).toISOString()#}
+{#    });#}
+{#</script>#}
+{#{% endput %}#}
+
+            </div>
+            <div class="uk-width-1-3@m">
+
+                <form class="uk-form-stacked">
+
+                    <div class="uk-margin-small">
+                        <label class="uk-form-label" for="form-input-text">Text</label>
+                        <input id="form-input-text" class="uk-input" type="text" placeholder="Some text...">
+                    </div>
+
+                    <div class="uk-margin-small">
+                        <select class="uk-select" aria-label="Select">
+                            <option>Option 01</option>
+                            <option>Option 02</option>
+                        </select>
+                    </div>
+
+                    <div class="uk-margin-small">
+                        <textarea class="uk-textarea" rows="2" placeholder="Some text..." aria-label="Textarea"></textarea>
+                    </div>
+
+                    <div class="uk-grid-small uk-child-width-auto" uk-grid>
+                        <div>
+                            <label><input class="uk-radio" type="radio" name="radio"> Radio</label>
+                        </div>
+                        <div>
+                            <label><input class="uk-checkbox" type="checkbox"> Checkbox</label>
+                        </div>
+                    </div>
+
+                    <div class="uk-margin-small">
+                        <input class="uk-range" type="range" value="2" min="0" max="10" step="0.1" aria-label="Range">
+                    </div>
+
+                    <div class="uk-margin-small">
+                        <label class="uk-form-label" for="form-input-states">States</label>
+                        <input id="form-input-states" class="uk-input" type="text" placeholder=":disabled" disabled>
+
+                    </div>
+
+                    <div class="uk-margin-small">
+                        <input class="uk-input uk-form-danger" type="text" placeholder="form-danger" aria-label="form-danger" value="form-danger">
+                    </div>
+                    <div class="uk-margin-small">
+                        <input class="uk-input uk-form-success" type="text" placeholder="form-success" aria-label="form-success" value="form-success">
+                    </div>
+                    <div class="uk-margin-small">
+                        <input class="uk-input uk-form-blank" type="text" placeholder="form-blank" aria-label="form-blank">
+                    </div>
+
+                </form>
+
+                <ul class="uk-nav uk-nav-primary uk-margin-medium">
+                    <li class="uk-active"><a href="#">Active</a></li>
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Item</a></li>
+                </ul>
+
+                <ul class="uk-nav uk-nav-secondary uk-margin-medium">
+                    <li class="uk-active"><a href="#"><div>Active<div class="uk-nav-subtitle">Subtitle lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</div></div></a></li>
+                    <li><a href="#"><div>Item<div class="uk-nav-subtitle">Subtitle lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</div></div></a></li>
+                    <li><a href="#"><div>Item<div class="uk-nav-subtitle">Subtitle lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</div></div></a></li>
+                    <li><a href="#"><div>Item<div class="uk-nav-subtitle">Subtitle lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</div></div></a></li>
+                </ul>
+
                 <div class="uk-margin-medium-top" uk-alert>
                     <a href="#" class="uk-alert-close" uk-close></a>
                     <p>Default</p>
@@ -421,59 +482,13 @@ description = "Catalog of UIkit widgets."
                     <p>Warning</p>
                 </div>
 
-                <div class="uk-alert-danger" uk-alert>
+                <div class="uk-alert-danger uk-margin-remove-bottom" uk-alert>
                     <a href="#" class="uk-alert-close" uk-close></a>
                     <p>Danger</p>
                 </div>
 
-                <div class="uk-grid-divider uk-margin-medium-top uk-child-width-expand@m" uk-grid>
-                    <div>
-
-                        <div class="uk-grid-small uk-child-width-auto uk-margin" uk-grid uk-countdown="date:{{ '+22 hours'|date('c') }}">
-                            <div>
-                                <div class="uk-countdown-number uk-countdown-days"></div>
-                            </div>
-                            <div class="uk-countdown-separator">:</div>
-                            <div>
-                                <div class="uk-countdown-number uk-countdown-hours"></div>
-                            </div>
-                            <div class="uk-countdown-separator">:</div>
-                            <div>
-                                <div class="uk-countdown-number uk-countdown-minutes"></div>
-                            </div>
-                            <div class="uk-countdown-separator">:</div>
-                            <div>
-                                <div class="uk-countdown-number uk-countdown-seconds"></div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
-
-            </div>
-
-            <div>
-
-                <h1 class="uk-heading-3xlarge uk-margin-small">3XL</h1>
-                <h1 class="uk-heading-2xlarge uk-margin-small">2XL</h1>
-                <h1 class="uk-heading-xlarge uk-margin-small">XLarge</h1>
-                <h1 class="uk-heading-large uk-margin-small">Heading L</h1>
-                <h1 class="uk-heading-medium uk-margin-small">Heading M</h1>
-                <h1 class="uk-heading-small uk-margin-small">Heading S</h1>
-
-                <h1 class="uk-margin-small">Heading H1</h1>
-                <h2 class="uk-margin-small">Heading H2</h2>
-                <h3 class="uk-margin-small"><a href="#">Heading H3 Linked</a></h3>
-                <h4 class="uk-margin-small">Heading H4</h4>
-                <h5 class="uk-margin-small">Heading H5</h5>
-                <h6 class="uk-margin-small">Heading H6</h6>
-
-                <h3 class="uk-heading-divider">Heading Divider</h3>
-                <h3 class="uk-heading-bullet">Heading Bullet</h3>
-                <h3 class="uk-heading-line"><span>Heading Line</span></h3>
-
-            </div>
-        </div>
 
         <hr class="uk-margin-medium">
 
@@ -544,9 +559,9 @@ description = "Catalog of UIkit widgets."
             <div>
 
                 <ul class="uk-thumbnav">
-                    <li class="uk-active"><a href="#"><img src="{{ assetPath }}images/photo.jpg" width="60" alt=""></a></li>
-                    <li><a href="#"><img src="{{ assetPath }}images/dark.jpg" width="60" alt=""></a></li>
-                    <li><a href="#"><img src="{{ assetPath }}images/light.jpg" width="60" alt=""></a></li>
+                    <li class="uk-active"><a href="#"><img src="{{ assetPath }}images/photo.jpg" width="60" height="40" alt=""></a></li>
+                    <li><a href="#"><img src="{{ assetPath }}images/dark.jpg" width="60" height="40" alt=""></a></li>
+                    <li><a href="#"><img src="{{ assetPath }}images/light.jpg" width="60" height="40" alt=""></a></li>
                 </ul>
 
             </div>
@@ -577,27 +592,70 @@ description = "Catalog of UIkit widgets."
         <div class="uk-grid-divider uk-child-width-auto@m" uk-grid>
             <div>
 
-                <ul class="uk-subnav uk-subnav-divider" uk-margin>
-                    <li class="uk-active"><a href="#">Active</a></li>
-                    <li><a href="#">Item</a></li>
-                    <li class="uk-disabled"><a>Disabled</a></li>
-                </ul>
+                <nav uk-dropnav="mode: click">
+                    <ul class="uk-subnav uk-subnav-divider" uk-margin>
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li>
+                            <a href>Parent <span uk-drop-parent-icon></span></a>
+                            <div class="uk-dropdown">
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li class="uk-active"><a href="#">Active</a></li>
+                                    <li><a href="#">Item</a></li>
+                                    <li class="uk-nav-header">Header</li>
+                                    <li><a href="#">Item</a></li>
+                                    <li><a href="#">Item</a></li>
+                                    <li class="uk-nav-divider"></li>
+                                    <li><a href="#">Item</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="uk-disabled"><a>Disabled</a></li>
+                    </ul>
+                </nav>
 
             </div>
             <div>
 
-                <ul class="uk-subnav uk-subnav-pill" uk-margin>
-                    <li class="uk-active"><a href="#">Active</a></li>
-                    <li><a href="#">Item</a></li>
-                    <li class="uk-disabled"><a>Disabled</a></li>
-                </ul>
+                <nav uk-dropnav="mode: click">
+                    <ul class="uk-subnav uk-subnav-pill" uk-margin>
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li>
+                            <a href>Parent <span uk-drop-parent-icon></span></a>
+                            <div class="uk-dropdown">
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li class="uk-active"><a href="#">Active</a></li>
+                                    <li><a href="#">Item</a></li>
+                                    <li class="uk-nav-header">Header</li>
+                                    <li><a href="#">Item</a></li>
+                                    <li><a href="#">Item</a></li>
+                                    <li class="uk-nav-divider"></li>
+                                    <li><a href="#">Item</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="uk-disabled"><a>Disabled</a></li>
+                    </ul>
+                </nav>
 
             </div>
             <div>
 
                 <ul uk-tab>
                     <li class="uk-active"><a href="#">Active</a></li>
-                    <li><a href="#">Item</a></li>
+                    <li>
+                        <a href>Parent <span uk-drop-parent-icon></span></a>
+                        <div uk-dropdown="mode: click">
+                            <ul class="uk-nav uk-dropdown-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li class="uk-nav-header">Header</li>
+                                <li><a href="#">Item</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="#">Item</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="uk-disabled"><a>Disabled</a></li>
                 </ul>
 
@@ -701,6 +759,7 @@ description = "Catalog of UIkit widgets."
 
 <div class="uk-section uk-section-default">
     <div class="uk-container">
+
         <div class="uk-grid-large uk-flex-middle" uk-grid>
             <div class="uk-width-expand@m">
                 <p class="uk-text-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
@@ -715,6 +774,7 @@ description = "Catalog of UIkit widgets."
 
 <div class="uk-section uk-section-muted">
     <div class="uk-container">
+
         <div class="uk-grid-large uk-flex-middle" uk-grid>
             <div class="uk-width-expand@m">
                 <p class="uk-text-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
@@ -729,6 +789,7 @@ description = "Catalog of UIkit widgets."
 
 <div class="uk-section uk-section-primary">
     <div class="uk-container">
+
         <div class="uk-grid-large uk-flex-middle" uk-grid>
             <div class="uk-width-expand@m">
                 <p class="uk-text-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
@@ -743,6 +804,7 @@ description = "Catalog of UIkit widgets."
 
 <div class="uk-section uk-section-secondary">
     <div class="uk-container">
+
         <div class="uk-grid-large uk-flex-middle" uk-grid>
             <div class="uk-width-expand@m">
                 <p class="uk-text-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
@@ -787,7 +849,7 @@ description = "Catalog of UIkit widgets."
 
             <div class="uk-margin">
                 <form class="uk-search uk-search-large">
-                    <input class="uk-search-input uk-text-center" type="search" placeholder="Search...">
+                    <input class="uk-search-input uk-text-center" type="search" placeholder="Search" aria-label="Search">
                 </form>
             </div>
 
@@ -811,10 +873,10 @@ description = "Catalog of UIkit widgets."
                 </ul>
             </li>
             <li class="uk-nav-header">Header</li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+            <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: table"></span> Item</a></li>
+            <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: thumbnails"></span> Item</a></li>
             <li class="uk-nav-divider"></li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+            <li><a href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: trash"></span> Item</a></li>
         </ul>
 
         <h3>Title</h3>
@@ -823,11 +885,3 @@ description = "Catalog of UIkit widgets."
 
     </div>
 </div>
-
-{#{% put scripts %}#}
-{#<script>#}
-{#    UIkit.countdown('[js-countdown]', {#}
-{#        date: (new Date(Date.now() + 864e5 * 7)).toISOString()#}
-{#    });#}
-{#</script>#}
-{#{% endput %}#}
