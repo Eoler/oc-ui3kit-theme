@@ -242,3 +242,5 @@
     - Upgraded UIkit framework to 3.21.16, added App.CSS/JS example
 3.10.0:
     - Upgraded UIkit framework to 3.22.0, updated SCSS variables and styleguide
+3.10.1:
+    - Upgraded UIkit framework to 3.22.2, updated NPM dependencies
