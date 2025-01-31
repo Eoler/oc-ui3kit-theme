@@ -1337,6 +1337,17 @@ button.uk-icon:not(:disabled) {
   height: auto; }
 
 /*
+ * Correct vertical alignment in Safari.
+ */
+.uk-input[type="date"]::-webkit-datetime-edit,
+.uk-input[type="time"]::-webkit-datetime-edit,
+.uk-input[type="datetime-local"]::-webkit-datetime-edit {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  padding: 0; }
+
+/*
  * Removes placeholder transparency in Firefox.
  */
 .uk-input::-moz-placeholder,
@@ -6220,6 +6231,7 @@ ul.uk-nav-sub {
  * 3. Padding
  */
 .uk-dropdown-dropbar {
+  --uk-position-offset: 10px;
   /* 1 */
   width: auto;
   /* 2 */
