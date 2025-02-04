@@ -246,3 +246,5 @@
     - Upgraded UIkit framework to 3.22.2, updated NPM dependencies
 3.10.2:
     - Upgraded UIkit framework to 3.22.4, updated SCSS variables
+3.11.0:
+    - Upgraded UIkit framework to 3.23.0, updated changed properties
