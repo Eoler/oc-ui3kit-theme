@@ -9090,7 +9090,8 @@ iframe[data-uk-cover] {
  *    Note: `clip-path` doesn't work with `tabindex` on touch devices.
  */
 .uk-hidden-visually:not(:focus):not(:active):not(:focus-within),
-.uk-visible-toggle:not(:hover):not(:focus) .uk-hidden-hover:not(:focus-visible):not(:has(:focus-visible)) {
+.uk-visible-toggle:not(:hover):not(:focus) .uk-hidden-hover:not(:focus-visible):not(:has(:focus-visible)),
+.uk-visible-toggle:not(:hover):not(:focus) .uk-hidden-hover:not(:focus-within) {
   /* 1 */
   position: absolute !important;
   /* 2 */
