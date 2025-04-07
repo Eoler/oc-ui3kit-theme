@@ -46,7 +46,7 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
     "postcss-csso": "^6.0.1",
-    "uikit": "^3.23.4"
+    "uikit": "^3.23.5"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
