@@ -252,3 +252,5 @@
     - Upgraded UIkit framework to 3.23.11, updated NPM dependencies
 3.11.2:
     - Upgraded UIkit framework to 3.23.13, pinned SCSS build to LibSASS
+3.11.3:
+    - Updated Composer requirements for PHP v8.4 compatibility
