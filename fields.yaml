@@ -2,32 +2,51 @@ fields:
     site_name:
         span: row
         spanClass: col-sm-9
-        label: Site name
+        label: 'Site name'
+        type: text
         default: UI3kit
     version:
         span: row
         spanClass: col-sm-3
-        label: Version (build)
-        default: 3113
+        label: 'Version (build)'
+        type: text
+        default: 400
     brand_color:
         span: row
         spanClass: col-12
-        label: Site brand color
+        label: 'Site brand color'
         type: colorpicker
         default: '#1e87f0'
-        assetVar: 'global-link-color'
+        assetVar: global-link-color
     second_color:
         span: row
         spanClass: col-12
-        label: Site background color
+        label: 'Site background color'
         type: colorpicker
         default: '#333'
-        assetVar: 'global-emphasis-color'
+        assetVar: global-emphasis-color
     socialinks:
         span: row
         spanClass: col-12
-        label: Links to social networks
+        label: 'Links to social networks'
         type: repeater
+        form:
+            fields:
+                name:
+                    span: row
+                    spanClass: col-md-4
+                    label: 'Name'
+                    type: text
+                icon:
+                    span: row
+                    spanClass: col-md-2
+                    label: 'Icon'
+                    type: text
+                link:
+                    span: row
+                    spanClass: col-md-6
+                    label: 'Link URL'
+                    type: text
 #        default:
 #            0:
 #                name: @getuikit
@@ -37,20 +56,3 @@ fields:
 #                name: Community
 #                icon: commenting
 #                link: https://discordapp.com/invite/NEt4Pv7
-        form:
-            fields:
-                name:
-                    span: row
-                    spanClass: col-md-4
-                    label: Name
-                    type: text
-                icon:
-                    span: row
-                    spanClass: col-md-2
-                    label: Icon
-                    type: text
-                link:
-                    span: row
-                    spanClass: col-md-6
-                    label: Link URL
-                    type: text

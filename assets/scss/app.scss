@@ -9,7 +9,6 @@
 }
 
 //@import "../../../../modules/system/assets/css/framework-extras";
-@import "../css/framework.extras";
 
 .stripe-loading-indicator {
     .stripe, .stripe-loaded {
@@ -22,14 +21,14 @@
 .val-error {
     color: $global-danger-background;
     padding-top: $margin-xsmall-margin;
-    font-size: 15px;
+    font-size: $global-small-gutter;
 }
 
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus,
 textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus,
 select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus {
-    border: 1px solid $alert-primary-background;
-    -webkit-text-fill-color: $alert-primary-background;
+    border: 1px solid $global-success-background;
+    -webkit-text-fill-color: $global-secondary-background;
     -webkit-box-shadow: 0 0 0 1000px lighten($form-background, 5%) inset;
     transition: background-color 5000s ease-in-out 0s;
 }
