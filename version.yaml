@@ -44,3 +44,5 @@
     - Updated Composer requirements for PHP v8.4 compatibility
 4.0.0:
     - Updated includes for Larajax, removed AJAX v2.x assets and Modernizr
+4.0.1:
+    - Added translatable default maintenance page

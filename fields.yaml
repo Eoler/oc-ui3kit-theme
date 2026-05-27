@@ -1,16 +1,16 @@
 fields:
     site_name:
         span: row
-        spanClass: col-sm-9
+        spanClass: col-sm-8
         label: 'Site name'
         type: text
         default: UI3kit
     version:
         span: row
-        spanClass: col-sm-3
+        spanClass: col-sm-2
         label: 'Version (build)'
         type: text
-        default: 400
+        default: 401
     brand_color:
         span: row
         spanClass: col-12

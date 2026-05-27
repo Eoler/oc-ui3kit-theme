@@ -1,0 +1,43 @@
+title = "Maintenance"
+description = "You see this page because there is no content for this domain yet."
+url = "/503"
+==
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ this.page.title|trans }} | {{ this.theme.site_name }}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=1">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="{{ this.theme.brand_color }}">
+    <link rel="stylesheet" href="{{ [
+        'assets/css/uikit3themed'~assetMin~'.css',
+        'assets/css/app'~assetMin~'.css',
+    ]|theme }}.css?v={{ this.theme.version }}">
+{% styles %}
+    <script src="{{ [
+        'assets/js/uikit3'~assetMin~'.js',
+    ]|theme }}.js?v={{ this.theme.version }}"></script>
+</head>
+<body class="uk-background-secondary uk-flex uk-flex-middle" uk-height-viewport="expand:true">
+    <main class="uk-position-center uk-text-center">
+        <article class="uk-card uk-card-default uk-width-large">
+            <section class="uk-card-header">
+                <h1 class="uk-card-title">{{ this.page.title|trans }}</h1>
+            </section>
+            <section class="uk-card-body">
+                <h4>{{ this.page.description|trans }}</h4>
+            </section>
+            <section class="uk-card-footer">
+                <a href="https://www.castus.me/" class="uk-margin-top uk-flex uk-flex-column">
+                    <img class="uk-align-center uk-margin-remove-adjacent" src="https://www.castus.me/themes/castus-mdlize/assets/images/favicon.png" alt="{{ this.theme.site_name }}">
+                    <h4>Castus Hosting</h4></a>
+            </section>
+        </article>
+    </main>
+<script src="{{ [
+    'assets/js/app'~assetMin~'.js',
+]|theme }}.js?v={{ this.theme.version }}"></script>
+{% scripts %}
+</body>
+</html>
